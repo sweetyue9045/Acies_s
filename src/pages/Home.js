@@ -76,7 +76,6 @@ const Home = () => {
 
 
         if (document.body.clientWidth > 834) {
-            console.log("A")
             if (offsetY >= h_top[7] - 300 && offsetY <= h_top[7] + 10) {
                 for (let i = 0; i < 4; i++) {
                     setTimeout(function () {
@@ -147,7 +146,6 @@ const Home = () => {
                 }, 1100);
             }
             else if (offsetY >= h_top[0] - 300 && offsetY <= h_top[0] + 10) {
-                console.log("B")
                 for (let i = 0; i < 4; i++) {
                     setTimeout(function () {
                         document.getElementById("feature").children[i].classList.add("fadein");
@@ -159,7 +157,6 @@ const Home = () => {
 
     useEffect(() => {
         document.body.addEventListener('scroll', handleScroll);
-        console.log("C")
         return () => {
             document.body.removeEventListener('scroll', handleScroll);
         };
