@@ -1,0 +1,7 @@
+{
+    "typescript.locale": "zh-TW",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.triggerExpansionOnTab": true
+}
