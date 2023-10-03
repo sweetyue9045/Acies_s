@@ -1,12 +1,12 @@
 import "../style/Home.css";
-import { useEffect, useState } from "react";
-import Lottie from "react-lottie";
+import { useEffect, useState, useRef } from "react";
+import lottie from 'lottie-web';
 
 import GIF from "../assets/images/start_gif.gif";
 import PARALLAX from "../assets/images/start_parallax.png";
 import LOGO from "../assets/images/start_logo.svg";
 import LOGO_BG from "../assets/images/start_logo_bg.png";
-import arrow from "../assets/lotties/arrow.json";
+import arrowData from "../assets/lotties/arrow.json";
 import FEATURE_LOGO from "../assets/images/feature_logo.svg";
 import STORY_STAFF from "../assets/images/story_staff.png";
 import TOBII_EYE from "../assets/images/tobii_eye.svg";
@@ -48,15 +48,23 @@ const Home = () => {
             document.getElementById("sale").offsetTop + 1305,
         ];
     }
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: arrow,
 
-        renderSettings: {
-            preserveAspectRatio: "xMidYMid slice"
-        }
-    };
+    const animationContainer = useRef(null);
+    useEffect(() => {
+        // 在組件載入時初始化Lottie動畫
+        const anim = lottie.loadAnimation({
+            container: animationContainer.current,
+            animationData: arrowData,
+            loop: true,
+            autoplay: true
+        });
+
+        return () => {
+            // 在組件卸載時停止Lottie動畫
+            anim.destroy();
+        };
+    }, []);
+
     // 抓取加動畫位置
     useEffect(() => {
         document.body.scrollTo(0, 0);
@@ -71,7 +79,7 @@ const Home = () => {
         //enter
         setGifstyleTop(document.body.clientWidth <= 834 ? 0 : offsetY * 0.3 + "px");
         setAarrowstyleTop(document.body.clientWidth <= 834 ? "80vh" : "calc(80vh + " + offsetY * 1.5 + "px)")
-        setArrowstyleDisplay(offsetY > 600 ? "none" : "block")
+        setArrowstyleDisplay(offsetY > 600 ? "none" : "flex")
 
 
 
@@ -173,11 +181,7 @@ const Home = () => {
                         style={{ top: gifstyleTop }}
                     />
                     <div className="home_arrow" style={{ top: arrowstyleTop, display: arrowstyleDisplay }}>
-                        <Lottie
-                            options={defaultOptions}
-                            height={100}
-                            width={100}
-                        />
+                        <div ref={animationContainer} style={{ height: "100px", width: "100px" }}></div>
                     </div>
                     <div className="enter_top" id="enter">
                         <div className="logo" >

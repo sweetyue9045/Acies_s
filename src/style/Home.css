@@ -110,10 +110,13 @@ body {
     width: 100%;
 }
 
-.home-container_arrow {
+.home-container .home_arrow {
     position: absolute;
     top: 80vh;
     width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* feature */
