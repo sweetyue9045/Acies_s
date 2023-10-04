@@ -560,7 +560,7 @@
     .world img {
         width: auto;
         height: 80%;
-        top: 50%;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -632,9 +632,6 @@
         left: 25%;
         top: -15%;
     }
-    /* #cancel_Elder{
-        top: -20%;
-    } */
     
     .sisimg {
         margin-top: 0px;
