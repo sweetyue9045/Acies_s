@@ -712,6 +712,7 @@
     }
     .home-container .title_text{
         letter-spacing: 5px;
+        text-align: left;
     }
     .magic .content,
     .ordeal .content,
