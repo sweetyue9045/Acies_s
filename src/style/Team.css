@@ -40,6 +40,7 @@
     background-image: url("../assets/images/team_bg_text.png");
     background-repeat: no-repeat;
     background-position: -10% 10%;
+    background-size: contain;
 }
 
 .group .photo_img {
@@ -89,6 +90,7 @@
         background-image: url("../assets/images/team_bg_text2.png");
         background-repeat: no-repeat;
         background-position: 50% 45%;
+        background-size: contain;
     }
 
     .group .photo_img {
