@@ -7,9 +7,6 @@ import HAM_CLOSE from "../assets/images/ham_close.png";
 
 
 export default function Nav({ posi }) {
-    const ClickHandler = (event) => {
-        event.preventDefault();
-    };
     const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
 
 

@@ -79,7 +79,7 @@ const Home = () => {
 
         //enter
         setGifstyleTop(document.body.clientWidth <= 834 ? 0 : offsetY * 0.3 + "px");
-        setAarrowstyleTop(document.body.clientWidth <= 834 ? "40vw" : "calc(40vw + " + offsetY * 1.5 + "px)")
+        setAarrowstyleTop(document.body.clientWidth <= 834 ? "50vw" : "calc(50vw + " + offsetY * 1.5 + "px)")
         setArrowstyleDisplay(offsetY > 600 ? "none" : "flex")
 
         //視差滾動
@@ -258,7 +258,7 @@ const Home = () => {
                 </div>
                 <div className="ordeal" id="ordeal">
                     <div className="content">
-                        <div className="left_img"  style={{ display: phone == "yesPhone" ? "none" : "block" }}>
+                        <div className="left_img" style={{ display: phone == "yesPhone" ? "none" : "block" }}>
                             <img src={ORDEAL_STONE_L} alt="ORDEAL_STONE_L" />
                             <img src={ORDEAL_STONE_R} alt="ORDEAL_STONE_R" />
                         </div>
@@ -286,7 +286,7 @@ const Home = () => {
                                 </video>
                             </div>
                         </div>
-                        <img src={CRISIS_BEAR} alt="ORDEAL_STONE_L" className="crisis_bear"  style={{ display: phone == "yesPhone" ? "none" : "block" }} />
+                        <img src={CRISIS_BEAR} alt="ORDEAL_STONE_L" className="crisis_bear" style={{ display: phone == "yesPhone" ? "none" : "block" }} />
                     </div>
                 </div>
                 <div className="awards" id="awards">

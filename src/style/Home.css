@@ -104,7 +104,7 @@
 
 .home-container .home_arrow {
     position: absolute;
-    top: 40vw;
+    top: 50vw;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -688,9 +688,9 @@
     .feature img {
         width: 50vw;
     }
-    .feature .content{
-        width: 77.78vw
 
+    .feature .content {
+        width: 77.78vw
     }
 
     .story .story_img1 {
@@ -706,14 +706,16 @@
         margin-bottom: 120px;
     }
 
-    .tobii .content{
+    .tobii .content {
         letter-spacing: 3px;
 
     }
-    .home-container .title_text{
+
+    .home-container .title_text {
         letter-spacing: 5px;
         text-align: left;
     }
+
     .magic .content,
     .ordeal .content,
     .crisis .content {
@@ -743,11 +745,13 @@
         background-position: center;
 
     }
-    .sale{
+
+    .sale {
         height: 860px;
         background-size: cover;
         background-position: center;
     }
+
     .sale .platform {
         width: 290px;
     }
