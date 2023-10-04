@@ -688,23 +688,27 @@
     .feature img {
         width: 50vw;
     }
+    .feature .content{
+        width: 77.78vw
 
-    .story {
-        min-height: 470px
     }
 
     .story .story_img1 {
-        display: none;
+        width: 100%;
     }
 
     .story .content {
-        max-width: 71.94vw;
+        max-width: 77.78vw
     }
 
     .tobii {
         min-height: 65.13vw;
         margin-bottom: 120px;
-        /* max-width: 80vw; */
+    }
+
+    .tobii .content{
+        letter-spacing: 3px;
+
     }
 
     .magic .content,
