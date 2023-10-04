@@ -622,16 +622,16 @@
     }
     .text_bg {
         width: 48vw;
-        top:20px
+        top: 10px
     }
     #text_Younger {
         left: 16%;
-        top: -5%;
+        top: -10%;
     }
 
     #text_Elder {
         left: 25%;
-        top: -5%;
+        top: -10%;
     }
     
     .sisimg {
