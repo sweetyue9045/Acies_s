@@ -5,10 +5,17 @@ nav {
     top: 0;
     padding: 0px 44.35px 0px 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: transparent;
     z-index: 100;
+}
+
+nav .nav-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav .logo {
