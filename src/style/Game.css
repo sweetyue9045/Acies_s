@@ -609,12 +609,12 @@
     }
 
     .sister {
-        margin: 100px 0 20px;
+        margin: 120px 0 50px;
         overflow-x: hidden;
     }
     .sisters {
         margin-top: 0px;
-        height: 75vw;
+        height: 85vw;
     }
     .siscard{
         margin-top: 40px;
