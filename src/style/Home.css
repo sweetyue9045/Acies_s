@@ -710,7 +710,9 @@
         letter-spacing: 3px;
 
     }
-
+    .home-container .title_text{
+        letter-spacing: 5px;
+    }
     .magic .content,
     .ordeal .content,
     .crisis .content {
