@@ -610,6 +610,7 @@
 
     .sister {
         margin: 100px 0 20px;
+        overflow-x: hidden;
     }
     .sisters {
         margin-top: 0px;
@@ -623,12 +624,15 @@
     }
     #text_Younger {
         left: 16%;
-        top: -10%;
+        top: 0%;
     }
 
     #text_Elder {
         left: 25%;
-        top: -10%;
+        top: 0%;
+    }
+    #cancel_Elder{
+        top: -25%;
     }
     .sisimg {
         margin-top: 0px;
@@ -636,6 +640,7 @@
     .sisimg .text {
         width: 30vw;
         line-height: unset;
+        font-size: 3vw
     }
     
 }
