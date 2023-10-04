@@ -244,7 +244,7 @@
     margin-top: 13.89vw;
 }
 
-.page {
+.siscard {
     flex-direction: column;
     margin-top: 80px;
     transform: translateY(-100px);
@@ -255,7 +255,7 @@
     margin-top: 65px;
 }
 
-.page2 {
+.text_bg {
     margin-top: -65px;
     width: 38.47vw;
     max-width: 553px;
@@ -269,31 +269,31 @@
     top: 0;
     transform: translate(-50%, -50%);
     filter: drop-shadow(0 0 5px #FFFEF3);
-    font-size: var(--fz28);
+    font-size: 2vw;
     letter-spacing: 5px;
     margin-right: -3px;
-    line-height: 60px;
+    line-height: 3.5vw;
 }
 
-#cancelL {
+#cancel_Elder {
     position: absolute;
     top: -10%;
     left: 0;
 }
 
-#cancelR {
+#cancel_Younger {
     position: absolute;
     top: -10%;
     right: 0;
 
 }
 
-#textL {
+#text_Elder {
     left: 23%;
     top: 10%;
 }
 
-#textR {
+#text_Younger {
     left: 14%;
     top: 10%;
 }
@@ -301,7 +301,8 @@
 .click_point {
     cursor: pointer;
 }
-.click_point:hover{
+
+.click_point:hover {
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
@@ -315,12 +316,12 @@
     transform: scale(1.03);
 }
 
-.R_fadeout {
+.Elder_fadeout {
     animation: rightfadeout 400ms ease-out;
     animation-fill-mode: forwards
 }
 
-.R_fadein {
+.Elder_fadein {
     animation: rightfadein 400ms ease-in;
     animation-fill-mode: forwards
 }
@@ -350,12 +351,12 @@
     }
 }
 
-.L_fadeout {
+.Younger_fadeout {
     animation: leftfadeout 400ms ease-out;
     animation-fill-mode: forwards
 }
 
-.L_fadein {
+.Younger_fadein {
     animation: leftfadein 400ms ease-in;
     animation-fill-mode: forwards
 }
@@ -516,7 +517,11 @@
         margin-bottom: 120px;
     }
 
-    .world .title, .world .content, .village .logo, .village .hr_column, .page {
+    .world .title,
+    .world .content,
+    .village .logo,
+    .village .hr_column,
+    .siscard {
         transform: translateY(0px);
         opacity: 1;
     }
@@ -524,11 +529,113 @@
     .sisimg .text {
         letter-spacing: 5px;
         margin-right: -3px;
-        line-height: 30px;
     }
 
     .state:hover {
         transform: scale(1);
         filter: none;
     }
+
+    #cancel_Younger {
+        top: -15%;
+        right: -10%;
+        width: 5vw;
+    }
+    #cancel_Elder {
+        top: -15%;
+        left: -10%;
+        width: 5vw;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 430px) {
+    .world {
+        height: 130vw;
+    }
+
+    .world .content {
+        width: 77.78vw;
+    }
+
+    .world img {
+        width: auto;
+        height: 80%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .village {
+        margin-top: 50px;
+        height: 250vw;
+        max-height: 250vw;
+    }
+
+    .village .content {
+        height: 250vw;
+        max-height: 250vw;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    .village .hr_column {
+        display: none;
+    }
+
+    .village .logo {
+        width: 40vw;
+        max-width: auto;
+        height: 40vw;
+        max-height: auto;
+        margin: 20px 0;
+    }
+
+    .village .v_logo {
+        height: 25vw;
+    }
+
+    .village .logo:hover .v_logo {
+        height: 25vw;
+        margin-top: -20px;
+    }
+
+    .village .v_in {
+        width: 80vw;
+        max-width: auto;
+    }
+
+    .village .logo:hover .v_in {
+        margin-bottom: 100px
+    }
+
+    .sister {
+        margin: 100px 0 20px;
+    }
+    .sisters {
+        margin-top: 0px;
+        height: 75vw;
+    }
+    .siscard{
+        margin-top: 40px;
+    }
+    .text_bg {
+        width: 48vw;
+    }
+    #text_Younger {
+        left: 16%;
+        top: -10%;
+    }
+
+    #text_Elder {
+        left: 25%;
+        top: -10%;
+    }
+    .sisimg {
+        margin-top: 0px;
+    }
+    .sisimg .text {
+        width: 30vw;
+        line-height: unset;
+    }
+    
 }
