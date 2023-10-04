@@ -31,8 +31,9 @@ import Footer from "../components/Footer";
 
 var h_top = [];
 const Home = () => {
+    const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
     const [gifstyleTop, setGifstyleTop] = useState("")
-    const [arrowstyleTop, setAarrowstyleTop] = useState("80vh")
+    const [arrowstyleTop, setAarrowstyleTop] = useState("")
     const [arrowstyleDisplay, setArrowstyleDisplay] = useState("")
     const [num, setnum] = useState(0);
     const [skill, setskill] = useState("凝聚之光");
@@ -48,7 +49,7 @@ const Home = () => {
             document.getElementById("sale").offsetTop + 1305,
         ];
     }
-
+    //Lottie
     const animationContainer = useRef(null);
     useEffect(() => {
         // 在組件載入時初始化Lottie動畫
@@ -78,11 +79,10 @@ const Home = () => {
 
         //enter
         setGifstyleTop(document.body.clientWidth <= 834 ? 0 : offsetY * 0.3 + "px");
-        setAarrowstyleTop(document.body.clientWidth <= 834 ? "80vh" : "calc(80vh + " + offsetY * 1.5 + "px)")
+        setAarrowstyleTop(document.body.clientWidth <= 834 ? "50vw" : "calc(50vw + " + offsetY * 1.5 + "px)")
         setArrowstyleDisplay(offsetY > 600 ? "none" : "flex")
 
-
-
+        //視差滾動
         if (document.body.clientWidth > 834) {
             if (offsetY >= h_top[7] - 300 && offsetY <= h_top[7] + 10) {
                 for (let i = 0; i < 4; i++) {
@@ -170,18 +170,16 @@ const Home = () => {
         };
     }, []);
 
-
-
     return (
         <>
             <Nav posi="fixed" />
             <div className="home-container">
-                <div className="enter" id="enter">
+                <div className="enter">
                     <img src={GIF} className="img_gif" alt="GIF"
                         style={{ top: gifstyleTop }}
                     />
                     <div className="home_arrow" style={{ top: arrowstyleTop, display: arrowstyleDisplay }}>
-                        <div ref={animationContainer} style={{ height: "100px", width: "100px" }}></div>
+                        <div ref={animationContainer} style={{ width: "13vw" }}></div>
                     </div>
                     <div className="enter_top" id="enter">
                         <div className="logo" >
@@ -255,12 +253,12 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <img src={MAGIC_SIS} alt="MAGIC_SIS" className="magic_sis" />
+                        <img src={MAGIC_SIS} alt="MAGIC_SIS" className="magic_sis" style={{ display: phone == "yesPhone" ? "none" : "block" }} />
                     </div>
                 </div>
                 <div className="ordeal" id="ordeal">
                     <div className="content">
-                        <div className="left_img">
+                        <div className="left_img"  style={{ display: phone == "yesPhone" ? "none" : "block" }}>
                             <img src={ORDEAL_STONE_L} alt="ORDEAL_STONE_L" />
                             <img src={ORDEAL_STONE_R} alt="ORDEAL_STONE_R" />
                         </div>
@@ -288,7 +286,7 @@ const Home = () => {
                                 </video>
                             </div>
                         </div>
-                        <img src={CRISIS_BEAR} alt="ORDEAL_STONE_L" className="crisis_bear" />
+                        <img src={CRISIS_BEAR} alt="ORDEAL_STONE_L" className="crisis_bear"  style={{ display: phone == "yesPhone" ? "none" : "block" }} />
                     </div>
                 </div>
                 <div className="awards" id="awards">

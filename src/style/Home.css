@@ -28,18 +28,10 @@
 
 /* enter */
 
-body {
-    overflow-y: overlay;
-    overflow-x: hidden;
-}
-
 .enter_top {
     width: 100%;
     height: auto;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -112,7 +104,7 @@ body {
 
 .home-container .home_arrow {
     position: absolute;
-    top: 80vh;
+    top: 50vw;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -125,13 +117,16 @@ body {
     width: 100%;
     min-height: 60.63vw;
     background-image: url("../assets/images/feature_bg.png");
-    background-position: center -30px;
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #000;
+    margin-top: -10px;
+    padding-top: 10px;
 }
 
 .feature img {
@@ -305,7 +300,8 @@ body {
     z-index: 2;
 }
 
-.magic .left, .magic .right {
+.magic .left,
+.magic .right {
     display: flex;
 }
 
@@ -347,7 +343,8 @@ body {
     height: 30px;
 }
 
-.magic .r_prev img, .magic .r_next img {
+.magic .r_prev img,
+.magic .r_next img {
     position: relative;
     width: 100%;
     transform: translateY(-100px);
@@ -590,6 +587,10 @@ body {
         font-size: 25px;
     }
 
+    .feature {
+        min-height: 75.63vw;
+    }
+
     .feature .content {
         width: 71.94vw;
         line-height: 40px;
@@ -631,7 +632,8 @@ body {
     }
 
     .tobii {
-        min-height: 82.13vw;
+        min-height: 65.13vw;
+        margin-bottom: 80px;
     }
 
     .home-container .introduce .title {
@@ -642,7 +644,8 @@ body {
         margin: 0.4vw 0vw 0 1.73vw;
     }
 
-    .magic .r_prev, .magic .r_next {
+    .magic .r_prev,
+    .magic .r_next {
         transform: scale(0.6);
         margin-top: 0.4vw;
     }
@@ -655,7 +658,94 @@ body {
         font-size: 25px;
     }
 
-    .feature img, .feature .content, .story .text .title, .story img, .story .t_content, .tobii .content, .tobii img, .tobii_link, .home-container .introduce .title, .magic_sis, .home-container .i_content, .ordeal .left_img, .crisis_bear, .award, .sale .year, .sale .date, .sale .saleform, .sale .platform {
+    .feature img,
+    .feature .content,
+    .story .text .title,
+    .story img,
+    .story .t_content,
+    .tobii .content,
+    .tobii img,
+    .tobii_link,
+    .home-container .introduce .title,
+    .magic_sis,
+    .home-container .i_content,
+    .ordeal .left_img,
+    .crisis_bear,
+    .award,
+    .sale .year,
+    .sale .date,
+    .sale .saleform,
+    .sale .platform {
         opacity: 1;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 430px) {
+    .feature {
+        min-height: 140vw;
+    }
+
+    .feature img {
+        width: 50vw;
+    }
+
+    .story {
+        min-height: 470px
+    }
+
+    .story .story_img1 {
+        display: none;
+    }
+
+    .story .content {
+        max-width: 71.94vw;
+    }
+
+    .tobii {
+        min-height: 65.13vw;
+        margin-bottom: 120px;
+        /* max-width: 80vw; */
+    }
+
+    .magic .content,
+    .ordeal .content,
+    .crisis .content {
+        grid-template-columns: 100%;
+    }
+
+    .block {
+        width: 100%;
+        max-width: auto;
+        height: auto;
+        max-height: auto;
+    }
+
+    .awards {
+        margin-top: 80px;
+    }
+
+    .awards .content {
+        flex-direction: column;
+    }
+
+    .award {
+        width: 60vw;
+        max-width: auto;
+        height: 50vw;
+        max-height: auto;
+        background-position: center;
+
+    }
+    .sale{
+        height: 860px;
+        background-size: cover;
+        background-position: center;
+    }
+    .sale .platform {
+        width: 290px;
+    }
+
+    .sale .platform img {
+        width: 20%;
     }
 }
