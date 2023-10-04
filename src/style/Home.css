@@ -290,7 +290,7 @@
     opacity: 0;
 }
 
-.block {
+.home-container .block {
     width: 49.72vw;
     max-width: 716px;
     height: 27.96vw;
@@ -720,7 +720,7 @@
         grid-template-columns: 100%;
     }
 
-    .block {
+    .home-container .block {
         width: 100%;
         max-width: auto;
         height: auto;
