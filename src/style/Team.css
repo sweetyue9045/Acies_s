@@ -1,0 +1,116 @@
+/* title */
+
+.team-container .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 0;
+    filter: drop-shadow(0 0 5px #FFFEF3);
+}
+
+.team-container .title_top {
+    font-weight: 300;
+    font-size: 40px;
+    letter-spacing: 15px;
+    margin-right: -13px;
+    font-weight: 400;
+}
+
+.team-container .title_bottom {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+/* group */
+
+.group {
+    width: 78.13vw;
+    max-width: 1125px;
+    margin: 10.42vw auto 0;
+}
+
+.group .g_member {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 60px;
+    margin: 20px;
+}
+
+.group:first-child .g_member {
+    background-image: url("../assets/images/team_bg_text.png");
+    background-repeat: no-repeat;
+    background-position: -10% 10%;
+}
+
+.group .photo_img {
+    filter: drop-shadow(0 0 5px #FFFEF3);
+    width: 21%;
+}
+
+.group .photo_img img{
+    width: 100%;
+}
+
+.group .photo_img p {
+    font-weight: 300;
+    letter-spacing: 5px;
+    margin-right: -3px;
+}
+
+.group .photo_img :nth-child(2) {
+    padding: 20px 0 10px;
+    font-size: 26px;
+}
+
+.group .photo_img :nth-child(3) {
+    font-size: 22px;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 834px) {
+    .team-container .title_top {
+        font-size: 26px;
+        letter-spacing: 15px;
+    }
+
+    .team-container .title_bottom {
+        font-size: 12px;
+    }
+
+    .g_member {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .photo_img {
+        margin-bottom:  100px;
+    }
+
+    .group:first-child .g_member {
+        background-image: url("../assets/images/team_bg_text2.png");
+        background-repeat: no-repeat;
+        background-position: 50% 45%;
+    }
+
+    .group .photo_img {
+        width: 46%;
+    }
+
+}
+
+@media only screen and (min-width: 0px) and (max-width: 430px) {
+    .team-container .title {
+        align-items: center;
+    }
+
+    .group {
+        margin-top: 120px;
+    }
+
+    .group:first-child .g_member {
+        background-image: none
+    }
+    .group .photo_img {
+        width: 100%;
+    }
+
+}
