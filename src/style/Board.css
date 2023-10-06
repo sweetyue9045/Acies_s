@@ -287,7 +287,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    margin: 0 20px 0 30px;
+    margin: 0 30px;
     cursor: pointer;
 }
 
@@ -310,7 +310,7 @@
 }
 
 .page_next img {
-    margin-left: 5px;
+    margin-left: 12px;
     margin-top: 5px;
 }
 
@@ -602,7 +602,7 @@
     }
 
     .page_prev {
-        margin: 0 20px 0 15px;
+        margin: 0 20px 0 17px;
 
     }
 
@@ -610,7 +610,5 @@
         margin: 0 20px 0 25px;
     }
 
-    .page_next img {
-        margin-left: 10px;
-    }
+
 }
