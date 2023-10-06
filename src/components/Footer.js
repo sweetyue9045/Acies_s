@@ -2,7 +2,7 @@ import "../style/Footer.css";
 
 export default function Footer() {
     return (
-        <footer>
+        <footer id="footer">
             ＡＣＩＥＳ - TWIN JOURNEY
         </footer>
     );
