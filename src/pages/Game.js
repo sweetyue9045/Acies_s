@@ -21,8 +21,8 @@ import SISTER_ELDER_TEXT_BG from "../assets/images/sister_elder_text_bg.png";
 import SISTER_CANCEL from "../assets/images/sister_cancel_btn.svg";
 
 import Nav from "../components/Nav";
-import Footer from "../components/Footer";
 import Title from "../components/Title";
+import Footer from "../components/Footer";
 
 
 var g_top = [];

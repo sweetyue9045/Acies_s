@@ -9,10 +9,8 @@ import PHOTO_05 from "../assets/images/team_photo_05.png";
 import PHOTO_06 from "../assets/images/team_photo_06.svg";
 
 import Nav from "../components/Nav";
-import Footer from "../components/Footer";
 import Title from "../components/Title";
-
-
+import Footer from "../components/Footer";
 
 const Team = () => {
     useEffect(() => {

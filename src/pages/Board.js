@@ -12,8 +12,8 @@ import DATA_PLAN from "../assets/images/data_plan.svg"
 import DATA_INTRO from "../assets/images/data_intro.svg"
 
 import Nav from "../components/Nav";
-import Footer from "../components/Footer";
 import Title from "../components/Title";
+import Footer from "../components/Footer";
 
 
 var n = 0;
