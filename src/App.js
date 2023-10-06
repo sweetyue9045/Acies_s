@@ -1,5 +1,7 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useEffect, useState, useRef } from "react";
+
 import Home from './pages/Home';
 import Board from './pages/Board';
 import Article from './pages/Article';
@@ -9,28 +11,27 @@ import Team from './pages/Team';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home/>
+    element: <Home />
   },
   {
     path: '/board',
-    element: <Board/>
+    element: <Board />
   },
   {
     path: '/article/:typeId',
-    element: <Article/>
+    element: <Article />
   },
   {
     path: '/game',
-    element: <Game/>
+    element: <Game />
   },
   {
     path: '/team',
-    element: <Team/>
+    element: <Team />
   }
 ])
 
 const App = () => {
-
   return (
     <>
       <RouterProvider router={router} />

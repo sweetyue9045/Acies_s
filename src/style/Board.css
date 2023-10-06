@@ -1,6 +1,7 @@
 /* title / other */
 
-.board-container .title, .Article .title {
+.board-container .title,
+.Article .title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -8,7 +9,8 @@
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
-.board-container .title_top, .Article .title_top {
+.board-container .title_top,
+.Article .title_top {
     font-weight: 300;
     font-size: 40px;
     letter-spacing: 15px;
@@ -248,19 +250,18 @@
 
 .dev .dev_box {
     width: 100%;
-    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    grid-column-gap: 6.94vw;
     grid-row-gap: 3.47vw;
     display: none;
     margin-top: 80px;
+    grid-template-columns: 50% 50%;
 }
 
 .dev_box .content_box {
-    width: 31.25vw;
-    max-width: 445px;
-    height: 34.72vw;
-    max-height: 495px;
+    width: 35vw;
+    max-width: 485px;
+    height: 40vw;
+    max-height: 540px;
 }
 
 .dev_box .content_text {
@@ -271,6 +272,7 @@
 .dev .showbox {
     display: grid;
     transition: all .4s ease-in-out;
+
 }
 
 .page_btn {
@@ -280,7 +282,8 @@
     margin-top: 80px;
 }
 
-.page_prev, .page_next {
+.page_prev,
+.page_next {
     display: none;
     align-items: center;
     justify-content: center;
@@ -288,15 +291,18 @@
     cursor: pointer;
 }
 
-.page_prev:hover, .page_next:hover {
+.page_prev:hover,
+.page_next:hover {
     filter: drop-shadow(0 0 1px #FFFEF3);
 }
 
-.page_prev.showbox, .page_next.showbox {
+.page_prev.showbox,
+.page_next.showbox {
     display: flex;
 }
 
-.page_prev p, .page_next p {
+.page_prev p,
+.page_next p {
     font-size: var(--fz30);
     font-weight: 400;
     letter-spacing: 10px;
@@ -316,7 +322,9 @@
 /* data */
 
 .data {
-    width: 100%;
+    width: 78.13vw;
+    max-width: 1125px;
+    margin: 13.89vw auto 0;
     height: 60.42vw;
     background-image: url("../assets/images/data_bg.png");
     background-position: center;
@@ -329,13 +337,12 @@
 }
 
 .data_link {
-    width: 15.28vw;
+    width: 50vw;
     height: 14.58vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 110px;
     transition: all .4s ease-in-out;
     cursor: pointer;
 }
@@ -477,7 +484,8 @@
         padding: 0 0 10px;
     }
 
-    .top_box .content_title, .top_box .content_text {
+    .top_box .content_title,
+    .top_box .content_text {
         margin: 0;
     }
 
@@ -488,6 +496,7 @@
     .dev .tab_title::after {
         height: 3px;
     }
+
     .dev_box .content_title {
         margin: 0 -5px 0 15px;
     }
@@ -508,10 +517,6 @@
         transform: scale(0.67);
     }
 
-    .data_link {
-        width: 22.6vw;
-        margin: 0 50px;
-    }
 
     .data_link:first-child .data_en {
         letter-spacing: 8px;
@@ -523,4 +528,89 @@
         margin-right: -8px;
     }
 
+}
+
+@media only screen and (min-width: 0px) and (max-width: 430px) {
+    .news {
+        grid-template-columns: 100%;
+        height: 70vw;
+    }
+
+    .n_left .logo {
+        display: none;
+    }
+
+    .n_right .carousel_img {
+        height: 47vw;
+    }
+
+    .board-container .content_title {
+        font-size: 14px;
+        letter-spacing: 3px;
+    }
+
+    .board-container .content_text {
+        line-height: 16px;
+        letter-spacing: 3px;
+    }
+
+    .dev .top_box {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .dev .top_content {
+        margin-left: 10px;
+    }
+
+    .dev .top_content .content_title {
+        line-height: 22px;
+    }
+
+    .top_box .top_link {
+        padding: 1px 10px;
+        border: 0;
+        letter-spacing: 0px;
+        margin-left: 65px;
+        margin-top: -5px;
+        font-weight: 600;
+    }
+
+    .top_box .top_link:hover {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .dev .dev_box {
+        margin-top: 40px;
+        grid-row-gap: 4.5vw;
+    }
+
+    .dev_box .content_title {
+        letter-spacing: 1.5px;
+
+        margin: 0 -5px 0 10px;
+    }
+
+    .dev_box .content_text {
+        display: none;
+    }
+
+
+    .page_btn {
+        margin-top: 40px
+    }
+
+    .page_prev {
+        margin: 0 20px 0 15px;
+
+    }
+
+    .page_next {
+        margin: 0 20px 0 25px;
+    }
+
+    .page_next img {
+        margin-left: 10px;
+    }
 }

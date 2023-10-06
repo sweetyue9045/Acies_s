@@ -22,6 +22,8 @@ import SISTER_CANCEL from "../assets/images/sister_cancel_btn.svg";
 
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import Title from "../components/Title";
+
 
 var g_top = [];
 const Game = () => {
@@ -275,22 +277,5 @@ const Game = () => {
     );
 }
 
-const Title = ({ Title_top, Title_bottom, Id, ls, lss }) => {
-    const style = {}
-    if (document.body.clientWidth <= 834) {
-        style.letterSpacing = `${lss}px`
-        style.marginRight = `-${(lss - 2)}px`
-    }
-    else {
-        style.letterSpacing = `${ls}px`
-        style.marginRight = `-${(ls - 2)}px`
-    }
-    return (
-        <div className="title" id={Id}>
-            <div className="title_top">{Title_top}</div>
-            <div className="title_bottom" style={style}>{Title_bottom}</div>
-        </div>
-    );
-}
 export default Game;
 

@@ -10,6 +10,8 @@ import PHOTO_06 from "../assets/images/team_photo_06.svg";
 
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import Title from "../components/Title";
+
 
 
 const Team = () => {
@@ -75,17 +77,5 @@ const Team = () => {
     );
 }
 
-const Title = ({ Title_top, Title_bottom, Id, ls, lss }) => {
-    const style = {};
-    if (document.body.clientWidth <= 834) style.letterSpacing = lss;
-    else style.letterSpacing = ls;
-
-    return (
-        <div className="title" id={Id}>
-            <div className="title_top">{Title_top}</div>
-            <div className="title_bottom" style={style}>{Title_bottom}</div>
-        </div>
-    );
-}
 export default Team;
 

@@ -1,25 +1,24 @@
 import "../style/Article.css";
-import { useEffect, useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 
+import devs from "../assets/jsons/article.json";
 
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-
+import Title from "../components/Title";
 
 const Article = () => {
-    useEffect(() => {
-        document.body.scrollTo(0, 0);
-    }, []);
-
+    // const Content = article.content.replaceAll("\n", "<br />");
+    const { typeId } = useParams()
+    const Content = devs.find(
+        (x) => x.id == typeId
+    );
 
     return (
-        <>
-            <Nav posi="fixed" />
-            <div className="article-container">
-
-            </div>
-            <Footer />
-        </>
+        <div className="Article">
+            <div className="arti_category">#{Content.category}</div>
+            <Title Title_top={Content.title} />
+            <div className="arti_time">{Content.write_time}</div>
+            <div className="arti_content" dangerouslySetInnerHTML={{ __html: Content.content }}></div>
+        </div>
     );
 }
 
