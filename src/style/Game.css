@@ -550,7 +550,7 @@
 
 @media only screen and (min-width: 0px) and (max-width: 430px) {
     .world {
-        height: 130vw;
+        height: 125vw;
     }
 
     .world .content {

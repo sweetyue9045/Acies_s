@@ -26,13 +26,14 @@ const Article = () => {
         console.log(document.body.clientHeight, navHeight, backnavHeight, footerHeight)
         console.log()
 
-        setArti_minHeight(document.body.clientHeight - navHeight - containerHeight - backnavHeight - footerHeight)
+        if (document.body.clientWidth >= 430) setArti_minHeight(document.body.clientHeight - navHeight - containerHeight - backnavHeight - footerHeight)
+        else setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
     }, []);
 
     console.log(arti_minHeight)
     return (
         <>
-            <Nav />
+            <Nav posi="fixed" />
             <div className="article-container" id="article" style={{ minHeight: arti_minHeight }}>
                 <div className="arti_category">#{Content.category}</div>
                 <Title Title_top={Content.title} />

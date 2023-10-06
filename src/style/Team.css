@@ -86,6 +86,11 @@
         margin-bottom:  100px;
     }
 
+    .photo_img:last-child{
+        margin-bottom:  40px;
+
+    }
+
     .group:first-child .g_member {
         background-image: url("../assets/images/team_bg_text2.png");
         background-repeat: no-repeat;
@@ -100,12 +105,15 @@
 }
 
 @media only screen and (min-width: 0px) and (max-width: 430px) {
+    .team-container{
+        margin-top: 80px;
+    }
     .team-container .title {
         align-items: center;
     }
 
     .group {
-        margin-top: 120px;
+        margin-top: 100px;
     }
 
     .group:first-child .g_member {
