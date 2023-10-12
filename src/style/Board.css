@@ -18,6 +18,7 @@
 .board-container .title_bottom {
     font-size: 12px;
     font-weight: 100;
+    margin-top: 5px
 }
 
 .board-container .mask {
@@ -53,7 +54,7 @@
 }
 
 .board-container {
-    margin: 10.42vw auto 0;
+    margin: 150px auto 0;
     overflow-x: hidden;
 }
 

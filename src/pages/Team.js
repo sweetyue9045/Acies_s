@@ -22,7 +22,7 @@ const Team = () => {
             <Nav posi="fixed" />
             <div className="team-container">
                 <div className="group">
-                    <Title Title_top="遊戲開發團隊" Title_bottom="GAME DEVELOPER" ls="16px" lss="10.5px" />
+                    <Title Title_top="遊戲開發團隊" Title_bottom="GAME DEVELOPER" ls="16" lss="10.5" />
                     <div className="g_member">
                         <div className="photo_img">
                             <img src={PHOTO_01} alt="PHOTO_01" />
@@ -47,7 +47,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className="group">
-                    <Title Title_top="網站開發團隊" Title_bottom="WEB DEVELOPER" ls="18px" lss="12px" />
+                    <Title Title_top="網站開發團隊" Title_bottom="WEB DEVELOPER" ls="18" lss="12" />
                     <div className="g_member">
                         <div className="photo_img">
                             <img src={PHOTO_05} alt="PHOTO_05" />

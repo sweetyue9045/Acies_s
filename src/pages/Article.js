@@ -11,11 +11,13 @@ import Title from "../components/Title";
 import Footer from "../components/Footer";
 
 // let arti_minHeight
-const Article = () => {
-    const { typeId } = useParams()
-    const Content = devs.find(
-        (x) => x.id == typeId
-    );
+const Article = ({ match }) => {
+    const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
+    const { articleTitle } = useParams()
+    const Content = APIs.find(
+        (x) => x.title == articleTitle
+        )
+
     const [arti_minHeight, setArti_minHeight] = useState()
     useEffect(() => {
         document.body.scrollTo(0, 0);

@@ -42,10 +42,6 @@ nav img {
     transition: all .5s ease;
 }
 
-.menu li:first-child {
-    margin-right: 16.455px;
-}
-
 .menu li:hover {
     filter: drop-shadow(0 0 1px #FFFEF3);
 }

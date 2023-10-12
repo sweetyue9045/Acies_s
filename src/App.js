@@ -1,6 +1,7 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { useEffect, useState, useRef } from "react";
+import article from "./assets/jsons/article.json";
 
 import Home from './pages/Home';
 import Board from './pages/Board';
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     element: <Board />
   },
   {
-    path: '/article/:typeId',
+    path: '/article/:articleTitle',
     element: <Article />
   },
   {
@@ -32,6 +33,13 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
+  const fetchMessages = () => {
+    const APIs = JSON.stringify(article.reverse());
+    window.localStorage.setItem("ArticleAPI", APIs);
+  }
+  useEffect(() => {
+    fetchMessages()
+  }, []);
   return (
     <>
       <RouterProvider router={router} />

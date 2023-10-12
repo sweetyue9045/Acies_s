@@ -7,7 +7,6 @@ import news from "../assets/jsons/news.json";
 import DEV_RIGHT from "../assets/images/dev_right.svg";
 import DEV_NEXT from "../assets/images/dev_next.svg";
 import DEV_PREV from "../assets/images/dev_prev.svg";
-import devs from "../assets/jsons/article.json";
 import DATA_PLAN from "../assets/images/data_plan.svg"
 import DATA_INTRO from "../assets/images/data_intro.svg"
 
@@ -41,7 +40,7 @@ const Board = () => {
     }
 
     const mytab = ["ALL", "程式", "美術", "企劃"];
-    const APIs = devs;
+    const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
     const [tabDev, setTabDev] = useState(0);
     const [page, setpage] = useState(1);
     const Devs = [];
@@ -152,7 +151,7 @@ const Board = () => {
             <div className="board-container">
                 <div className="news">
                     <div className="n_left">
-                        <Title Title_top="最新消息" Title_bottom="BREAKING NEWS" ls="9.5px" lss="3px" />
+                        <Title Title_top="最新消息" Title_bottom="BREAKING NEWS" ls="9.5" lss="3" />
                         <div className="logo">
                             <div className="text">ACIES</div>
                             <div className="text">TWIN JOURNEY</div>
@@ -181,7 +180,7 @@ const Board = () => {
                     </div>
                 </div>
                 <div className="dev" id="dev">
-                    <Title Title_top="開發日誌" Title_bottom="DEV JOURNAL" ls="13px" lss="5px" />
+                    <Title Title_top="開發日誌" Title_bottom="DEV JOURNAL" ls="13" lss="5" />
                     <div className="dev_tab">
                         {mytab.map((dev, index) => (
                             <li key={index}>
@@ -197,7 +196,7 @@ const Board = () => {
                             <div className="top_content">
                                 <div className="content_title">{dev.title}</div>
                                 <div className="content_text">{dev.content}</div>
-                                <Link to={`/article/${dev.id}`} className="top_link">READ MORE</Link>
+                                <Link to={`/article/${dev.title}`} className="top_link">READ MORE</Link>
                             </div>
                             <img src={DEV_RIGHT} alt="DEV_RIGHT" />
                         </div>
@@ -205,7 +204,7 @@ const Board = () => {
                     {Dev.map((dev, index) => (
                         <div key={index} className={tabDev === index ? "dev_box showbox" : "dev_box"}>
                             {Devs_page.map(devs => (
-                                <Link to={`/article/${devs.id}`} key={devs.id} className="content_box" style={{ background: "url(/images/" + devs.img + ") no-repeat center top", borderRadius: "10px" ,backgroundSize:"contain" }}>
+                                <Link to={`/article/${devs.title}`} key={devs.id} className="content_box" style={{ background: "url(/images/" + devs.img + ") no-repeat center top", borderRadius: "10px" ,backgroundSize:"contain" }}>
                                     <div className="mask"></div>
                                     <div className="content">
                                         <div className="content_title">{devs.title}</div>

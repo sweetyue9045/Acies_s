@@ -19,14 +19,20 @@
 .team-container .title_bottom {
     font-size: 12px;
     font-weight: 100;
+    margin-left: 4px;
+    margin-top: 5px
 }
 
 /* group */
 
-.group {
+.team-container{
     width: 78.13vw;
     max-width: 1125px;
-    margin: 10.42vw auto 0;
+    margin: 150px auto 0;
+}
+
+.group {
+    margin-top: 10.42vw;
 }
 
 .group .g_member {
@@ -75,6 +81,8 @@
 
     .team-container .title_bottom {
         font-size: 12px;
+        margin-left: 0px;
+
     }
 
     .g_member {
@@ -106,7 +114,7 @@
 
 @media only screen and (min-width: 0px) and (max-width: 430px) {
     .team-container{
-        margin-top: 80px;
+        margin-top: 100px;
     }
     .team-container .title {
         align-items: center;

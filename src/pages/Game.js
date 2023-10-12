@@ -38,9 +38,9 @@ const Game = () => {
             document.getElementById("sister").offsetTop
         ];
         if (offsetY >= 0 && offsetY <= g_top[0] + 10) {
-            document.getElementById("world").children[1].classList.add("fadein");
+            document.getElementById("world").children[0].classList.add("fadein");
             setTimeout(function () {
-                document.getElementById("world").children[2].classList.add("fadein");
+                document.getElementById("world").children[1].classList.add("fadein");
             }, 500);
         }
     }
@@ -186,7 +186,6 @@ const Game = () => {
             <Nav posi="fixed" />
             <div className="game-container">
                 <div className="world" id="world">
-                    <img src={BG} alt="ARROW_L" />
                     <Title Title_top="神與信仰的起源" Title_bottom="WORLDVIEW" ls="39" lss="20" />
                     <div className="content">三個帶有信仰能力的神祕部落居住在大陸的不同地方，根據傳說記載，他們獲得神的祝福，分別是斯克爾都、亞斐特城、塔瑪部落。</div>
                 </div>
