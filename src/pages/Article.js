@@ -36,7 +36,7 @@ const Article = () => {
                 <div className="arti_content" dangerouslySetInnerHTML={{ __html: Content.content }}></div>
             </div>
             <div className="BackNav" id="backnav">
-                <Link to={`/board`} className="backnav">
+                <Link to={`/board#dev`} className="backnav">
                     <img src={BACKNAV} alt="BACKNAV" />
                     <p>返回</p>
                 </Link>

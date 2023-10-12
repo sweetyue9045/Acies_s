@@ -78,7 +78,6 @@ const Login = () => {
             <Nav bg="transparent" posi="absolute" />
             <div className="login-container" id="login" style={{ minHeight: arti_minHeight }}>
                 <div className="login_card">
-
                     <div className="title">管理員登入</div>
                     <form action="" className="login_input">
                         <input type="email" className="input" id="email" placeholder="帳號" onChange={(event) => setemail(event.target.value)} autoComplete="off" required />

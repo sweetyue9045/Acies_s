@@ -115,6 +115,9 @@
     border-radius: 50px;
     border: 0;
     cursor: pointer;
+}
+
+.login-container .login_btn{
     margin-top: 50px;
 
 }
@@ -448,7 +451,7 @@ input[type=file] {
 }
 
 #category input {
-    opacity: 0;
+    display: none;
     width: 0;
     height: 0;
 }
@@ -461,9 +464,6 @@ input[type=file] {
     padding: 4px 23px 6px 25px;
     border-radius: 20px;
     cursor: pointer;
-}
-
-.categorytext:not(:last-child) {
     margin-right: 30px;
 }
 
@@ -539,7 +539,7 @@ input[type=file] {
     }
     .indi_arti {
         height: auto;
-        padding: 30px;
+        padding: 25px;
     }
 
     .indi_left {
@@ -579,7 +579,7 @@ input[type=file] {
 
     .categorytext {
         padding: 4px 22px 6px 24px;
-        margin: 0;
+        margin-right: 0;
     }
 
     .sub_btn {
