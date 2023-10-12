@@ -260,6 +260,7 @@
     max-width: 485px;
     height: 40vw;
     max-height: 540px;
+    background-color: #ccc;
 }
 
 .dev_box .content_text {

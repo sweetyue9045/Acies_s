@@ -1,9 +1,7 @@
 import "../style/Article.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 
-import devs from "../assets/jsons/article.json";
 import BACKNAV from "../assets/images/backnav.svg";
 
 import Nav from "../components/Nav";
@@ -11,12 +9,12 @@ import Title from "../components/Title";
 import Footer from "../components/Footer";
 
 // let arti_minHeight
-const Article = ({ match }) => {
+const Article = () => {
     const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
     const { articleTitle } = useParams()
     const Content = APIs.find(
         (x) => x.title == articleTitle
-        )
+    )
 
     const [arti_minHeight, setArti_minHeight] = useState()
     useEffect(() => {
@@ -32,7 +30,6 @@ const Article = ({ match }) => {
         else setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
     }, []);
 
-    console.log(arti_minHeight)
     return (
         <>
             <Nav posi="fixed" />
