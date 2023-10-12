@@ -19,14 +19,11 @@ const Article = () => {
     const [arti_minHeight, setArti_minHeight] = useState()
     useEffect(() => {
         document.body.scrollTo(0, 0);
-        const navHeight = document.getElementById("nav").offsetHeight
         const containerHeight = Number(getComputedStyle(document.getElementById("article")).marginTop.replace('px', ''))
         const backnavHeight = Number(getComputedStyle(document.getElementById("backnav")).marginTop.replace('px', '')) + document.getElementById("backnav").offsetHeight + Number(getComputedStyle(document.getElementById("backnav")).marginBottom.replace('px', ''))
         const footerHeight = document.getElementById("footer").offsetHeight
-        console.log(document.body.clientHeight, navHeight, backnavHeight, footerHeight)
-        console.log()
-
-        if (document.body.clientWidth >= 430) setArti_minHeight(document.body.clientHeight - navHeight - containerHeight - backnavHeight - footerHeight)
+        
+        if (document.body.clientWidth >= 430) setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
         else setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
     }, []);
 

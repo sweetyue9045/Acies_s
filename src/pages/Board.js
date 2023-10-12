@@ -51,7 +51,6 @@ const Board = () => {
     if (document.body.clientWidth <= 834) scrollnum = 600;
     else scrollnum = 800;
     useEffect(() => {
-        console.log("成功加載")
         PAGE_NEXT = document.getElementById("page_next");
     }, []);
 
