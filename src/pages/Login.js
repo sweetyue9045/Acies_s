@@ -17,9 +17,13 @@ const Login = () => {
     const [password, setpassword] = useState("")
     const [loading, setloading] = useState(false)
     const [eyes, seteyes] = useState(EYES_CLOSE)
-    
+    const [arti_minHeight, setArti_minHeight] = useState()
+
     useEffect(() => {
         document.body.scrollTo(0, 0);
+        const containerHeight = Number(getComputedStyle(document.getElementById("login")).marginTop.replace('px', ''))
+        const footerHeight = document.getElementById("footer").offsetHeight
+        setArti_minHeight(document.body.clientHeight - containerHeight - footerHeight)
         checkoutHandler();
     }, [])
 
@@ -72,12 +76,13 @@ const Login = () => {
     return (
         <>
             <Nav bg="transparent" posi="absolute" />
-            <div className="login-container">
+            <div className="login-container" id="login" style={{ minHeight: arti_minHeight }}>
                 <div className="login_card">
-                    <form action="" id="login">
-                        <div className="title">管理員登入</div>
+
+                    <div className="title">管理員登入</div>
+                    <form action="" className="login_input">
                         <input type="email" className="input" id="email" placeholder="帳號" onChange={(event) => setemail(event.target.value)} autoComplete="off" required />
-                        <div>
+                        <div style={{ width: "100%" }}>
                             <input type="password" className="input" id="password" placeholder="密碼" onChange={(event) => setpassword(event.target.value)} autoComplete="off" required />
                             <div className="pass_eyes" onClick={ShowHidePassWord}
                                 style={{ backgroundImage: `url(${eyes})` }}></div>

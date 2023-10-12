@@ -34,7 +34,7 @@ export default function Nav({ bg, posi }) {
     };
 
     return (
-        <div className="a_nav" style={{ backgroundColor: bg, position: posi }}>
+        <div className="a_nav" id="nav" style={{ backgroundColor: bg, position: posi }}>
             <div className="nav_left">
                 <Link to="/admin/list">
                     <div className="logo">

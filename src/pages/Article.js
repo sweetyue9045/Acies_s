@@ -23,8 +23,7 @@ const Article = () => {
         const backnavHeight = Number(getComputedStyle(document.getElementById("backnav")).marginTop.replace('px', '')) + document.getElementById("backnav").offsetHeight + Number(getComputedStyle(document.getElementById("backnav")).marginBottom.replace('px', ''))
         const footerHeight = document.getElementById("footer").offsetHeight
         
-        if (document.body.clientWidth >= 430) setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
-        else setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
+        setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
     }, []);
 
     return (
