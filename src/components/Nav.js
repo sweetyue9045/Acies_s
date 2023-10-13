@@ -1,6 +1,8 @@
 import "../style/Nav.css";
 import { Outlet, NavLink } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef ,useCallback} from "react";
+import { disableScroll, enableScroll } from './ScrollUtils';
+
 
 import LOGO from "../assets/images/nav_logo.svg";
 import HAM_OPEN from "../assets/images/ham_open.png";
@@ -24,6 +26,8 @@ export default function Nav({ posi }) {
         hamnav.style.display = "flex";
         nav.style.height = "100vh";
         nav.style.backgroundColor = "#000";
+
+        disableScroll()
     }
 
     var click_close = function (e) {
@@ -42,7 +46,10 @@ export default function Nav({ posi }) {
         hamnav.style.display = "none";
         nav.style.height = "10vw";
         nav.style.backgroundColor = "transparent";
+
+        enableScroll()
     }
+
     return (
         <nav id="nav" style={{ position: posi }}>
             <div id="nav-container" className="nav-container" style={{ display: phone == "noPhone" ? "flex" : "none" }}>

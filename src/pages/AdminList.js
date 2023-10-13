@@ -1,6 +1,8 @@
 import "../style/Admin.css";
-import { useEffect, useState, useContext, useCallback } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { disableScroll, enableScroll } from '../components/ScrollUtils';
+
 
 import Nav from "../components/AdminNav";
 
@@ -71,51 +73,6 @@ const List = () => {
             enableScroll()
         }, 1000)
     }
-
-    //禁止滾動條滾動，但不消失的程式
-    // left: 37, up: 38, right: 39, down: 40
-
-    const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-
-    const preventDefault = useCallback((e) => e.preventDefault(), []);
-
-    const preventDefaultForScrollKeys = useCallback((e) => {
-        if (keys[e.keyCode]) {
-            return preventDefault(e);
-        }
-    }, []);
-
-    const supportsPassive = useCallback(() => {
-        let supports = false;
-        try {
-            window.addEventListener(
-                'test',
-                null,
-                Object.defineProperty({}, 'passive', {
-                    get: () => (supports = true),
-                })
-            );
-        } catch (e) { }
-        return supports;
-    }, []);
-
-    const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-    const wheelOpt = supportsPassive ? { passive: false } : false;
-
-    const disableScroll = () => {
-        window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-        window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-        window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-        window.addEventListener('keydown', preventDefaultForScrollKeys, false);
-    };
-
-    const enableScroll = () => {
-        window.removeEventListener('DOMMouseScroll', preventDefault, false);
-        window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-        window.removeEventListener('touchmove', preventDefault, wheelOpt);
-        window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
-    };
-
 
     return (
         <>
