@@ -130,14 +130,19 @@ const Board = () => {
         nowpage = page;
         nowpage++;
         setpage(nowpage);
-        window.scrollTo(0, document.getElementById("dev").offsetTop + scrollnum);
+        if (document.body.clientWidth >= 430) {
+            window.scrollTo(0, document.getElementById("dev").offsetTop + scrollnum);
+        }
+
     }
 
     const pre = () => {
         nowpage = page;
         nowpage--;
         setpage(nowpage);
-        window.scrollTo(0, document.getElementById("dev").offsetTop + scrollnum);
+        if (document.body.clientWidth >= 430) {
+            window.scrollTo(0, document.getElementById("dev").offsetTop + scrollnum);
+        }
     }
 
     return (
