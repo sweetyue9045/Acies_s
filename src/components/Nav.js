@@ -3,11 +3,9 @@ import { Outlet, NavLink } from "react-router-dom";
 import { useEffect, useState, useRef ,useCallback} from "react";
 import { disableScroll, enableScroll } from './ScrollUtils';
 
-
 import LOGO from "../assets/images/nav_logo.svg";
 import HAM_OPEN from "../assets/images/ham_open.png";
 import HAM_CLOSE from "../assets/images/ham_close.png";
-
 
 export default function Nav({ posi }) {
     const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
