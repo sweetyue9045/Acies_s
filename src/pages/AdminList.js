@@ -29,14 +29,14 @@ const List = () => {
         e.preventDefault();
         setConfirm_del(open)
         setID(id)
-        document.body.classList.add('show-open')
+        document.getElementById("confirm_del").classList.add('show-open')
     }
     const Confirm_publish = (e, open, id) => {
         e.stopPropagation();
         e.preventDefault();
         setConfirm_publish(open)
         setID(id)
-        document.body.classList.add('show-open')
+        document.getElementById("confirm_publish").classList.add('show-open')
     }
     const confirm_del_yes = async () => {
         setLoading(true)
@@ -50,7 +50,7 @@ const List = () => {
             window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
             setConfirm_del(false);
             setLoading(false)
-            document.body.classList.remove('show-open');
+            document.getElementById("confirm_del").classList.remove('show-open');
         }, 1000)
     }
     const confirm_publish_yes = async () => {
@@ -68,7 +68,7 @@ const List = () => {
             window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
             setConfirm_publish(false);
             setLoading(false)
-            document.body.classList.remove('show-open');
+            document.getElementById("confirm_publish").classList.remove('show-open');
         }, 1000)
     }
 
@@ -109,7 +109,7 @@ const List = () => {
                         <div className="btn btn_no" onClick={() => {
                             setConfirm_del(false);
                             setLoading(false)
-                            document.body.classList.remove('show-open');
+                            document.getElementById("confirm_del").classList.remove('show-open');
                         }}>取消</div>
                         {Loading ?
                             <div className="btn btn_loading"><div className="loader"></div></div>
@@ -127,7 +127,7 @@ const List = () => {
                         <div className="btn btn_no" onClick={() => {
                             setConfirm_publish(false);
                             setLoading(false)
-                            document.body.classList.remove('show-open');
+                            document.getElementById("confirm_publish").classList.remove('show-open');
                         }}>取消</div>
                         {Loading ?
                             <div className="btn btn_loading"><div className="loader"></div></div>
