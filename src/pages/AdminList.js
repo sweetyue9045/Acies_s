@@ -1,5 +1,5 @@
 import "../style/Admin.css";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import Nav from "../components/AdminNav";
@@ -29,14 +29,14 @@ const List = () => {
         e.preventDefault();
         setConfirm_del(open)
         setID(id)
-        document.getElementById("confirm_del").classList.add('show-open')
+        disableScroll()
     }
     const Confirm_publish = (e, open, id) => {
         e.stopPropagation();
         e.preventDefault();
         setConfirm_publish(open)
         setID(id)
-        document.getElementById("confirm_publish").classList.add('show-open')
+        disableScroll()
     }
     const confirm_del_yes = async () => {
         setLoading(true)
@@ -50,7 +50,7 @@ const List = () => {
             window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
             setConfirm_del(false);
             setLoading(false)
-            document.getElementById("confirm_del").classList.remove('show-open');
+            enableScroll()
         }, 1000)
     }
     const confirm_publish_yes = async () => {
@@ -68,9 +68,54 @@ const List = () => {
             window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
             setConfirm_publish(false);
             setLoading(false)
-            document.getElementById("confirm_publish").classList.remove('show-open');
+            enableScroll()
         }, 1000)
     }
+
+    //禁止滾動條滾動，但不消失的程式
+    // left: 37, up: 38, right: 39, down: 40
+
+    const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+    const preventDefault = useCallback((e) => e.preventDefault(), []);
+
+    const preventDefaultForScrollKeys = useCallback((e) => {
+        if (keys[e.keyCode]) {
+            return preventDefault(e);
+        }
+    }, []);
+
+    const supportsPassive = useCallback(() => {
+        let supports = false;
+        try {
+            window.addEventListener(
+                'test',
+                null,
+                Object.defineProperty({}, 'passive', {
+                    get: () => (supports = true),
+                })
+            );
+        } catch (e) { }
+        return supports;
+    }, []);
+
+    const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+    const wheelOpt = supportsPassive ? { passive: false } : false;
+
+    const disableScroll = () => {
+        window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+        window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+        window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+        window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+    };
+
+    const enableScroll = () => {
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+        window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+        window.removeEventListener('touchmove', preventDefault, wheelOpt);
+        window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+    };
+
 
     return (
         <>
@@ -90,7 +135,7 @@ const List = () => {
                                     <div className="indi_title">{data.title}</div>
                                     <div className="indi_category">#{data.category}</div>
                                     <div className="indi_pin" style={{ backgroundColor: data.ispin ? "#000" : "#9E9E9E" }}></div>
-                                    <div className="indi_del" onClick={(e) => { Confirm_del(e, true, data.id); }}></div>
+                                    <div className="indi_del" onClick={(e) => { Confirm_del(e, true, data.id) }}></div>
                                 </div>
                                 {data.ispublish ?
                                     <div className="indi_publish" style={{ backgroundColor: "#9E9E9E" }}>已發佈</div>
@@ -108,8 +153,8 @@ const List = () => {
                     <div className="btn_group">
                         <div className="btn btn_no" onClick={() => {
                             setConfirm_del(false);
-                            setLoading(false)
-                            document.getElementById("confirm_del").classList.remove('show-open');
+                            setLoading(false);
+                            enableScroll();
                         }}>取消</div>
                         {Loading ?
                             <div className="btn btn_loading"><div className="loader"></div></div>
@@ -127,7 +172,7 @@ const List = () => {
                         <div className="btn btn_no" onClick={() => {
                             setConfirm_publish(false);
                             setLoading(false)
-                            document.getElementById("confirm_publish").classList.remove('show-open');
+                            enableScroll()
                         }}>取消</div>
                         {Loading ?
                             <div className="btn btn_loading"><div className="loader"></div></div>
