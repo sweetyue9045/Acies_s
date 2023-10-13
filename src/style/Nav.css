@@ -1,7 +1,7 @@
 nav {
     min-height: 145px;
     width: 100vw;
-    position: relative;
+    position: fixed;
     top: 0;
     padding: 0px 44.35px 0px 80px;
     display: flex;

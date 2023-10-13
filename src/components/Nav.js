@@ -1,5 +1,6 @@
 import "../style/Nav.css";
-import { Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 
 import LOGO from "../assets/images/nav_logo.svg";
 import HAM_OPEN from "../assets/images/ham_open.png";
@@ -8,8 +9,6 @@ import HAM_CLOSE from "../assets/images/ham_close.png";
 
 export default function Nav({ posi }) {
     const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
-
-
     var click_open = function (e) {
         var target_open = document.getElementById("ham_close");
         var target_close = document.getElementById("ham_open");
@@ -25,8 +24,6 @@ export default function Nav({ posi }) {
         hamnav.style.display = "flex";
         nav.style.height = "100vh";
         nav.style.backgroundColor = "#000";
-
-        console.log("open")
     }
 
     var click_close = function (e) {
@@ -45,30 +42,28 @@ export default function Nav({ posi }) {
         hamnav.style.display = "none";
         nav.style.height = "10vw";
         nav.style.backgroundColor = "transparent";
-
-        console.log("close")
     }
     return (
         <nav id="nav" style={{ position: posi }}>
             <div id="nav-container" className="nav-container" style={{ display: phone == "noPhone" ? "flex" : "none" }}>
-                <Link to="/">
+                <NavLink to="/" onClick={() => click_close()}>
                     <div className="logo">
                         <img src={LOGO} alt="LOGO" />
                     </div>
-                </Link>
+                </NavLink>
                 <ul className="menu">
-                    <li><Link to="/board" className="menu_link">
+                    <li><NavLink to="/board" className="menu_link"  onClick={() => click_close()}>
                         <div className="menu_top">佈告欄</div>
                         <div className="menu_bottom">BULLETIN BOARD</div>
-                    </Link></li>
-                    <li><Link to="/game" className="menu_link">
+                    </NavLink></li>
+                    <li><NavLink to="/game" className="menu_link"  onClick={() => click_close()}>
                         <div className="menu_top">遊戲設定</div>
                         <div className="menu_bottom">GAME PLANNING</div>
-                    </Link></li>
-                    <li><Link to="/team" className="menu_link">
+                    </NavLink></li>
+                    <li><NavLink to="/team" className="menu_link"  onClick={() => click_close()}>
                         <div className="menu_top">開發團隊</div>
                         <div className="menu_bottom">DEVELOPMENT TEAM</div>
-                    </Link></li>
+                    </NavLink></li>
                 </ul>
             </div>
             <div className="hambtn" style={{ display: phone == "yesPhone" ? "block" : "none" }}>

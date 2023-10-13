@@ -1,58 +1,21 @@
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Routes, Redirect } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import article from "./assets/jsons/article.json";
+import ScrollToTop from "./components/ScrollToTop";
+import Layout from "./components/Layout";
+import AdminLayout from './components/AdminLayout';
 
 import Home from './pages/Home';
 import Board from './pages/Board';
 import Article from './pages/Article';
 import Game from './pages/Game';
 import Team from './pages/Team';
-import Login from './pages/Login';
-import List from './pages/AdminList';
-import Add from "./pages/AddArticle";
-import Edit from "./pages/EditArticle";
-import AddArticle from './pages/AddArticle';
-import EditArticle from './pages/EditArticle';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />
-  },
-  {
-    path: '/board',
-    element: <Board />
-  },
-  {
-    path: '/article/:articleTitle',
-    element: <Article />
-  },
-  {
-    path: '/game',
-    element: <Game />
-  },
-  {
-    path: '/team',
-    element: <Team />
-  },
-  {
-    path: '/admin',
-    element: <Login />
-  },
-  {
-    path: '/admin/list',
-    element: <List />
-  },
-  {
-    path: '/admin/add',
-    element: <AddArticle />
-  },
-  {
-    path: '/admin/edit/:articleID',
-    element: <EditArticle />
-  }
-])
+import Login from './pages/AdminLogin';
+import List from './pages/AdminList';
+import Add from './pages/AdminAdd';
+import Edit from './pages/AdminEdit';
 
 const App = () => {
   const fetchMessages = () => {
@@ -76,7 +39,24 @@ const App = () => {
   }, []);
   return (
     <>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="board" element={<Board />} />
+            <Route path="article/:articleTitle" element={<Article />} />
+            <Route path="game" element={<Game />} />
+            <Route path="team" element={<Team />} />
+          </Route>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Login />} />
+            <Route path="list" element={<List />} />
+            <Route path="add" element={<Add />} />
+            <Route path="edit/:articleID" element={<Edit />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

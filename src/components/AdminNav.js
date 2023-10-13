@@ -1,14 +1,12 @@
 import "../style/AdminNav.css";
 import { useEffect, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 import LOGO from "../assets/images/a_nav_logo.svg";
 
-
-
 export default function Nav({ bg, posi }) {
     const IsLogin = JSON.parse(window.localStorage.getItem("UserInfo"));
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.body.scrollTo(0, 0);
@@ -30,17 +28,17 @@ export default function Nav({ bg, posi }) {
             id: ""
         }
         window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
-        history("/admin");
+        navigate("/admin");
     };
 
     return (
         <div className="a_nav" id="nav" style={{ backgroundColor: bg, position: posi }}>
             <div className="nav_left">
-                <Link to="/admin/list">
+                <NavLink to="/admin/list">
                     <div className="logo">
                         <img src={LOGO} alt="LOGO" />
                     </div>
-                </Link>
+                </NavLink>
                 <div className="symbol">
                     管理模式
                 </div>

@@ -8,18 +8,12 @@ import PHOTO_04 from "../assets/images/team_photo_04.png";
 import PHOTO_05 from "../assets/images/team_photo_05.png";
 import PHOTO_06 from "../assets/images/team_photo_06.svg";
 
-import Nav from "../components/Nav";
 import Title from "../components/Title";
-import Footer from "../components/Footer";
 
 const Team = () => {
-    useEffect(() => {
-        document.body.scrollTo(0, 0);
-    }, []);
 
     return (
         <>
-            <Nav posi="fixed" />
             <div className="team-container">
                 <div className="group">
                     <Title Title_top="遊戲開發團隊" Title_bottom="GAME DEVELOPER" ls="16" lss="10.5" />
@@ -70,7 +64,6 @@ const Team = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

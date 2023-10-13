@@ -1,7 +1,6 @@
 import "../style/Game.css";
 import { useEffect, useState, useRef } from "react";
 
-import BG from "../assets/images/world_bg.png";
 import VILLAGE_MOSSINA from "../assets/images/village_mossina.svg"
 import VILLAGE_AFEITE from "../assets/images/village_afeite.svg"
 import VILLAGE_SCALE from "../assets/images/village_scale.svg"
@@ -20,18 +19,12 @@ import SISTER_YOUNGER_TEXT_BG from "../assets/images/sister_younger_text_bg.png"
 import SISTER_ELDER_TEXT_BG from "../assets/images/sister_elder_text_bg.png";
 import SISTER_CANCEL from "../assets/images/sister_cancel_btn.svg";
 
-import Nav from "../components/Nav";
 import Title from "../components/Title";
-import Footer from "../components/Footer";
-
 
 var g_top = [];
 const Game = () => {
-    const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
-
     const scrolltop = () => {
         const offsetY = document.documentElement.scrollTop + document.body.scrollTop;
-
         g_top = [
             document.getElementById("world").offsetTop,
             document.getElementById("village").offsetTop,
@@ -44,13 +37,14 @@ const Game = () => {
             }, 500);
         }
     }
+
     // 抓取加動畫位置
     useEffect(() => {
-        document.body.scrollTo(0, 0);
         if (document.body.clientWidth > 834) {
             scrolltop();
         }
     }, []);
+    
     const handleScroll = () => {
         const offsetY = document.documentElement.scrollTop + document.body.scrollTop;
 
@@ -84,9 +78,9 @@ const Game = () => {
     }
 
     useEffect(() => {
-        document.body.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll);
         return () => {
-            document.body.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
@@ -183,7 +177,6 @@ const Game = () => {
     }
     return (
         <>
-            <Nav posi="fixed" />
             <div className="game-container">
                 <div className="world" id="world">
                     <Title Title_top="神與信仰的起源" Title_bottom="WORLDVIEW" ls="39" lss="20" />
@@ -271,7 +264,6 @@ const Game = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

@@ -7,11 +7,10 @@ import EYES_CLOSE from "../assets/images/login_eyes_close.svg"
 import adminInfo from "../assets/jsons/admin.json";
 
 import Nav from "../components/AdminNav";
-import Footer from "../components/Footer";
 
 const Login = () => {
     const IsLogin = JSON.parse(window.localStorage.getItem("UserInfo"));
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
@@ -20,21 +19,24 @@ const Login = () => {
     const [arti_minHeight, setArti_minHeight] = useState()
 
     useEffect(() => {
-        document.body.scrollTo(0, 0);
+        checkoutHandler();
         const containerHeight = Number(getComputedStyle(document.getElementById("login")).marginTop.replace('px', ''))
         const footerHeight = document.getElementById("footer").offsetHeight
         setArti_minHeight(document.body.clientHeight - containerHeight - footerHeight)
-        checkoutHandler();
     }, [])
 
     const checkoutHandler = () => {
         if (IsLogin.username == "") {
         }
         else {
-            history("/admin/list")
+            navigate("/admin/list")
         }
     }
 
+    const userLogin = {
+        email: email,
+        password: password
+    };
     const onFinish = async (e) => {
         e.preventDefault();
         setloading(true)
@@ -47,7 +49,7 @@ const Login = () => {
                         id: x.id
                     }
                     window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
-                    history("/admin/list");
+                    navigate("/admin/list");
                 }
                 else {
                     setloading(false)
@@ -57,10 +59,6 @@ const Login = () => {
 
     };
 
-    const userLogin = {
-        email: email,
-        password: password
-    };
     const ShowHidePassWord = () => {
         var txtPasw = document.getElementById("password");
         if (txtPasw.type == "text") {
@@ -71,7 +69,6 @@ const Login = () => {
             txtPasw.type = "text";
             seteyes(EYES_OPEN)
         }
-
     }
     return (
         <>
@@ -83,18 +80,16 @@ const Login = () => {
                         <input type="email" className="input" id="email" placeholder="帳號" onChange={(event) => setemail(event.target.value)} autoComplete="off" required />
                         <div style={{ width: "100%" }}>
                             <input type="password" className="input" id="password" placeholder="密碼" onChange={(event) => setpassword(event.target.value)} autoComplete="off" required />
-                            <div className="pass_eyes" onClick={ShowHidePassWord}
-                                style={{ backgroundImage: `url(${eyes})` }}></div>
+                            <div className="pass_eyes" onClick={ShowHidePassWord} style={{ backgroundImage: `url(${eyes})` }}></div>
                         </div>
-                        {loading ? (
+                        {loading ?
                             <input type="submit" value="load..." className="login_btn" />
-                        ) : (
+                            :
                             <input type="submit" value="登入" onClick={onFinish} className="login_btn" />
-                        )}
+                        }
                     </form>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }

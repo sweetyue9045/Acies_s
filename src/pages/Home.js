@@ -25,10 +25,6 @@ import SALE_SWITCH from "../assets/images/sale_switch.svg";
 import SALE_PS4 from "../assets/images/sale_PS4.svg";
 import SALE_BOTTOM from "../assets/images/sale_bottom.png";
 
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-
-
 var h_top = [];
 const Home = () => {
     const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
@@ -68,7 +64,6 @@ const Home = () => {
 
     // 抓取加動畫位置
     useEffect(() => {
-        document.body.scrollTo(0, 0);
         if (document.body.clientWidth > 834) {
             scrolltop();
         }
@@ -164,15 +159,14 @@ const Home = () => {
     }
 
     useEffect(() => {
-        document.body.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll);
         return () => {
-            document.body.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
     return (
         <>
-            <Nav posi="fixed" />
             <div className="home-container">
                 <div className="enter">
                     <img src={GIF} className="img_gif" alt="GIF"
@@ -320,8 +314,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </>
     );
 }

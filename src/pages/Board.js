@@ -10,10 +10,7 @@ import DEV_PREV from "../assets/images/dev_prev.svg";
 import DATA_PLAN from "../assets/images/data_plan.svg"
 import DATA_INTRO from "../assets/images/data_intro.svg"
 
-import Nav from "../components/Nav";
 import Title from "../components/Title";
-import Footer from "../components/Footer";
-
 
 var n = 0;
 var intervalID = 0;
@@ -22,7 +19,6 @@ const Board = () => {
     const [tabBoard, setTabDevBoard] = useState(0);
 
     useEffect(() => {
-        document.body.scrollTo(0, 0);
         intervalID = setInterval(timer, 5000);
     }, []);
 
@@ -47,9 +43,9 @@ const Board = () => {
     const Devtop = [];
     const Devs_page = [];
     var nowpage = "";
-    var scrollnum = 800;
-    if (document.body.clientWidth <= 834) scrollnum = 600;
-    else scrollnum = 800;
+    const scrollnum = document.body.clientWidth <= 834 ? 600 : 800;
+
+
     useEffect(() => {
         PAGE_NEXT = document.getElementById("page_next");
     }, []);
@@ -146,7 +142,6 @@ const Board = () => {
 
     return (
         <>
-            <Nav posi="fixed" />
             <div className="board-container">
                 <div className="news">
                     <div className="n_left">
@@ -203,7 +198,7 @@ const Board = () => {
                     {Dev.map((dev, index) => (
                         <div key={index} className={tabDev === index ? "dev_box showbox" : "dev_box"}>
                             {Devs_page.map(devs => (
-                                <Link to={`/article/${devs.title}`} key={devs.id} className="content_box" style={{ background: "url(/images/" + devs.img + ") no-repeat center top", borderRadius: "10px" ,backgroundSize:"contain" }}>
+                                <Link to={`/article/${devs.title}`} key={devs.id} className="content_box" style={{ background: "url(/images/" + devs.img + ") no-repeat center top", borderRadius: "10px", backgroundSize: "contain" }}>
                                     <div className="mask"></div>
                                     <div className="content">
                                         <div className="content_title">{devs.title}</div>
@@ -237,8 +232,6 @@ const Board = () => {
                     </a>
                 </div>
             </div>
-
-            <Footer />
         </>
     );
 }

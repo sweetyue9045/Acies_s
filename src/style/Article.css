@@ -69,14 +69,16 @@
 
 .backnav img {
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .backnav p {
-    margin-left: 15px;
+    padding-left: 15px;
     font-weight: normal;
     font-size: var(--fz30);
     letter-spacing: 8px;
     margin-right: -6px;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 430px) {

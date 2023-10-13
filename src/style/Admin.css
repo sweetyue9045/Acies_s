@@ -25,7 +25,8 @@
 }
 
 .show-open {
-    overflow: hidden
+    overflow: hidden;
+    height: 100%;;
 }
 
 
@@ -275,7 +276,7 @@
 }
 
 .btn {
-    font-size: var(--fz24);
+    font-size: 24px;
     letter-spacing: 3px;
     font-weight: 700;
     padding: 4px 25px 7px 27px;
@@ -586,5 +587,18 @@ input[type=file] {
         width: 100%;
         margin-top: 50px;
         padding: 6px 23px 8px 25px;
+    }
+    .confirm_box{
+        width: 380px;
+        height: 250px;
+    }
+    .confirm_title{
+        font-size: 35px;
+
+    }
+    .btn{
+        font-size: 20px;
+        padding: 7px 25px 7px 27px;
+        
     }
 }

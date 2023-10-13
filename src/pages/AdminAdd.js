@@ -6,12 +6,12 @@ import IMG_PLUS from "../assets/images/add_plus.svg";
 import IMG_CROSS from "../assets/images/add_cross.svg";
 
 import Nav from "../components/AdminNav";
-import Footer from "../components/Footer";
 
-const AddArticle = () => {
+const Add = () => {
     const IsLogin = JSON.parse(window.localStorage.getItem("UserInfo"));
     const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
-    const history = useNavigate();
+    const navigate = useNavigate();
+
     const [title, settitle] = useState("");
     const [img, setimg] = useState("新增封面圖片");
     const [content, setcontent] = useState("");
@@ -21,16 +21,12 @@ const AddArticle = () => {
     var Today = new Date();
 
     useEffect(() => {
-        document.body.scrollTo(0, 0);
         checkoutHandler();
     }, [])
 
     const checkoutHandler = () => {
         if (IsLogin.username == "") {
-            history("/admin")
-        }
-        else {
-            history("/admin/add")
+            navigate("/admin")
         }
     }
 
@@ -82,10 +78,10 @@ const AddArticle = () => {
 
             const newAPI = APIs.reverse()
             newAPI.push(articles)
-            
+
             window.localStorage.setItem("ArticleAPI", JSON.stringify(newAPI));
             setTimeout(() => {
-                window.location = "/admin/list"
+                navigate("/admin/list")
             }, 1000);
         }
     }
@@ -98,18 +94,17 @@ const AddArticle = () => {
                 </div>
                 <form id="articlelist">
                     <input id="title" placeholder="請輸入標題" onChange={(event) => settitle(event.target.value)} maxLength="10" required />
-
                     <input className="input-file" id="input-file" type="file" accept="image/jpeg,image/png,image/gif"
                         onChange={(event) => {
                             setimg(event.target.files[0]);
                         }} required />
                     <label id="img" htmlFor="input-file" style={{ width: "fit-content" }}>
                         <span className="imgsvg" style={style}></span>
-                        {img == "新增封面圖片" ? (
+                        {img == "新增封面圖片" ?
                             <span className="imgtext" id="imgtext">{img}</span>
-                        ) : (
+                            :
                             <span className="imgtext" id="imgtext">{img.name}</span>
-                        )}
+                        }
                     </label>
                     <textarea id="content" placeholder="開始填寫內容" onChange={(event) => setcontent(event.target.value)} required />
                     <div className="form_bottom" id="form_bottom">
@@ -122,19 +117,15 @@ const AddArticle = () => {
                             <label className="categorytext" htmlFor="category_03">#企劃</label>
                         </div>
                         {loading ?
-                            <div className="sub_btn sub_btn_loading">
-                                <div className="loader"></div>
-                            </div>
+                            <div className="sub_btn sub_btn_loading"><div className="loader"></div></div>
                             :
                             <div className="sub_btn" onClick={() => { handlePostMessage(); }}>儲存</div>
                         }
                     </div>
                 </form>
             </div>
-            <Footer />
         </>
     )
-
 }
 
-export default AddArticle;
+export default Add;

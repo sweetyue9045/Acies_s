@@ -5,40 +5,35 @@ import { useNavigate, useParams } from "react-router-dom";
 import IMG_CROSS from "../assets/images/add_cross.svg";
 
 import Nav from "../components/AdminNav";
-import Footer from "../components/Footer";
 
-const EditArticle = () => {
+const Edit = () => {
     const IsLogin = JSON.parse(window.localStorage.getItem("UserInfo"));
     const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
-    const history = useNavigate();
+    const navigate = useNavigate();
+
     const { articleID } = useParams()
     const Content = APIs.find(
         (x) => x.id == articleID
     )
+    
     const [title, settitle] = useState("");
     const [img, setimg] = useState("新增封面圖片")
     const [content, setcontent] = useState("");
     const [category, setcategory] = useState("");
     const [loading, setloading] = useState(false)
-    const style = {};
     var Today = new Date();
 
     useEffect(() => {
         checkoutHandler();
         editMessages()
-        console.log(title, img, content, category)
     }, [])
 
     const checkoutHandler = () => {
         if (IsLogin.username == "") {
-            history("/admin")
-        }
-        else {
-            history("/admin/edit/" + articleID)
+            navigate("/admin")
         }
     }
     const editMessages = () => {
-
         document.getElementById("title").value = Content.title
         document.getElementById("content").value = Content.content
         var radionum = document.getElementById("articlelist").category_list
@@ -52,10 +47,6 @@ const EditArticle = () => {
         setcontent(Content.content);
         setcategory(Content.category);
     }
-
-    useEffect(() => {
-        editMessages()
-    }, []);
 
     const handlePutMessage = async (id) => {
         if (title === "") {
@@ -82,17 +73,6 @@ const EditArticle = () => {
                 alert("請選擇分類")
             }, 100);
         }
-        const articles = {
-            category: category,
-            img:
-                img === Content.img ?
-                    img : img.name,
-            title: title,
-            content: content,
-            editer: IsLogin.username,
-            edit_time: Today.getFullYear() + "." + (Today.getMonth() + 1) + "." + Today.getDate(),
-            id: id
-        };
         if (title !== "" && img !== "新增封面圖片" && content !== "" && category !== "") {
             setloading(true)
 
@@ -110,7 +90,7 @@ const EditArticle = () => {
             )
             window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
             setTimeout(() => {
-                window.location = "/admin/list"
+                navigate("/admin/list")
             }, 1000);
         }
     };
@@ -125,19 +105,17 @@ const EditArticle = () => {
                 <form id="articlelist">
                     <input id="title" type="text" placeholder="請輸入標題" onChange={(e) => settitle(e.target.value)} maxLength="10" />
                     <input className="input-file" id="input-file" type="file" accept="image/jpeg,image/png,image/gif"
-                        onChange={(e) => {
-                            setimg(e.target.files[0]);
-                        }} />
+                        onChange={(e) => { setimg(e.target.files[0]); }} />
                     <label id="img" htmlFor="input-file" style={{ width: "fit-content" }}>
                         <span className="imgsvg" style={{
                             WebkitMaskImage: `url(${IMG_CROSS})`,
                             maskImage: `url(${IMG_CROSS})`
                         }}></span>
-                        {img == Content.img ? (
+                        {img == Content.img ?
                             <span className="imgtext" id="imgtext">{img}</span>
-                        ) : (
+                            :
                             <span className="imgtext" id="imgtext">{img.name}</span>
-                        )}
+                        }
                     </label>
                     <textarea id="content" placeholder="開始填寫內容" onChange={(e) => setcontent(e.target.value)} />
                     <div className="form_bottom">
@@ -150,17 +128,15 @@ const EditArticle = () => {
                             <label className="categorytext" htmlFor="category_03">#企劃</label>
                         </div>
                         {loading ?
-                            <div className="sub_btn sub_btn_loading">
-                                <div className="loader"></div>
-                            </div>
+                            <div className="sub_btn sub_btn_loading"><div className="loader"></div></div>
                             :
-                            <div className="sub_btn" onClick={() => { handlePutMessage(Content.id) }}>儲存</div>}
+                            <div className="sub_btn" onClick={() => { handlePutMessage(Content.id) }}>儲存</div>
+                        }
                     </div>
                 </form>
             </div >
-            <Footer />
         </>
     )
 }
 
-export default EditArticle;
+export default Edit;
