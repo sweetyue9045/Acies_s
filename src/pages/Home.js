@@ -74,7 +74,7 @@ const Home = () => {
 
         //enter
         setGifstyleTop(document.body.clientWidth <= 834 ? 0 : offsetY * 0.3 + "px");
-        setAarrowstyleTop(document.body.clientWidth <= 834 ? "50vw" : "calc(50vw + " + offsetY * 1.5 + "px)")
+        setAarrowstyleTop(document.body.clientWidth <= 834 ? "40vw" : "calc(40vw + " + offsetY * 1.5 + "px)")
         setArrowstyleDisplay(offsetY > 600 ? "none" : "flex")
 
         //視差滾動
