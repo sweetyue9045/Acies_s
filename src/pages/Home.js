@@ -25,6 +25,8 @@ import SALE_SWITCH from "../assets/images/sale_switch.svg";
 import SALE_PS4 from "../assets/images/sale_PS4.svg";
 import SALE_BOTTOM from "../assets/images/sale_bottom.png";
 
+import Nav from "../components/Nav";
+
 var h_top = [];
 const Home = () => {
     const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
@@ -167,6 +169,7 @@ const Home = () => {
 
     return (
         <>
+            <Nav/>
             <div className="home-container">
                 <div className="enter">
                     <img src={GIF} className="img_gif" alt="GIF"

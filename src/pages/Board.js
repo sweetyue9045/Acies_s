@@ -9,6 +9,7 @@ import DEV_NEXT from "../assets/images/dev_next.svg";
 import DEV_PREV from "../assets/images/dev_prev.svg";
 import DATA_PLAN from "../assets/images/data_plan.svg"
 import DATA_INTRO from "../assets/images/data_intro.svg"
+
 import Nav from "../components/Nav";
 import Title from "../components/Title";
 

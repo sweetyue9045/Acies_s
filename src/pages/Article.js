@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 
 import BACKNAV from "../assets/images/backnav.svg";
 
+import Nav from "../components/Nav";
 import Title from "../components/Title";
 
 // let arti_minHeight
@@ -28,6 +29,7 @@ const Article = () => {
 
     return (
         <>
+            <Nav/>
             <div className="article-container" id="article" style={{ minHeight: arti_minHeight }}>
                 <div className="arti_category">#{Content.category}</div>
                 <Title Title_top={Content.title} />

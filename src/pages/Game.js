@@ -19,6 +19,7 @@ import SISTER_YOUNGER_TEXT_BG from "../assets/images/sister_younger_text_bg.png"
 import SISTER_ELDER_TEXT_BG from "../assets/images/sister_elder_text_bg.png";
 import SISTER_CANCEL from "../assets/images/sister_cancel_btn.svg";
 
+import Nav from "../components/Nav";
 import Title from "../components/Title";
 
 var g_top = [];
@@ -177,6 +178,7 @@ const Game = () => {
     }
     return (
         <>
+            <Nav/>
             <div className="game-container">
                 <div className="world" id="world">
                     <Title Title_top="神與信仰的起源" Title_bottom="WORLDVIEW" ls="39" lss="20" />
