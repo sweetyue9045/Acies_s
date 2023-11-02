@@ -9,7 +9,7 @@ import DEV_NEXT from "../assets/images/dev_next.svg";
 import DEV_PREV from "../assets/images/dev_prev.svg";
 import DATA_PLAN from "../assets/images/data_plan.svg"
 import DATA_INTRO from "../assets/images/data_intro.svg"
-
+import Nav from "./Nav";
 import Title from "../components/Title";
 
 var n = 0;
@@ -147,6 +147,7 @@ const Board = () => {
 
     return (
         <>
+            <Nav/>
             <div className="board-container">
                 <div className="news">
                     <div className="n_left">
