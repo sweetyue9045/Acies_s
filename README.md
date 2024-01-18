@@ -2,7 +2,7 @@
 >網站連接：[Acies 雙生之旅ㅣ官方網站](https://acies-s.vercel.app/)
 >
 ## 介紹
->由於原本的[網站](https://acies-ten.vercel.app/)使用的API失效，導致後台無法工作、圖片遺失，加上當時是第一次寫React很多地方寫得不好，所以重寫這一個網站
+>由於原本的[網站](https://acies-ten.vercel.app/)([Github(https://github.com/sweetyue9045/Acies)])使用的API失效，導致後台無法工作、圖片遺失，加上當時是第一次寫React很多地方寫得不好，所以重寫這一個網站
 >
 ### 後台功能-登入、新增文章、修改文章等
 原本的網站利用串接API的方式來做到登入驗證和文章的修改、增減等功能，但這次沒有使用API，所以這邊使用localStorage來做到資料的改變與渲染和登入狀態呈現。
