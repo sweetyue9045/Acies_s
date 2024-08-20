@@ -1,7 +1,7 @@
-import "../style/Admin.css";
-import { useEffect, useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { disableScroll, enableScroll } from '../components/ScrollUtils';
+import "../style/Admin.css";
 
 
 import Nav from "../components/AdminNav";
@@ -17,14 +17,15 @@ const List = () => {
     const [Loading, setLoading] = useState(false)
 
     useEffect(() => {
-        checkoutHandler();
-    }, [])
-
-    const checkoutHandler = () => {
-        if (IsLogin.username == "") {
-            navigate("/admin")
+        const checkoutHandler = () => {
+            if (IsLogin.username === "") {
+                navigate("/admin")
+            }
         }
-    }
+        checkoutHandler();
+    }, [IsLogin,navigate])
+
+    
 
     const Confirm_del = (e, open, id) => {
         e.stopPropagation();
@@ -44,7 +45,7 @@ const List = () => {
         setLoading(true)
 
         const DEL = APIs.find(
-            (x) => x.id == ID
+            (x) => x.id === ID
         )
         APIs.splice(APIs.indexOf(DEL), 1)
 
@@ -58,20 +59,18 @@ const List = () => {
     const confirm_publish_yes = async () => {
         setLoading(true)
 
-        APIs.find(
-            (x) => {
-                if (x.id == ID) {
-                    x.ispublish = true
-                }
+        APIs.forEach((x) => {
+            if (x.id === ID) {
+                x.ispublish = true;
             }
-        )
+        });
 
         setTimeout(() => {
             window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
             setConfirm_publish(false);
-            setLoading(false)
-            enableScroll()
-        }, 1000)
+            setLoading(false);
+            enableScroll();
+        }, 1000);
     }
 
     return (

@@ -1,5 +1,4 @@
 import "../style/Team.css";
-import { useEffect, useState, useRef } from "react";
 
 import PHOTO_01 from "../assets/images/team_photo_01.png";
 import PHOTO_02 from "../assets/images/team_photo_02.png";

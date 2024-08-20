@@ -1,6 +1,6 @@
-import "../style/Admin.css";
-import { useEffect, useState, useContext } from "react";
+import { useCallback,useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "../style/Admin.css";
 
 import IMG_CROSS from "../assets/images/add_cross.svg";
 
@@ -13,7 +13,7 @@ const Edit = () => {
 
     const { articleID } = useParams()
     const Content = APIs.find(
-        (x) => x.id == articleID
+        (x) => x.id === articleID
     )
     
     const [title, settitle] = useState("");
@@ -23,17 +23,7 @@ const Edit = () => {
     const [loading, setloading] = useState(false)
     var Today = new Date();
 
-    useEffect(() => {
-        checkoutHandler();
-        editMessages()
-    }, [])
-
-    const checkoutHandler = () => {
-        if (IsLogin.username == "") {
-            navigate("/admin")
-        }
-    }
-    const editMessages = () => {
+    const editMessages = useCallback(() => {
         document.getElementById("title").value = Content.title
         document.getElementById("content").value = Content.content
         var radionum = document.getElementById("articlelist").category_list
@@ -46,7 +36,18 @@ const Edit = () => {
         setimg(Content.img)
         setcontent(Content.content);
         setcategory(Content.category);
-    }
+    }, [Content.category, Content.content, Content.img, Content.title]);
+    
+    useEffect(() => {
+        const checkoutHandler = () => {
+            if (IsLogin.username === "") {
+                navigate("/admin")
+            }
+        }
+        checkoutHandler();
+        editMessages()
+    }, [IsLogin,navigate,editMessages])
+
 
     const handlePutMessage = async (id) => {
         if (title === "") {
@@ -74,23 +75,23 @@ const Edit = () => {
             }, 100);
         }
         if (title !== "" && img !== "新增封面圖片" && content !== "" && category !== "") {
-            setloading(true)
-
-            APIs.find(
-                (x) => {
-                    if (x.id == id) {
-                        x.category = category
-                        x.img = img === Content.img ? img : img.name
-                        x.title = title
-                        x.content = content
-                        x.editer = IsLogin.username
-                        x.edit_time = Today.getFullYear() + "." + (Today.getMonth() + 1) + "." + Today.getDate()
-                    }
-                }
-            )
+            setloading(true);
+        
+            const articleToUpdate = APIs.find((x) => x.id === id);
+        
+            if (articleToUpdate) {
+                articleToUpdate.category = category;
+                articleToUpdate.img = img === Content.img ? img : img.name;
+                articleToUpdate.title = title;
+                articleToUpdate.content = content;
+                articleToUpdate.editer = IsLogin.username;
+                articleToUpdate.edit_time = Today.getFullYear() + "." + (Today.getMonth() + 1) + "." + Today.getDate();
+            }
+        
             window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
+        
             setTimeout(() => {
-                navigate("/admin/list")
+                navigate("/admin/list");
             }, 1000);
         }
     };
@@ -111,7 +112,7 @@ const Edit = () => {
                             WebkitMaskImage: `url(${IMG_CROSS})`,
                             maskImage: `url(${IMG_CROSS})`
                         }}></span>
-                        {img == Content.img ?
+                        {img === Content.img ?
                             <span className="imgtext" id="imgtext">{img}</span>
                             :
                             <span className="imgtext" id="imgtext">{img.name}</span>

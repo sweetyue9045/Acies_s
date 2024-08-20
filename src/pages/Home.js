@@ -1,29 +1,29 @@
-import "../style/Home.css";
-import { useEffect, useState, useRef } from "react";
 import lottie from 'lottie-web';
+import { useEffect, useRef, useState } from "react";
+import "../style/Home.css";
 
-import GIF from "../assets/images/start_gif.gif";
-import PARALLAX from "../assets/images/start_parallax.png";
-import LOGO from "../assets/images/start_logo.svg";
-import LOGO_BG from "../assets/images/start_logo_bg.png";
-import arrowData from "../assets/lotties/arrow.json";
+import CRISIS_BOSS from "../assets/images/crisis_BOSS.mp4";
+import CRISIS_BEAR from "../assets/images/crisis_bear.png";
 import FEATURE_LOGO from "../assets/images/feature_logo.svg";
-import STORY_STAFF from "../assets/images/story_staff.png";
-import TOBII_EYE from "../assets/images/tobii_eye.svg";
-import MAGIC_SIS from "../assets/images/magic_sis.png";
 import MAGIC_X from "../assets/images/magic_X_btn.mp4";
 import MAGIC_Y from "../assets/images/magic_Y_btn.mp4";
-import MAGIC_PREV from "../assets/images/magic_prev.svg";
 import MAGIC_NEXT from "../assets/images/magic_next.svg";
+import MAGIC_PREV from "../assets/images/magic_prev.svg";
+import MAGIC_SIS from "../assets/images/magic_sis.png";
+import ORDEAL_GAME from "../assets/images/ordeal_game.mp4";
 import ORDEAL_STONE_L from "../assets/images/ordeal_stone_l.png";
 import ORDEAL_STONE_R from "../assets/images/ordeal_stone_r.png";
-import ORDEAL_GAME from "../assets/images/ordeal_game.mp4";
-import CRISIS_BEAR from "../assets/images/crisis_bear.png";
-import CRISIS_BOSS from "../assets/images/crisis_BOSS.mp4";
-import SALE_STEAM from "../assets/images/sale_steam.svg";
-import SALE_SWITCH from "../assets/images/sale_switch.svg";
 import SALE_PS4 from "../assets/images/sale_PS4.svg";
 import SALE_BOTTOM from "../assets/images/sale_bottom.png";
+import SALE_STEAM from "../assets/images/sale_steam.svg";
+import SALE_SWITCH from "../assets/images/sale_switch.svg";
+import GIF from "../assets/images/start_gif.gif";
+import LOGO from "../assets/images/start_logo.svg";
+import LOGO_BG from "../assets/images/start_logo_bg.png";
+import PARALLAX from "../assets/images/start_parallax.png";
+import STORY_STAFF from "../assets/images/story_staff.png";
+import TOBII_EYE from "../assets/images/tobii_eye.svg";
+import arrowData from "../assets/lotties/arrow.json";
 
 import Nav from "../components/Nav";
 
@@ -250,12 +250,12 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <img src={MAGIC_SIS} alt="MAGIC_SIS" className="magic_sis" style={{ display: phone == "yesPhone" ? "none" : "block" }} />
+                        <img src={MAGIC_SIS} alt="MAGIC_SIS" className="magic_sis" style={{ display: phone === "yesPhone" ? "none" : "block" }} />
                     </div>
                 </div>
                 <div className="ordeal" id="ordeal">
                     <div className="content">
-                        <div className="left_img" style={{ display: phone == "yesPhone" ? "none" : "block" }}>
+                        <div className="left_img" style={{ display: phone === "yesPhone" ? "none" : "block" }}>
                             <img src={ORDEAL_STONE_L} alt="ORDEAL_STONE_L" />
                             <img src={ORDEAL_STONE_R} alt="ORDEAL_STONE_R" />
                         </div>
@@ -283,7 +283,7 @@ const Home = () => {
                                 </video>
                             </div>
                         </div>
-                        <img src={CRISIS_BEAR} alt="ORDEAL_STONE_L" className="crisis_bear" style={{ display: phone == "yesPhone" ? "none" : "block" }} />
+                        <img src={CRISIS_BEAR} alt="ORDEAL_STONE_L" className="crisis_bear" style={{ display: phone === "yesPhone" ? "none" : "block" }} />
                     </div>
                 </div>
                 <div className="awards" id="awards">

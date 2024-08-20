@@ -1,9 +1,9 @@
-import "../style/Admin.css";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../style/Admin.css";
 
-import EYES_OPEN from "../assets/images/login_eyes_open.svg"
-import EYES_CLOSE from "../assets/images/login_eyes_close.svg"
+import EYES_CLOSE from "../assets/images/login_eyes_close.svg";
+import EYES_OPEN from "../assets/images/login_eyes_open.svg";
 import adminInfo from "../assets/jsons/admin.json";
 
 import Nav from "../components/AdminNav";
@@ -19,20 +19,21 @@ const Login = () => {
     const [arti_minHeight, setArti_minHeight] = useState()
 
     useEffect(() => {
+        const checkoutHandler = () => {
+            if (IsLogin.username === "") {
+            }
+            else {
+                navigate("/admin/list")
+            }
+        }
+    
         checkoutHandler();
         const containerHeight = Number(getComputedStyle(document.getElementById("login")).marginTop.replace('px', ''))
         const footerHeight = document.getElementById("footer").offsetHeight
         setArti_minHeight(document.body.clientHeight - containerHeight - footerHeight)
-    }, [])
+    }, [IsLogin,navigate])
 
-    const checkoutHandler = () => {
-        if (IsLogin.username == "") {
-        }
-        else {
-            navigate("/admin/list")
-        }
-    }
-
+    
     const userLogin = {
         email: email,
         password: password
@@ -40,28 +41,27 @@ const Login = () => {
     const onFinish = async (e) => {
         e.preventDefault();
         setloading(true)
-        adminInfo.find(
-            (x) => {
-                if (x.email == userLogin.email && x.password == userLogin.password) {
-                    const islogin = {
-                        email: x.email,
-                        username: x.username,
-                        id: x.id
-                    }
-                    window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
-                    navigate("/admin/list");
-                }
-                else {
-                    setloading(false)
-                }
-            }
-        )
+
+        const foundUser = adminInfo.find((x) => {
+            return x.email === userLogin.email && x.password === userLogin.password;
+        });
+        if (foundUser) {
+            const islogin = {
+                email: foundUser.email,
+                username: foundUser.username,
+                id: foundUser.id
+            };
+            window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
+            navigate("/admin/list");
+        } else {
+            setloading(false);
+        }
 
     };
 
     const ShowHidePassWord = () => {
         var txtPasw = document.getElementById("password");
-        if (txtPasw.type == "text") {
+        if (txtPasw.type === "text") {
             txtPasw.type = "password";
             seteyes(EYES_CLOSE)
         }

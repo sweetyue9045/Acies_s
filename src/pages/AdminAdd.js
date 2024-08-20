@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../style/Admin.css";
-import { useEffect, useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
 
-import IMG_PLUS from "../assets/images/add_plus.svg";
 import IMG_CROSS from "../assets/images/add_cross.svg";
+import IMG_PLUS from "../assets/images/add_plus.svg";
 
 import Nav from "../components/AdminNav";
 
@@ -21,14 +21,15 @@ const Add = () => {
     var Today = new Date();
 
     useEffect(() => {
-        checkoutHandler();
-    }, [])
-
-    const checkoutHandler = () => {
-        if (IsLogin.username == "") {
-            navigate("/admin")
+        const checkoutHandler = () => {
+            if (IsLogin.username === "") {
+                navigate("/admin")
+            }
         }
-    }
+        checkoutHandler();
+    }, [IsLogin,navigate])
+
+    
 
     if (img === "新增封面圖片") style.WebkitMaskImage = style.maskImage = `url(${IMG_PLUS})`;
     else style.WebkitMaskImage = style.maskImage = `url(${IMG_CROSS})`;
@@ -100,7 +101,7 @@ const Add = () => {
                         }} required />
                     <label id="img" htmlFor="input-file" style={{ width: "fit-content" }}>
                         <span className="imgsvg" style={style}></span>
-                        {img == "新增封面圖片" ?
+                        {img === "新增封面圖片" ?
                             <span className="imgtext" id="imgtext">{img}</span>
                             :
                             <span className="imgtext" id="imgtext">{img.name}</span>

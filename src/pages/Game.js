@@ -1,23 +1,23 @@
+import { useEffect } from "react";
 import "../style/Game.css";
-import { useEffect, useState, useRef } from "react";
 
-import VILLAGE_MOSSINA from "../assets/images/village_mossina.svg"
-import VILLAGE_AFEITE from "../assets/images/village_afeite.svg"
-import VILLAGE_SCALE from "../assets/images/village_scale.svg"
-import VILLAGE_TAMA from "../assets/images/village_tama.svg"
-import VILLAGE_MOSSINA_BG from "../assets/images/village_mossina_bg.png"
-import VILLAGE_AFEITE_BG from "../assets/images/village_afeite_bg.png"
-import VILLAGE_SCALE_BG from "../assets/images/village_scale_bg.png"
-import VILLAGE_TAMA_BG from "../assets/images/village_tama_bg.png"
 import ARROW_L from "../assets/images/sister_arrow_l.svg";
 import ARROW_R from "../assets/images/sister_arrow_r.svg";
-import SISTER_YOUNGER from "../assets/images/sister_younger.png";
-import SISTER_ELDER from "../assets/images/sister_elder.png";
-import SISTER_YOUNGER2 from "../assets/images/sister_younger2.png";
-import SISTER_ELDER2 from "../assets/images/sister_elder2.png";
-import SISTER_YOUNGER_TEXT_BG from "../assets/images/sister_younger_text_bg.png";
-import SISTER_ELDER_TEXT_BG from "../assets/images/sister_elder_text_bg.png";
 import SISTER_CANCEL from "../assets/images/sister_cancel_btn.svg";
+import SISTER_ELDER from "../assets/images/sister_elder.png";
+import SISTER_ELDER2 from "../assets/images/sister_elder2.png";
+import SISTER_ELDER_TEXT_BG from "../assets/images/sister_elder_text_bg.png";
+import SISTER_YOUNGER from "../assets/images/sister_younger.png";
+import SISTER_YOUNGER2 from "../assets/images/sister_younger2.png";
+import SISTER_YOUNGER_TEXT_BG from "../assets/images/sister_younger_text_bg.png";
+import VILLAGE_AFEITE from "../assets/images/village_afeite.svg";
+import VILLAGE_AFEITE_BG from "../assets/images/village_afeite_bg.png";
+import VILLAGE_MOSSINA from "../assets/images/village_mossina.svg";
+import VILLAGE_MOSSINA_BG from "../assets/images/village_mossina_bg.png";
+import VILLAGE_SCALE from "../assets/images/village_scale.svg";
+import VILLAGE_SCALE_BG from "../assets/images/village_scale_bg.png";
+import VILLAGE_TAMA from "../assets/images/village_tama.svg";
+import VILLAGE_TAMA_BG from "../assets/images/village_tama_bg.png";
 
 import Nav from "../components/Nav";
 import Title from "../components/Title";

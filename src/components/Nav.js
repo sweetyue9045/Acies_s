@@ -1,11 +1,10 @@
+import { NavLink } from "react-router-dom";
 import "../style/Nav.css";
-import { Outlet, NavLink } from "react-router-dom";
-import { useEffect, useState, useRef ,useCallback} from "react";
 import { disableScroll, enableScroll } from './ScrollUtils';
 
-import LOGO from "../assets/images/nav_logo.svg";
-import HAM_OPEN from "../assets/images/ham_open.png";
 import HAM_CLOSE from "../assets/images/ham_close.png";
+import HAM_OPEN from "../assets/images/ham_open.png";
+import LOGO from "../assets/images/nav_logo.svg";
 
 export default function Nav({ posi }) {
     const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
@@ -50,7 +49,7 @@ export default function Nav({ posi }) {
 
     return (
         <nav id="nav" style={{ position: posi }}>
-            <div id="nav-container" className="nav-container" style={{ display: phone == "noPhone" ? "flex" : "none" }}>
+            <div id="nav-container" className="nav-container" style={{ display: phone === "noPhone" ? "flex" : "none" }}>
                 <NavLink to="/" onClick={() => click_close()}>
                     <div className="logo">
                         <img src={LOGO} alt="LOGO" />
@@ -71,7 +70,7 @@ export default function Nav({ posi }) {
                     </NavLink></li>
                 </ul>
             </div>
-            <div className="hambtn" style={{ display: phone == "yesPhone" ? "block" : "none" }}>
+            <div className="hambtn" style={{ display: phone === "yesPhone" ? "block" : "none" }}>
                 <img id="ham_open" className="block" src={HAM_OPEN} alt="ham_open.png" onClick={click_open.bind(this)} />
                 <img id="ham_close" className="none" src={HAM_CLOSE} alt="ham_close.png" onClick={click_close.bind(this)} />
             </div>

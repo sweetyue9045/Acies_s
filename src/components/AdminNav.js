@@ -1,6 +1,6 @@
+import { useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../style/AdminNav.css";
-import { useEffect, useContext } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
 
 import LOGO from "../assets/images/a_nav_logo.svg";
 
@@ -9,16 +9,17 @@ export default function Nav({ bg, posi }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const LogoutButton = () => {
+            if (IsLogin.username === "") {
+                document.getElementById("logout").style.display = "none";
+            } else {
+                document.getElementById("logout").style.display = "flex";
+            }
+        }
         document.body.scrollTo(0, 0);
         LogoutButton();
-    }, [])
-    const LogoutButton = () => {
-        if (IsLogin.username == "") {
-            document.getElementById("logout").style.display = "none";
-        } else {
-            document.getElementById("logout").style.display = "flex";
-        }
-    }
+    }, [IsLogin])
+    
 
     const Logout = async (e) => {
         e.preventDefault();
@@ -45,7 +46,7 @@ export default function Nav({ bg, posi }) {
             </div>
             <div className="nav_right">
                 <div className="user">
-                    {IsLogin.username == ""
+                    {IsLogin.username === ""
                         ? ``
                         : IsLogin.username
                     }

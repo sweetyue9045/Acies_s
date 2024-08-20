@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 import "../style/Article.css";
-import { Link, useParams,useNavigate  } from 'react-router-dom';
-import { useEffect, useState, useRef } from "react";
 
 import BACKNAV from "../assets/images/backnav.svg";
 
@@ -14,7 +14,7 @@ const Article = () => {
 
     const { articleTitle } = useParams()
     const Content = APIs.find(
-        (x) => x.title == articleTitle
+        (x) => x.title === articleTitle
     )
 
     const [arti_minHeight, setArti_minHeight] = useState()

@@ -1,21 +1,21 @@
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
-import { BrowserRouter, Switch, Route, Routes, Redirect } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
 import article from "./assets/jsons/article.json";
-import ScrollToTop from "./components/ScrollToTop";
-import Layout from "./components/Layout";
 import AdminLayout from './components/AdminLayout';
+import Layout from "./components/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 
-import Home from './pages/Home';
-import Board from './pages/Board';
 import Article from './pages/Article';
+import Board from './pages/Board';
 import Game from './pages/Game';
+import Home from './pages/Home';
 import Team from './pages/Team';
 
-import Login from './pages/AdminLogin';
-import List from './pages/AdminList';
 import Add from './pages/AdminAdd';
 import Edit from './pages/AdminEdit';
+import List from './pages/AdminList';
+import Login from './pages/AdminLogin';
 
 const App = () => {
   const fetchMessages = () => {

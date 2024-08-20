@@ -1,14 +1,14 @@
-import "../style/Board.css";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "../style/Board.css";
 
-import NEWS_BOTTOM from "../assets/images/news_bottom.svg";
-import news from "../assets/jsons/news.json";
-import DEV_RIGHT from "../assets/images/dev_right.svg";
+import DATA_INTRO from "../assets/images/data_intro.svg";
+import DATA_PLAN from "../assets/images/data_plan.svg";
 import DEV_NEXT from "../assets/images/dev_next.svg";
 import DEV_PREV from "../assets/images/dev_prev.svg";
-import DATA_PLAN from "../assets/images/data_plan.svg"
-import DATA_INTRO from "../assets/images/data_intro.svg"
+import DEV_RIGHT from "../assets/images/dev_right.svg";
+import NEWS_BOTTOM from "../assets/images/news_bottom.svg";
+import news from "../assets/jsons/news.json";
 
 import Nav from "../components/Nav";
 import Title from "../components/Title";
