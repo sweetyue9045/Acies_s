@@ -22,7 +22,7 @@ import Loading from "./components/Loading"; // 引入 Loading 组件
 const App = () => {
   const [loading, setLoading] = useState(true); // 添加 loading 状态
 
-  const fetchMessages = () => {
+  const fetchMessages = async () => {
     try {
       if (window.localStorage.getItem("ArticleAPI") == null) {
         const APIs = JSON.stringify(article.reverse());
