@@ -9,5 +9,4 @@ export default function Load() {
       <Lottie animationData={loadingAnimation} loop={true} />
     </div>
   );
-  return null;
 }
