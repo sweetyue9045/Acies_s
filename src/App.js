@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import article from "./assets/jsons/article.json";
@@ -17,26 +17,40 @@ import Edit from './pages/AdminEdit';
 import List from './pages/AdminList';
 import Login from './pages/AdminLogin';
 
+import Loading from "./components/Loading"; // 引入 Loading 组件
+
 const App = () => {
+  const [loading, setLoading] = useState(true); // 添加 loading 状态
+
   const fetchMessages = () => {
-    if (window.localStorage.getItem("ArticleAPI") == null) {
-      const APIs = JSON.stringify(article.reverse());
-      window.localStorage.setItem("ArticleAPI", APIs);
-    }
-
-    if (window.localStorage.getItem("UserInfo") == null) {
-      const islogin = {
-        email: "",
-        username: "",
-        id: ""
+    try {
+      if (window.localStorage.getItem("ArticleAPI") == null) {
+        const APIs = JSON.stringify(article.reverse());
+        window.localStorage.setItem("ArticleAPI", APIs);
       }
-      window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
-    }
 
+      if (window.localStorage.getItem("UserInfo") == null) {
+        const islogin = {
+          email: "",
+          username: "",
+          id: ""
+        }
+        window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
+      }
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+    } finally {
+      setLoading(false);
+    }
   }
+
   useEffect(() => {
-    fetchMessages()
+    fetchMessages();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <>
       <BrowserRouter>

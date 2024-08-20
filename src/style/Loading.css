@@ -1,0 +1,7 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 使加载动画垂直居中 */
+  background-color: #fff; /* 根据需要设置背景颜色 */
+}
