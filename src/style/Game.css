@@ -286,14 +286,14 @@
 
 #cancel_Elder {
     position: absolute;
-    top: -15%;
+    top: -13%;
     left: 0;
     width: 2.5vw;
 }
 
 #cancel_Younger {
     position: absolute;
-    top: -15%;
+    top: -13%;
     right: 0;
     width: 2.5vw;
 }
