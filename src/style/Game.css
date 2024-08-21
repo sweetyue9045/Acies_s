@@ -271,7 +271,7 @@
     width: 24.31vw;
     max-width: 350px;
     top: 0;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     filter: drop-shadow(0 0 5px #FFFEF3);
     font-size: 2vw;
     letter-spacing: 5px;
@@ -571,7 +571,7 @@
     }
 
     #cancel_Elder {
-        top: -15%;
+        top: -16%;
         left: -7%;
         width: 3vw;
     }
