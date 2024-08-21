@@ -280,6 +280,10 @@
     text-align: justify;
 }
 
+.sisimg .text p {
+    text-align: justify;
+}
+
 #cancel_Elder {
     position: absolute;
     top: -15%;
