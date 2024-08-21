@@ -284,13 +284,14 @@
     position: absolute;
     top: -15%;
     left: 0;
+    width: 2.5vw;
 }
 
 #cancel_Younger {
     position: absolute;
     top: -15%;
     right: 0;
-
+    width: 2.5vw;
 }
 
 #text_Elder {
@@ -465,7 +466,7 @@
 /* RWD */
 
 @media only screen and (min-width: 0px) and (max-width: 834px) {
-    
+
     .game-container .title_top {
         font-size: 26px;
         letter-spacing: 8px;
@@ -485,10 +486,11 @@
         margin: -4px 10px 0 23px;
     }
 
-    .world{
+    .world {
         margin-top: 80px;
         min-height: 55vw;
     }
+
     .world .content {
         width: 61.66vw;
         font-size: var(--fz20);
@@ -497,9 +499,10 @@
         line-height: 40px;
     }
 
-    .village{
+    .village {
         margin-top: 150px;
     }
+
     .village .v_logo {
         margin-bottom: 30px;
     }
@@ -538,12 +541,15 @@
         transform: translateY(0px);
         opacity: 1;
     }
-    .sister{
+
+    .sister {
         margin: 100px 0;
     }
-.sisters{
-    margin-top: 5vw;
-}
+
+    .sisters {
+        margin-top: 5vw;
+    }
+
     .sisimg .text {
         letter-spacing: 5px;
         margin-right: -3px;
@@ -557,12 +563,13 @@
     #cancel_Younger {
         top: -15%;
         right: -10%;
-        width: 5vw;
+        width: 3vw;
     }
+
     #cancel_Elder {
         top: -15%;
-        left: -10%;
-        width: 5vw;
+        left: -7%;
+        width: 3vw;
     }
 }
 
@@ -623,18 +630,22 @@
         margin: 120px 0 50px;
         overflow-x: hidden;
     }
+
     .sisters {
         margin-top: 0px;
         height: 85vw;
     }
-    .siscard{
+
+    .siscard {
         margin-top: 40px;
         width: 48vw;
     }
+
     .text_bg {
         width: 48vw;
         top: 10px
     }
+
     #text_Younger {
         left: 20%;
         top: 6%;
@@ -645,17 +656,19 @@
         top: 5%;
     }
 
-    #cancel_Elder,#cancel_Younger {
-        top: -25%;
+    #cancel_Elder,
+    #cancel_Younger {
+        top: -20%;
     }
 
     .sisimg {
         margin-top: 0px;
     }
+
     .sisimg .text {
         width: 30vw;
         line-height: unset;
         font-size: 2.9vw
     }
-    
+
 }
