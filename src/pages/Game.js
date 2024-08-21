@@ -44,6 +44,11 @@ const Game = () => {
         if (document.body.clientWidth > 834) {
             scrolltop();
         }
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            document.getElementById('text_Younger').lastChild.classList.add('displaynone');
+            document.getElementById('text_Elder').lastChild.classList.add('displaynone');
+
+        }
     }, []);
     
     const handleScroll = () => {
@@ -131,7 +136,6 @@ const Game = () => {
     var click_close = function (e) {
         var spstr = e.target.id.replace("cancel_","");
         var open, close, my_src = "";
-        console.log(e)
 
         if (spstr === "Elder") { open = "Younger"; close = "Elder"; my_src = SISTER_ELDER; }
         else if (spstr === "Younger") { open = "Elder"; close = "Younger"; my_src = SISTER_YOUNGER; }
@@ -142,13 +146,11 @@ const Game = () => {
         var target_open = document.getElementById("sister_" + open);  //另一張圖挪回
         var targetname_open = document.getElementById("name_" + open);  //另一張圖名字挪回
 
-        console.log(target_close)
 
         target_close.classList.add("flip-reverse");
 
         targettextbg_close.classList.remove(open + "_fadein");
         targettext_close.classList.remove(open + "_fadein");
-
         targettextbg_close.classList.add(open + "_fadeout");
         targettext_close.classList.add(open + "_fadeout");
 
@@ -243,7 +245,7 @@ const Game = () => {
                                 <div id="text_Elder" className="text displaynone">
                                     <img id="cancel_Elder" className="click_point" onClick={click_close.bind(this)} src={SISTER_CANCEL} alt="SISTER_CANCEL" />
                                     雙胞胎中的姊姊<br />個性驕傲嚴謹，內心是個溫柔的人。因為總會管教妹妹，兩人之間發生不少爭執。<br /><br />
-                                    冒險旅途中會披上祖傳披風，也會增加許多民俗感的小元素。
+                                    <p>冒險旅途中會披上祖傳披風，也會增加許多民俗感的小元素。</p>
                                 </div>
                             </div>
                         </div>
@@ -259,7 +261,7 @@ const Game = () => {
                                 <div id="text_Younger" className="text displaynone">
                                     <img id="cancel_Younger" className="click_point" onClick={click_close.bind(this)} src={SISTER_CANCEL} alt="SISTER_CANCEL" />
                                     雙胞胎中的妹妹<br />個性活潑開朗、樂於助人，容易衝動 犯錯，內心渴望於他人的認可。<br /><br />
-                                    冒險旅途中會變成靈魂型態，保有原本特色並且跟隨在姊姊身旁。
+                                    <p>冒險旅途中會變成靈魂型態，保有原本特色並且跟隨在姊姊身旁。</p>
                                 </div>
                             </div>
                         </div>

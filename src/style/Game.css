@@ -250,17 +250,20 @@
     margin-top: 80px;
     transform: translateY(-100px);
     opacity: 0;
+    display: flex;
+    align-items: center;
 }
 
 .sisimg {
     margin-top: 65px;
+    width: 38.47vw;
+    max-width: 553px;
 }
 
 .text_bg {
     margin-top: -65px;
     width: 38.47vw;
     max-width: 553px;
-
 }
 
 .sisimg .text {
@@ -274,17 +277,18 @@
     letter-spacing: 5px;
     margin-right: -3px;
     line-height: 3.5vw;
+    text-align: justify;
 }
 
 #cancel_Elder {
     position: absolute;
-    top: -10%;
+    top: -15%;
     left: 0;
 }
 
 #cancel_Younger {
     position: absolute;
-    top: -10%;
+    top: -15%;
     right: 0;
 
 }
@@ -632,15 +636,19 @@
         top: 10px
     }
     #text_Younger {
-        left: 16%;
-        top: -10%;
+        left: 20%;
+        top: 6%;
     }
 
     #text_Elder {
-        left: 25%;
-        top: -10%;
+        left: 30%;
+        top: 5%;
     }
-    
+
+    #cancel_Elder,#cancel_Younger {
+        top: -25%;
+    }
+
     .sisimg {
         margin-top: 0px;
     }
