@@ -1,4 +1,4 @@
-export default function Title({ Title_top, Title_bottom, Id, ls, lss }) {
+export default function Title({ mainTitle, subTitle, ls, lss }) {
     const style = {}
     if (document.body.clientWidth <= 834) {
         style.letterSpacing = `${lss}px`
@@ -9,9 +9,9 @@ export default function Title({ Title_top, Title_bottom, Id, ls, lss }) {
         style.marginRight = `-${(ls - 2)}px`
     }
     return (
-        <div className="title" id={Id}>
-            <div className="title_top">{Title_top}</div>
-            <div className="title_bottom" style={style}>{Title_bottom}</div>
+        <div className="title">
+            <div className="title-top">{mainTitle}</div>
+            <div className="title-bottom" style={style}>{subTitle}</div>
         </div>
     );
 }

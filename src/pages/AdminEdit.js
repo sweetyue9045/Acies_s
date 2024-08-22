@@ -10,9 +10,7 @@ const Edit = () => {
     const IsLogin = JSON.parse(window.localStorage.getItem("UserInfo"));
 
     const { articleID } = useParams();
-    const Content = APIs.find(
-        (x) => x.id === Number(articleID)
-    );
+    const Content = APIs.find((x) => x.id === Number(articleID));
 
     const [title, setTitle] = useState('');
     const [img, setImg] = useState('新增封面圖片');
@@ -23,12 +21,13 @@ const Edit = () => {
 
 
     const editMessages = () => {
-        document.getElementById("title").value = Content.title
-        document.getElementById("content").value = Content.content
-        var radionum = document.getElementById("articlelist").category_list
-        for (var i = 0; i < radionum.length; i++) {
-            if (radionum[i].value === Content.category) {
-                radionum[i].checked = true;
+        document.getElementById("title").value = Content.title;
+        document.getElementById("content").value = Content.content;
+        var radioButtons = document.getElementsByName("category-list");
+
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].value === Content.category) {
+                radioButtons[i].checked = true;
             }
         }
         setImg(Content.img)
@@ -58,7 +57,7 @@ const Edit = () => {
             return;
         }
         if (!category) {
-            window.scrollTo(0, document.getElementById('form_bottom').offsetTop + 200);
+            window.scrollTo(0, document.getElementById('form-bottom').offsetTop + 200);
             alert('請選擇分類');
             return;
         }
@@ -73,7 +72,7 @@ const Edit = () => {
             articleToUpdate.title = title;
             articleToUpdate.content = content;
             articleToUpdate.editer = IsLogin.username;
-            articleToUpdate.edit_time = `${Today.getFullYear()}.${Today.getMonth() + 1}.${Today.getDate()}`;
+            articleToUpdate.editTime = `${Today.getFullYear()}.${Today.getMonth() + 1}.${Today.getDate()}`;
         }
 
         window.localStorage.setItem('ArticleAPI', JSON.stringify(APIs));
@@ -87,7 +86,7 @@ const Edit = () => {
         <>
             <div className="edit-container">
                 <div className="title">
-                    <div className="title_text">編輯文章</div>
+                    <div className="title-text">編輯文章</div>
                 </div>
                 <form id="articlelist">
                     <input id="title" type="text" placeholder="請輸入標題" onChange={(e) => setTitle(e.target.value)} maxLength="10" />
@@ -105,19 +104,19 @@ const Edit = () => {
                         }
                     </label>
                     <textarea id="content" placeholder="開始填寫內容" onChange={(e) => setContent(e.target.value)} />
-                    <div className="form_bottom">
+                    <div className="form-bottom">
                         <div id="category">
-                            <input name="category_list" id="category_01" type="radio" value="程式" onChange={(e) => setCategory(e.target.value)} />
-                            <label className="categorytext" htmlFor="category_01">#程式</label>
-                            <input name="category_list" id="category_02" type="radio" value="美術" onChange={(e) => setCategory(e.target.value)} />
-                            <label className="categorytext" htmlFor="category_02">#美術</label>
-                            <input name="category_list" id="category_03" type="radio" value="企劃" onChange={(e) => setCategory(e.target.value)} />
-                            <label className="categorytext" htmlFor="category_03">#企劃</label>
+                            <input name="category-list" id="category-01" type="radio" value="程式" onChange={(e) => setCategory(e.target.value)} />
+                            <label className="categorytext" htmlFor="category-01">#程式</label>
+                            <input name="category-list" id="category-02" type="radio" value="美術" onChange={(e) => setCategory(e.target.value)} />
+                            <label className="categorytext" htmlFor="category-02">#美術</label>
+                            <input name="category-list" id="category-03" type="radio" value="企劃" onChange={(e) => setCategory(e.target.value)} />
+                            <label className="categorytext" htmlFor="category-03">#企劃</label>
                         </div>
                         {loading ?
-                            <div className="sub_btn btn_loading"><div className="loader"></div></div>
+                            <div className="sub-btn btn-loading"><div className="loader"></div></div>
                             :
-                            <div className="sub_btn" onClick={() => { handlePutMessage(Content.id) }}>儲存</div>
+                            <div className="sub-btn" onClick={() => { handlePutMessage(Content.id) }}>儲存</div>
                         }
                     </div>
                 </form>

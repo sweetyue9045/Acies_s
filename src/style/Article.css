@@ -8,7 +8,7 @@
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
-.article-container .title_top {
+.article-container .title-top {
     font-size: 40px;
     letter-spacing: 15px;
     margin-right: -13px;
@@ -26,7 +26,7 @@
     align-items: flex-start;
 }
 
-.arti_category {
+.article-category {
     background-color: #fff;
     font-size: 12px;
     letter-spacing: 3px;
@@ -37,7 +37,7 @@
     margin-bottom: 20px;
 }
 
-.arti_time {
+.article-time {
     font-size: 12px;
     letter-spacing: 3px;
     margin-right: -1px;
@@ -45,7 +45,7 @@
     line-height: 20px;
 }
 
-.arti_content {
+.article-content {
     text-align: left;
     font-size: var(--fz16);
     letter-spacing: 5px;
@@ -86,7 +86,7 @@
         margin-top: 100px;
     }
 
-    .article-container .title_top {
+    .article-container .title-top {
         font-size: 30px;
         letter-spacing: 5px;
         margin-right: -3px;

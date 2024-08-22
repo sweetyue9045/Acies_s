@@ -36,8 +36,8 @@ export default function Nav({ bg, posi }) {
     };
 
     return (
-        <div className="a_nav" id="nav" style={{ backgroundColor: bg, position: posi }}>
-            <div className="nav_left">
+        <div className="a-nav" id="nav" style={{ backgroundColor: bg, position: posi }}>
+            <div className="nav-left">
                 <NavLink to="/admin/list">
                     <div className="logo">
                         <img src={LOGO} alt="LOGO" />
@@ -47,14 +47,14 @@ export default function Nav({ bg, posi }) {
                     管理模式
                 </div>
             </div>
-            <div className="nav_right">
+            <div className="nav-right">
                 <div className="user">
                     {IsLogin.username === ""
                         ? ``
                         : IsLogin.username
                     }
                 </div>
-                <input id="logout" type="button" value="登出" onClick={Logout} className="login_btn" />
+                <input id="logout" type="button" value="登出" onClick={Logout} className="login-btn" />
             </div>
         </div>
     );

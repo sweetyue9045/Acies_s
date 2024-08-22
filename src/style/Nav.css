@@ -46,7 +46,7 @@ nav img {
     filter: drop-shadow(0 0 1px #FFFEF3);
 }
 
-.menu_link {
+.menu-link {
     display: grid;
     justify-items: center;
     align-items: center;
@@ -54,7 +54,7 @@ nav img {
     color: #fff;
 }
 
-.menu_top {
+.menu-top {
     font-weight: 300;
     font-size: var(--fz18);
     letter-spacing: 5px;
@@ -62,7 +62,7 @@ nav img {
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
-.menu_bottom {
+.menu-bottom {
     font-size: 12px;
     letter-spacing: 3px;
     margin-right: -1px;
@@ -71,15 +71,15 @@ nav img {
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
-.menu li:first-child .menu_bottom {
+.menu li:first-child .menu-bottom {
     transform: scale(0.47);
 }
 
-.menu li:nth-child(2) .menu_bottom {
+.menu li:nth-child(2) .menu-bottom {
     transform: scale(0.69);
 }
 
-.menu li:nth-child(3) .menu_bottom {
+.menu li:nth-child(3) .menu-bottom {
     transform: scale(0.54);
 }
 
@@ -148,7 +148,7 @@ nav .block {
         margin: 15px;
     }
 
-    .menu_btn {
+    .menu-btn {
         padding: 0;
     }
 
@@ -156,7 +156,7 @@ nav .block {
         margin-right: 15px;
     }
 
-    .menu .menu_link {
+    .menu .menu-link {
         min-width: 165px;
     }
 

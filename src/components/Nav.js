@@ -12,44 +12,44 @@ export default function Nav({ posi }) {
     useEffect(() => {
         if (phone !=='yesPhone'){
             document.querySelectorAll('#nav a').forEach(a=>{
-                a.onClick={click_close};
+                a.onClick={clickClose};
             });
         };
     }, [phone])
 
-    var click_open = (e) =>{
-        var target_open = document.getElementById('ham_close');
-        var target_close = document.getElementById('ham_open');
-        var hamnav = document.getElementById('nav-container');
+    var clickOpen = (e) =>{
+        var targetOpen = document.getElementById('ham-close');
+        var targetClose = document.getElementById('ham-open');
+        var hamNav = document.getElementById('nav-container');
         var nav = document.getElementById('nav');
 
-        target_open.classList.remove('none');
-        target_close.classList.remove('block');
+        targetOpen.classList.remove('none');
+        targetClose.classList.remove('block');
 
-        target_open.classList.add('block');
-        target_close.classList.add('none');
+        targetOpen.classList.add('block');
+        targetClose.classList.add('none');
 
-        hamnav.style.display = 'flex';
+        hamNav.style.display = 'flex';
         nav.style.height = '100vh';
         nav.style.backgroundColor = '#000';
 
         disableScroll();
     }
 
-    var click_close = (e)=>{
-        var target_open = document.getElementById('ham_open');
-        var target_close = document.getElementById('ham_close');
-        var hamnav = document.getElementById('nav-container');
+    var clickClose = (e)=>{
+        var targetOpen = document.getElementById('ham-open');
+        var targetClose = document.getElementById('ham-close');
+        var hamNav = document.getElementById('nav-container');
         var nav = document.getElementById('nav');
 
-        target_open.classList.remove('none');
-        target_close.classList.remove('block');
+        targetOpen.classList.remove('none');
+        targetClose.classList.remove('block');
 
 
-        target_open.classList.add('block');
-        target_close.classList.add('none');
+        targetOpen.classList.add('block');
+        targetClose.classList.add('none');
 
-        hamnav.style.display = 'none';
+        hamNav.style.display = 'none';
         nav.style.height = '10vw';
         nav.style.backgroundColor = 'transparent';
 
@@ -65,23 +65,23 @@ export default function Nav({ posi }) {
                     </div>
                 </NavLink>
                 <ul className="menu">
-                    <li><NavLink to="/board" className="menu_link" >
-                        <div className="menu_top">佈告欄</div>
-                        <div className="menu_bottom">BULLETIN BOARD</div>
+                    <li><NavLink to="/board" className="menu-link" >
+                        <div className="menu-top">佈告欄</div>
+                        <div className="menu-bottom">BULLETIN BOARD</div>
                     </NavLink></li>
-                    <li><NavLink to="/game" className="menu_link">
-                        <div className="menu_top">遊戲設定</div>
-                        <div className="menu_bottom">GAME PLANNING</div>
+                    <li><NavLink to="/game" className="menu-link">
+                        <div className="menu-top">遊戲設定</div>
+                        <div className="menu-bottom">GAME PLANNING</div>
                     </NavLink></li>
-                    <li><NavLink to="/team" className="menu_link">
-                        <div className="menu_top">開發團隊</div>
-                        <div className="menu_bottom">DEVELOPMENT TEAM</div>
+                    <li><NavLink to="/team" className="menu-link">
+                        <div className="menu-top">開發團隊</div>
+                        <div className="menu-bottom">DEVELOPMENT TEAM</div>
                     </NavLink></li>
                 </ul>
             </div>
             <div className="hambtn" style={{ display: phone === "yesPhone" ? "block" : "none" }}>
-                <img id="ham_open" className="block" src={HAM_OPEN} alt="ham_open.png" onClick={click_open.bind(this)} />
-                <img id="ham_close" className="none" src={HAM_CLOSE} alt="ham_close.png" onClick={click_close.bind(this)} />
+                <img id="ham-open" className="block" src={HAM_OPEN} alt="ham-open.png" onClick={clickOpen.bind(this)} />
+                <img id="ham-close" className="none" src={HAM_CLOSE} alt="ham-close.png" onClick={clickClose.bind(this)} />
             </div>
         </nav>
     );

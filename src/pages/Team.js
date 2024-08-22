@@ -9,63 +9,47 @@ import PHOTO_06 from '../assets/images/team_photo_06.svg';
 
 import Title from '../components/Title';
 
-const Team = () => {
+const teamMembers = {
+  gameDevelopers: [
+    { src: PHOTO_01, name: '鄭仴筑', role: '程式' },
+    { src: PHOTO_02, name: '洪欣儀', role: '程式、企劃' },
+    { src: PHOTO_03, name: '林于楨', role: '美術、動畫' },
+    { src: PHOTO_04, name: '王怡文', role: '美術、動畫' },
+  ],
+  webDevelopers: [
+    { src: PHOTO_05, name: '吳孟儒', role: '程式' },
+    { src: PHOTO_02, name: '洪欣儀', role: '程式' },
+    { src: PHOTO_03, name: '林于楨', role: '主視覺' },
+    { src: PHOTO_06, name: '' }, 
+  ],
+};
 
-    return (
-        <>
-            <div className="team-container">
-                <div className="group">
-                    <Title Title_top="遊戲開發團隊" Title_bottom="GAME DEVELOPER" ls="16" lss="10.5" />
-                    <div className="g_member">
-                        <div className="photo_img">
-                            <img src={PHOTO_01} alt="PHOTO_01" />
-                            <p>鄭仴筑</p>
-                            <p>程式</p>
-                        </div>
-                        <div className="photo_img">
-                            <img src={PHOTO_02} alt="PHOTO_02" />
-                            <p>洪欣儀</p>
-                            <p>程式、企劃</p>
-                        </div>
-                        <div className="photo_img">
-                            <img src={PHOTO_03} alt="PHOTO_03" />
-                            <p>林于楨</p>
-                            <p>美術、動畫</p>
-                        </div>
-                        <div className="photo_img">
-                            <img src={PHOTO_04} alt="PHOTO_04" />
-                            <p>王怡文</p>
-                            <p>美術、動畫</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="group">
-                    <Title Title_top="網站開發團隊" Title_bottom="WEB DEVELOPER" ls="18" lss="12" />
-                    <div className="g_member">
-                        <div className="photo_img">
-                            <img src={PHOTO_05} alt="PHOTO_05" />
-                            <p>吳孟儒</p>
-                            <p>程式</p>
-                        </div>
-                        <div className="photo_img">
-                            <img src={PHOTO_02} alt="PHOTO_02" />
-                            <p>洪欣儀</p>
-                            <p>程式</p>
-                        </div>
-                        <div className="photo_img">
-                            <img src={PHOTO_03} alt="PHOTO_03" />
-                            <p>林于楨</p>
-                            <p>主視覺</p>
-                        </div>
-                        <div className="photo_img">
-                            <img src={PHOTO_06} alt="PHOTO_06" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-}
+
+const renderMembers = (members) => (
+  members.map((member, index) => (
+    <div key={index} className="team-member">
+      <img src={member.src} alt={`Team member ${index}`} />
+      {member.name && <p>{member.name}</p>}
+      {member.role && <p>{member.role}</p>}
+    </div>
+  ))
+);
+
+const Team = () => (
+  <div className="team">
+    <div className="team-group">
+      <Title mainTitle="遊戲開發團隊" subTitle="GAME DEVELOPER" ls="16" lss="10.5" />
+      <div className="team-members">
+        {renderMembers(teamMembers.gameDevelopers)}
+      </div>
+    </div>
+    <div className="team-group">
+      <Title mainTitle="網站開發團隊" subTitle="WEB DEVELOPER" ls="18" lss="12" />
+      <div className="team-members">
+        {renderMembers(teamMembers.webDevelopers)}
+      </div>
+    </div>
+  </div>
+);
 
 export default Team;
-

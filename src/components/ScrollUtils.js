@@ -1,43 +1,46 @@
-const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+// 滾動事件的按鍵代碼
+const SCROLL_KEYS = { 37: true, 38: true, 39: true, 40: true };
 
-export function preventDefault(e) {
+// 預防預設行為的工具函數
+function preventDefault(e) {
   e.preventDefault();
 }
 
-export function preventDefaultForScrollKeys(e) {
-  if (keys[e.keyCode]) {
+// 針對滾動按鍵的預防預設行為
+function preventDefaultForScrollKeys(e) {
+  if (SCROLL_KEYS[e.keyCode]) {
     preventDefault(e);
-    return false;
   }
 }
 
-export function supportsPassive() {
-  let supports = false;
+// 檢測是否支持 passive 事件監聽器
+function supportsPassive() {
+  let isSupported = false;
   try {
-    window.addEventListener(
-      'test',
-      null,
-      Object.defineProperty({}, 'passive', {
-        get: () => (supports = true),
-      })
-    );
+    const options = Object.defineProperty({}, 'passive', {
+      get: () => (isSupported = true)
+    });
+    window.addEventListener('test', null, options);
   } catch (e) { }
-  return supports;
+  return isSupported;
 }
 
+// 確定適當的滾輪事件及選項
 const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-const wheelOpt = supportsPassive ? { passive: false } : false;
+const wheelOptions = supportsPassive() ? { passive: false } : false;
 
+// 禁用滾動功能
 export function disableScroll() {
-  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // 舊版 Firefox
+  window.addEventListener(wheelEvent, preventDefault, wheelOptions); // 現代瀏覽器
+  window.addEventListener('touchmove', preventDefault, wheelOptions); // 手機設備
   window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
+// 啟用滾動功能
 export function enableScroll() {
   window.removeEventListener('DOMMouseScroll', preventDefault, false);
-  window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOptions);
+  window.removeEventListener('touchmove', preventDefault, wheelOptions);
   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }

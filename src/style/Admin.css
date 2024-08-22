@@ -12,8 +12,8 @@
     text-align: left;
 }
 
-.add-container .title_text,
-.edit-container .title_text {
+.add-container .title-text,
+.edit-container .title-text {
     letter-spacing: 8px;
     margin-right: -6px;
     font-weight: 500;
@@ -26,7 +26,8 @@
 
 .show-open {
     overflow: hidden;
-    height: 100%;;
+    height: 100%;
+    ;
 }
 
 
@@ -42,7 +43,7 @@
     align-items: center;
 }
 
-.login_card {
+.login-card {
     width: 676px;
     height: 530px;
     background-color: #000000;
@@ -63,7 +64,7 @@
     color: #FFFEF3;
 }
 
-.login_input {
+.login-input {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -80,9 +81,10 @@
     letter-spacing: 5px;
     color: #000;
     border: 0;
-   
+
 }
-.login_input .input[type="email"] {
+
+.login-input .input[type="email"] {
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -92,7 +94,7 @@
     color: #A1A1A1 !important;
 }
 
-.pass_eyes {
+.pass-eyes {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -106,7 +108,7 @@
     background-repeat: no-repeat;
 }
 
-.login_btn {
+.login-btn {
     color: #000;
     font-weight: normal;
     font-size: var(--fz18);
@@ -118,12 +120,12 @@
     cursor: pointer;
 }
 
-.login-container .login_btn{
+.login-container .login-btn {
     margin-top: 50px;
 
 }
 
-.login_btn:hover {
+.login-btn:hover {
     background-color: #2C2C2C;
     color: #fff;
 }
@@ -135,12 +137,12 @@
     padding: 25px 13.89vw 100px;
 }
 
-.add_link {
+.add-link {
     width: 146px;
     display: block;
 }
 
-.add_btn {
+.add-btn {
     width: 146px;
     margin: 40px 0px 70px;
     display: flex;
@@ -151,25 +153,25 @@
 }
 
 
-.add_btn .imgsvg {
+.add-btn .imgsvg {
     width: 34px;
     height: 34px;
     background-color: rgba(0, 0, 0, 1);
     mask-image: url("../assets/images/all_plus.svg");
 }
 
-.add_btn:hover .imgsvg {
+.add-btn:hover .imgsvg {
     background-color: #BFBFBF;
 }
 
-.add_btn .imgtext {
+.add-btn .imgtext {
     font-weight: normal;
     font-size: var(--fz20);
     letter-spacing: 5px;
     margin: -2px -3px 0 15px;
 }
 
-.indi_arti {
+.indi-arti {
     height: 75px;
     background-color: #F5F5F5;
     padding: 0 30px;
@@ -182,20 +184,20 @@
     color: #000;
 }
 
-.indi_left {
+.indi-left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.indi_title {
+.indi-title {
     font-size: var(--fz28);
     letter-spacing: 5px;
     font-weight: normal;
     margin-top: -3px;
 }
 
-.indi_category {
+.indi-category {
     background-color: #000;
     font-size: var(--fz18);
     letter-spacing: 3px;
@@ -205,14 +207,14 @@
     margin: 1px 0 0 20px;
 }
 
-.indi_pin {
+.indi-pin {
     width: 40px;
     height: 40px;
     mask-image: url("../assets/images/all_pin.svg");
     margin: 1px 0 0 20px;
 }
 
-.indi_del {
+.indi-del {
     width: 40px;
     height: 40px;
     mask-image: url("../assets/images/all_del.svg");
@@ -221,15 +223,15 @@
     display: none;
 }
 
-.indi_del:hover {
+.indi-del:hover {
     background-color: #000;
 }
 
-.indi_arti:hover .indi_del {
+.indi-arti:hover .indi-del {
     display: block;
 }
 
-.indi_publish {
+.indi-publish {
     background-color: #000;
     font-size: 12px;
     letter-spacing: 3px;
@@ -250,7 +252,7 @@
     justify-content: center;
 }
 
-.confirm_box {
+.confirm-box {
     width: 570px;
     height: 360px;
     background-color: #000;
@@ -261,7 +263,7 @@
     border-radius: 10px;
 }
 
-.confirm_title {
+.confirm-title {
     font-size: 45px;
     letter-spacing: 8px;
     margin-right: -6px;
@@ -269,7 +271,7 @@
 
 }
 
-.btn_group {
+.btn-group {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -286,17 +288,18 @@
     cursor: pointer;
     width: 106px;
     height: 46px;
+    box-sizing: border-box;
 }
 
-.btn_no {
+.btn-no {
     background-color: #9F9F9F;
 }
 
-.btn_yes {
+.btn-yes {
     background-color: #fff;
 }
 
-.btn_loading {
+.btn-loading {
     background-color: #474747;
     cursor: default;
     display: flex;
@@ -319,7 +322,7 @@
     opacity: 0.8;
 }
 
-.btn_loading .loader {
+.btn-loading .loader {
     margin-top: -12px;
 }
 
@@ -439,7 +442,7 @@ input[type=file] {
     resize: none;
 }
 
-.form_bottom {
+.form-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -472,7 +475,7 @@ input[type=file] {
     background-color: #000;
 }
 
-.sub_btn {
+.sub-btn {
     background-color: #000;
     font-size: var(--fz18);
     letter-spacing: 3px;
@@ -485,11 +488,11 @@ input[type=file] {
     cursor: pointer;
 }
 
-.sub_btn:hover {
+.sub-btn:hover {
     background-color: #BFBFBF;
 }
 
-.btn_loading {
+.form-bottom .btn-loading {
     background-color: #9F9F9F;
     color: #000;
     cursor: default;
@@ -500,11 +503,11 @@ input[type=file] {
     align-items: center;
 }
 
-.btn_loading .loader {
+.form-bottom .btn-loading .loader {
     margin-top: -12px;
 }
 
-.btn_loading:hover {
+.form-bottom .btn-loading:hover {
     background-color: #9F9F9F;
 }
 
@@ -518,56 +521,62 @@ input[type=file] {
         padding: 25px 6.5vw 100px;
     }
 
-    .indi_title {
+    .indi-title {
         font-size: 20px;
     }
 
-    .indi_category {
+    .indi-category {
         font-size: 16px;
         padding: 4px 16px 7px 18px
+    }
+
+    .indi-del {
+        display: block;
     }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 430px) {
-    .login_card {
+    .login-card {
         width: 380px;
         height: 400px;
         padding: 50px 40px;
     }
-    .pass_eyes{
+
+    .pass-eyes {
         width: 5.5vw;
         height: 5.5vw;
     }
-    .indi_arti {
+
+    .indi-arti {
         height: auto;
         padding: 25px;
     }
 
-    .indi_left {
+    .indi-left {
         flex-wrap: wrap;
         width: 240px;
     }
 
-    .indi_title {
+    .indi-title {
         flex-grow: 6;
         text-align: left;
         width: 230px;
     }
 
-    .indi_category {
+    .indi-category {
         margin: 15px 0 0 0;
     }
 
-    .indi_pin,
-    .indi_del {
+    .indi-pin,
+    .indi-del {
         margin: 15px 0 0 20px;
     }
 
-    .indi_publish {
+    .indi-publish {
         padding: 4px 8px 7px 10px;
     }
 
-    .form_bottom {
+    .form-bottom {
         flex-direction: column;
         align-items: flex-end;
     }
@@ -583,22 +592,25 @@ input[type=file] {
         margin-right: 0;
     }
 
-    .sub_btn {
+    .sub-btn {
         width: 100%;
         margin-top: 50px;
         padding: 6px 23px 8px 25px;
     }
-    .confirm_box{
+
+    .confirm-box {
         width: 380px;
         height: 250px;
     }
-    .confirm_title{
+
+    .confirm-title {
         font-size: 35px;
 
     }
-    .btn{
+
+    .btn {
         font-size: 20px;
         padding: 7px 25px 7px 27px;
-        
+
     }
 }

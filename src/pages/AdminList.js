@@ -8,8 +8,8 @@ const List = () => {
     const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
     const navigate = useNavigate();
 
-    const [confirm_del, setConfirm_del] = useState(false);
-    const [confirm_publish, setConfirm_publish] = useState(false);
+    const [showDeleteConfirm, setDeleteConfirm] = useState(false);
+    const [showPublishConfirm, setPublishConfirm] = useState(false);
     const [ID, setID] = useState();
     const [Loading, setLoading] = useState(false)
 
@@ -20,41 +20,42 @@ const List = () => {
             }
         }
         checkoutHandler();
-    }, [IsLogin,navigate])
+    }, [IsLogin, navigate])
 
-    
 
-    const Confirm_del = (e, open, id) => {
+
+    const handleDeleteConfirm = (e, open, id) => {
         e.stopPropagation();
         e.preventDefault();
-        setConfirm_del(open)
-        setID(id)
-        disableScroll()
-    }
-    const Confirm_publish = (e, open, id) => {
+        setDeleteConfirm(open);
+        setID(id);
+        disableScroll();
+    };
+
+    const handlePublishConfirm = (e, open, id) => {
         e.stopPropagation();
         e.preventDefault();
-        setConfirm_publish(open)
-        setID(id)
-        disableScroll()
-    }
-    const confirm_del_yes = async () => {
-        setLoading(true)
+        setPublishConfirm(open);
+        setID(id);
+        disableScroll();
+    };
 
-        const DEL = APIs.find(
-            (x) => x.id === ID
-        )
-        APIs.splice(APIs.indexOf(DEL), 1)
+    const confirmDelete = async () => {
+        setLoading(true);
+
+        const itemToDelete = APIs.find((x) => x.id === ID);
+        APIs.splice(APIs.indexOf(itemToDelete), 1);
 
         setTimeout(() => {
             window.localStorage.setItem('ArticleAPI', JSON.stringify(APIs));
-            setConfirm_del(false);
-            setLoading(false)
-            enableScroll()
-        }, 1000)
-    }
-    const confirm_publish_yes = async () => {
-        setLoading(true)
+            setDeleteConfirm(false);
+            setLoading(false);
+            enableScroll();
+        }, 1000);
+    };
+
+    const confirmPublish = async () => {
+        setLoading(true);
 
         APIs.forEach((x) => {
             if (x.id === ID) {
@@ -64,17 +65,17 @@ const List = () => {
 
         setTimeout(() => {
             window.localStorage.setItem('ArticleAPI', JSON.stringify(APIs));
-            setConfirm_publish(false);
+            setPublishConfirm(false);
             setLoading(false);
             enableScroll();
         }, 1000);
-    }
+    };
 
     return (
         <>
             <div className="adminlist-container">
-                <Link to="/admin/add" className="add_link">
-                    <div className="add_btn">
+                <Link to="/admin/add" className="add-link">
+                    <div className="add-btn">
                         <span className="imgsvg"></span>
                         <span className="imgtext">新增文章</span>
                     </div>
@@ -82,54 +83,54 @@ const List = () => {
                 <div className="article">
                     {APIs.map((data, index) => (
                         <Link to={`/admin/edit/${data.id}`} key={data.id}>
-                            <div className="indi_arti">
-                                <div className="indi_left">
-                                    <div className="indi_title">{data.title}</div>
-                                    <div className="indi_category">#{data.category}</div>
-                                    <div className="indi_pin" style={{ backgroundColor: data.ispin ? "#000" : "#9E9E9E" }}></div>
-                                    <div className="indi_del" onClick={(e) => { Confirm_del(e, true, data.id) }}></div>
+                            <div className="indi-arti">
+                                <div className="indi-left">
+                                    <div className="indi-title">{data.title}</div>
+                                    <div className="indi-category">#{data.category}</div>
+                                    <div className="indi-pin" style={{ backgroundColor: data.ispin ? "#000" : "#9E9E9E" }}></div>
+                                    <div className="indi-del" onClick={(e) => { handleDeleteConfirm(e, true, data.id) }}></div>
                                 </div>
                                 {data.ispublish ?
-                                    <div className="indi_publish" style={{ backgroundColor: "#9E9E9E" }}>已發佈</div>
+                                    <div className="indi-publish" style={{ backgroundColor: "#9E9E9E" }}>已發佈</div>
                                     :
-                                    <div className="indi_publish" onClick={(e) => { Confirm_publish(e, true, data.id) }} style={{ backgroundColor: "#000" }}>發佈</div>
+                                    <div className="indi-publish" onClick={(e) => { handlePublishConfirm(e, true, data.id) }} style={{ backgroundColor: "#000" }}>發佈</div>
                                 }
                             </div>
                         </Link>
                     ))}
                 </div>
             </div>
-            <div className="confirm" id="confirm_del" style={confirm_del ? { diplay: "flex" } : { display: "none" }}>
-                <div className="confirm_box">
-                    <div className="confirm_title">確定刪除嗎</div>
-                    <div className="btn_group">
-                        <div className="btn btn_no" onClick={() => {
-                            setConfirm_del(false);
+            <div className="confirm" id="confirm-del" style={showDeleteConfirm ? { diplay: "flex" } : { display: "none" }}>
+                <div className="confirm-box">
+                    <div className="confirm-title">確定刪除嗎</div>
+                    <div className="btn-group">
+                        <div className="btn btn-no" onClick={() => {
+                            setDeleteConfirm(false);
                             setLoading(false);
                             enableScroll();
                         }}>取消</div>
                         {Loading ?
-                            <div className="btn btn_loading"><div className="loader"></div></div>
+                            <div className="btn btn-loading"><div className="loader"></div></div>
                             :
-                            <div className="btn btn_yes" onClick={() => { confirm_del_yes() }}>確定</div>
+                            <div className="btn btn-yes" onClick={() => { confirmDelete() }}>確定</div>
                         }
 
                     </div>
                 </div>
             </div>
-            <div className="confirm" id="confirm_publish" style={confirm_publish ? { diplay: "flex" } : { display: "none" }}>
-                <div className="confirm_box">
-                    <div className="confirm_title">確定發佈嗎</div>
-                    <div className="btn_group">
-                        <div className="btn btn_no" onClick={() => {
-                            setConfirm_publish(false);
+            <div className="confirm" id="confirm-publish" style={showPublishConfirm ? { diplay: "flex" } : { display: "none" }}>
+                <div className="confirm-box">
+                    <div className="confirm-title">確定發佈嗎</div>
+                    <div className="btn-group">
+                        <div className="btn btn-no" onClick={() => {
+                            setPublishConfirm(false);
                             setLoading(false)
                             enableScroll()
                         }}>取消</div>
                         {Loading ?
-                            <div className="btn btn_loading"><div className="loader"></div></div>
+                            <div className="btn btn-loading"><div className="loader"></div></div>
                             :
-                            <div className="btn btn_yes" onClick={() => { confirm_publish_yes() }}>確定</div>
+                            <div className="btn btn-yes" onClick={() => { confirmPublish() }}>確定</div>
                         }
                     </div>
                 </div>

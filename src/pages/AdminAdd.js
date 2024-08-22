@@ -52,7 +52,7 @@ const Add = () => {
             }, 100);
         }
         else if (category === '') {
-            window.scrollTo(0, document.getElementById('form_bottom').offsetTop + 200);
+            window.scrollTo(0, document.getElementById('form-bottom').offsetTop + 200);
             setTimeout(function () {
                 alert('請選擇分類');
             }, 100);
@@ -65,11 +65,11 @@ const Add = () => {
             id: APIs.length + 1,
             content: content,
             writer: IsLogin.username,
-            write_time: Today.getFullYear() + '.' + (Today.getMonth() + 1) + '.' + Today.getDate(),
+            writeTime: Today.getFullYear() + '.' + (Today.getMonth() + 1) + '.' + Today.getDate(),
             editer: '',
-            edit_time: '',
-            ispublish: false,
-            ispin: false
+            editTime: '',
+            isPublish: false,
+            isPin: false
         };
 
         if (title !== '' && img !== '新增封面圖片' && content !== '' && category !== '') {
@@ -88,7 +88,7 @@ const Add = () => {
         <>
             <div className="add-container">
                 <div className="title">
-                    <div className="title_text">新增文章</div>
+                    <div className="title-text">新增文章</div>
                 </div>
                 <form id="articlelist">
                     <input id="title" placeholder="請輸入標題" onChange={(event) => settitle(event.target.value)} maxLength="10" required />
@@ -105,19 +105,19 @@ const Add = () => {
                         }
                     </label>
                     <textarea id="content" placeholder="開始填寫內容" onChange={(event) => setcontent(event.target.value)} required />
-                    <div className="form_bottom" id="form_bottom">
+                    <div className="form-bottom" id="form-bottom">
                         <div id="category">
-                            <input name="category_list" id="category_01" type="radio" value="程式" onChange={(event) => setcategory(event.target.value)} required />
-                            <label className="categorytext" htmlFor="category_01">#程式</label>
-                            <input name="category_list" id="category_02" type="radio" value="美術" onChange={(event) => setcategory(event.target.value)} />
-                            <label className="categorytext" htmlFor="category_02">#美術</label>
-                            <input name="category_list" id="category_03" type="radio" value="企劃" onChange={(event) => setcategory(event.target.value)} />
-                            <label className="categorytext" htmlFor="category_03">#企劃</label>
+                            <input name="category-list" id="category-01" type="radio" value="程式" onChange={(event) => setcategory(event.target.value)} required />
+                            <label className="categorytext" htmlFor="category-01">#程式</label>
+                            <input name="category-list" id="category-02" type="radio" value="美術" onChange={(event) => setcategory(event.target.value)} />
+                            <label className="categorytext" htmlFor="category-02">#美術</label>
+                            <input name="category-list" id="category-03" type="radio" value="企劃" onChange={(event) => setcategory(event.target.value)} />
+                            <label className="categorytext" htmlFor="category-03">#企劃</label>
                         </div>
                         {loading ?
-                            <div className="sub_btn btn_loading"><div className="loader"></div></div>
+                            <div className="sub-btn btn-loading"><div className="loader"></div></div>
                             :
-                            <div className="sub_btn" onClick={() => { handlePostMessage(); }}>儲存</div>
+                            <div className="sub-btn" onClick={() => { handlePostMessage(); }}>儲存</div>
                         }
                     </div>
                 </form>

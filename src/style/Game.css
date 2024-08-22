@@ -8,7 +8,7 @@
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
-.game-container .title_top {
+.game-container .title-top {
     font-weight: 300;
     font-size: 45px;
     letter-spacing: 15px;
@@ -16,13 +16,13 @@
     font-weight: 400;
 }
 
-.game-container .title_bottom {
+.game-container .title-bottom {
     font-size: 16px;
     font-weight: 100;
     margin-top: 5px;
 }
 
-.game-container .sis_title {
+.game-container .sister-title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,12 +34,12 @@
     letter-spacing: 20px;
 }
 
-.game-container .sis_title_text {
+.game-container .sister-title-text {
     letter-spacing: 20px;
     margin: -8px 24px 0 42px;
 }
 
-.game-container .sis_title img {
+.game-container .sister-title img {
     width: 2.36vw;
 }
 
@@ -120,23 +120,23 @@
     opacity: 0;
 }
 
-.village .v_mossina {
+.village .village-mossina {
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
-.village .v_scale {
+.village .village-scale {
     filter: drop-shadow(0 0 5px #64C7FF);
 }
 
-.village .v_afeite {
+.village .village-afeite {
     filter: drop-shadow(0 0 5px #FFCA42);
 }
 
-.village .v_tama {
+.village .village-tama {
     filter: drop-shadow(0 0 5px #FF645A);
 }
 
-.village .hr_column {
+.village .village-hr {
     left: 0;
     width: 2px;
     height: 10.07vw;
@@ -147,7 +147,7 @@
     transition: all .5s ease;
 }
 
-.village .v_bg {
+.village .village-bg {
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -157,14 +157,14 @@
     width: 130%;
 }
 
-.village .v_logo {
+.village .village-logo {
     height: 8.47vw;
     max-height: 125px;
     transition: all .5s ease;
     margin-bottom: 50px;
 }
 
-.village .v_en {
+.village .village-en {
     font-size: var(--fz32);
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -173,7 +173,7 @@
     margin-right: -1px;
 }
 
-.village .v_in {
+.village .village-in {
     width: 15.63vw;
     max-width: 225px;
     height: 0;
@@ -187,7 +187,7 @@
     transition: all .2s ease;
 }
 
-.village .v_ch {
+.village .village-ch {
     font-size: var(--fz14);
     margin-top: 0px;
     transition: all .3s .5s ease;
@@ -195,29 +195,29 @@
     margin-right: -1px;
 }
 
-.village .logo:hover .v_bg {
+.village .logo:hover .village-bg {
     opacity: 1;
 }
 
-.village .logo:hover .v_logo {
+.village .logo:hover .village-logo {
     height: 4.24vw;
     max-height: 61px;
     margin-bottom: 30px;
     margin-top: -20px;
 }
 
-.village .logo:hover .v_en {
+.village .logo:hover .village-en {
     transition: all .3s .5s ease;
 }
 
-.village .logo:hover .v_in {
+.village .logo:hover .village-in {
     opacity: 1;
     transition: all .5s .5s ease;
     margin-top: 20px;
     margin-bottom: 120px;
 }
 
-.village .logo:hover .v_ch {
+.village .logo:hover .village-ch {
     transition: all .3s .5s ease;
 }
 
@@ -245,7 +245,7 @@
     margin-top: 13.89vw;
 }
 
-.siscard {
+.sister-card {
     flex-direction: column;
     margin-top: 80px;
     transform: translateY(-100px);
@@ -254,19 +254,19 @@
     align-items: center;
 }
 
-.sisimg {
+.sister-img {
     margin-top: 65px;
     width: 38.47vw;
     max-width: 553px;
 }
 
-.text_bg {
+.sister-text-bg {
     margin-top: -65px;
     width: 38.47vw;
     max-width: 553px;
 }
 
-.sisimg .text {
+.sister-img .sister-text {
     position: absolute;
     width: 24.31vw;
     max-width: 350px;
@@ -280,39 +280,39 @@
     text-align: justify;
 }
 
-.sisimg .text p {
+.sister-img .sister-text p {
     text-align: justify;
 }
 
-#cancel_Elder {
+#cancel-elder {
     position: absolute;
     top: -13%;
     left: 0;
     width: 2.5vw;
 }
 
-#cancel_Younger {
+#cancel-younger {
     position: absolute;
     top: -13%;
     right: 0;
     width: 2.5vw;
 }
 
-#text_Elder {
+#text-elder {
     left: 23%;
     top: 10%;
 }
 
-#text_Younger {
+#text-younger {
     left: 14%;
     top: 10%;
 }
 
-.click_point {
+.click-point {
     cursor: pointer;
 }
 
-.click_point:hover {
+.click-point:hover {
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
@@ -326,12 +326,12 @@
     transform: scale(1.03);
 }
 
-.Elder_fadeout {
+.elder-fadeout {
     animation: rightfadeout 400ms ease-out;
     animation-fill-mode: forwards
 }
 
-.Elder_fadein {
+.elder-fadein {
     animation: rightfadein 400ms ease-in;
     animation-fill-mode: forwards
 }
@@ -361,12 +361,12 @@
     }
 }
 
-.Younger_fadeout {
+.younger-fadeout {
     animation: leftfadeout 400ms ease-out;
     animation-fill-mode: forwards
 }
 
-.Younger_fadein {
+.younger-fadein {
     animation: leftfadein 400ms ease-in;
     animation-fill-mode: forwards
 }
@@ -459,11 +459,11 @@
     }
 }
 
-.displaynone {
+.hidden {
     display: none !important;
 }
 
-.displaynone2 {
+.sister-name-hidden {
     opacity: 0 !important;
 }
 
@@ -471,21 +471,21 @@
 
 @media only screen and (min-width: 0px) and (max-width: 834px) {
 
-    .game-container .title_top {
+    .game-container .title-top {
         font-size: 26px;
         letter-spacing: 8px;
         margin-right: -6px;
     }
 
-    .game-container .title_bottom {
+    .game-container .title-bottom {
         font-size: 12px;
     }
 
-    .game-container .sis_title {
+    .game-container .sister-title {
         font-size: var(--fz20);
     }
 
-    .game-container .sis_title_text {
+    .game-container .sister-title-text {
         letter-spacing: 15px;
         margin: -4px 10px 0 23px;
     }
@@ -507,32 +507,32 @@
         margin-top: 150px;
     }
 
-    .village .v_logo {
+    .village .village-logo {
         margin-bottom: 30px;
     }
 
-    .village .v_en {
+    .village .village-en {
         font-size: var(--fz18);
         letter-spacing: 3px;
         margin-right: -1px;
     }
 
-    .village .v_ch {
+    .village .village-ch {
         font-size: 12px;
     }
 
-    .village .v_in {
+    .village .village-in {
         font-size: 14px;
         line-height: 24px;
     }
 
-    .village .logo:hover .v_logo {
+    .village .logo:hover .village-logo {
         height: 4.24vw;
         margin-bottom: 10px;
         margin-top: -40px;
     }
 
-    .village .logo:hover .v_in {
+    .village .logo:hover .village-in {
         margin-top: 20px;
         margin-bottom: 120px;
     }
@@ -540,8 +540,8 @@
     .world .title,
     .world .content,
     .village .logo,
-    .village .hr_column,
-    .siscard {
+    .village .village-hr,
+    .sister-card {
         transform: translateY(0px);
         opacity: 1;
     }
@@ -554,7 +554,7 @@
         margin-top: 5vw;
     }
 
-    .sisimg .text {
+    .sister-img .sister-text {
         letter-spacing: 5px;
         margin-right: -3px;
     }
@@ -564,13 +564,13 @@
         filter: none;
     }
 
-    #cancel_Younger {
+    #cancel-younger {
         top: -15%;
         right: -10%;
         width: 3vw;
     }
 
-    #cancel_Elder {
+    #cancel-elder {
         top: -16%;
         left: -7%;
         width: 3vw;
@@ -600,7 +600,7 @@
         margin-top: 50px;
     }
 
-    .village .hr_column {
+    .village .village-hr {
         display: none;
     }
 
@@ -612,21 +612,21 @@
         margin: 20px 0;
     }
 
-    .village .v_logo {
+    .village .village-logo {
         height: 25vw;
     }
 
-    .village .logo:hover .v_logo {
+    .village .logo:hover .village-logo {
         height: 25vw;
         margin-top: -20px;
     }
 
-    .village .v_in {
+    .village .village-in {
         width: 80vw;
         max-width: auto;
     }
 
-    .village .logo:hover .v_in {
+    .village .logo:hover .village-in {
         margin-bottom: 100px
     }
 
@@ -640,36 +640,36 @@
         height: 85vw;
     }
 
-    .siscard {
+    .sister-card {
         margin-top: 40px;
         width: 48vw;
     }
 
-    .text_bg {
+    .sister-text-bg {
         width: 48vw;
         top: 10px
     }
 
-    #text_Younger {
+    #text-younger {
         left: 20%;
         top: 6%;
     }
 
-    #text_Elder {
+    #text-elder {
         left: 30%;
         top: 5%;
     }
 
-    #cancel_Elder,
-    #cancel_Younger {
+    #cancel-elder,
+    #cancel-younger {
         top: -20%;
     }
 
-    .sisimg {
+    .sister-img {
         margin-top: 0px;
     }
 
-    .sisimg .text {
+    .sister-img .sister-text {
         width: 30vw;
         line-height: unset;
         font-size: 2.9vw

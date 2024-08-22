@@ -12,24 +12,22 @@ const Login = () => {
     const navigate = useNavigate();
 
     const [email, setemail] = useState('')
-    const [password, setpassword] = useState('')
-    const [loading, setloading] = useState(false)
-    const [eyes, seteyes] = useState(EYES_CLOSE)
-    const [arti_minHeight, setArti_minHeight] = useState()
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [eyes, setEyes] = useState(EYES_CLOSE)
+    const [loginMinHeight, setLoginMinHeight] = useState()
 
     useEffect(() => {
-        const checkoutHandler = () => {
-            if (IsLogin.username === '') {
-            }
-            else {
-                navigate('/admin/list')
+        const handleCheckout = () => {
+            if (IsLogin.username) {
+                navigate('/admin/list');
             }
         }
 
-        checkoutHandler();
+        handleCheckout();
         const containerHeight = Number(getComputedStyle(document.getElementById('login')).marginTop.replace('px', ''))
         const footerHeight = document.getElementById('footer').offsetHeight
-        setArti_minHeight(document.body.clientHeight - containerHeight - footerHeight)
+        setLoginMinHeight(document.body.clientHeight - containerHeight - footerHeight)
     }, [IsLogin, navigate])
 
 
@@ -39,7 +37,7 @@ const Login = () => {
     };
     const onFinish = async (e) => {
         e.preventDefault();
-        setloading(true)
+        setLoading(true)
 
         try {
             const foundUser = adminInfo.find((x) => {
@@ -61,43 +59,38 @@ const Login = () => {
             console.error('登入失敗:', error);
         } finally {
             document.getElementById('password').value = '';
-            setpassword('');
-            setloading(false);
+            setPassword('');
+            setLoading(false);
         }
 
     };
 
-    const ShowHidePassWord = () => {
+    const showPassword = () => {
         var txtPasw = document.getElementById('password');
         if (txtPasw.type === 'text') {
             txtPasw.type = 'password';
-            seteyes(EYES_CLOSE)
+            setEyes(EYES_CLOSE)
         }
         else {
             txtPasw.type = 'text';
-            seteyes(EYES_OPEN)
+            setEyes(EYES_OPEN)
         }
     }
     return (
         <>
-            <div className="login-container" id="login" style={{ minHeight: arti_minHeight }}>
-                <div className="login_card">
+            <div className="login-container" id="login" style={{ minHeight: loginMinHeight }}>
+                <div className="login-card">
                     <div className="title">管理員登入</div>
-                    <form action="" className="login_input">
+                    <form action="" className="login-input">
                         <input type="email" className="input" id="email" placeholder="帳號" onChange={(event) => setemail(event.target.value)} autoComplete="off" required />
                         <div style={{ width: "100%" }}>
-                            <input type="password" className="input" id="password" placeholder="密碼" onChange={(event) => setpassword(event.target.value)} autoComplete="off" required />
-                            <div className="pass_eyes" onClick={ShowHidePassWord} style={{ backgroundImage: `url(${eyes})` }}></div>
+                            <input type="password" className="input" id="password" placeholder="密碼" onChange={(event) => setPassword(event.target.value)} autoComplete="off" required />
+                            <div className="pass-eyes" onClick={showPassword} style={{ backgroundImage: `url(${eyes})` }}></div>
                         </div>
-                        {/* {loading ?
-                            <input type="submit" value="load..." className="login_btn" disabled />
-                            :
-                            <input type="submit" value="登入" onClick={onFinish} className="login_btn" />
-                        } */}
                         {loading ?
-                            <div className="login_btn btn_loading"><div className="loader"></div></div>
+                            <div className="login-btn btn-loading"><div className="loader"></div></div>
                             :
-                            <div className="login_btn" onClick={onFinish}>登入</div>
+                            <div className="login-btn" onClick={onFinish}>登入</div>
                         }
                     </form>
                 </div>

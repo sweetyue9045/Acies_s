@@ -12,28 +12,27 @@ import news from '../assets/jsons/news.json';
 
 import Title from '../components/Title';
 
-var n = 0;
-var intervalID = 0;
-let PAGE_NEXT;
+let autoSlideIntervalId = 0;
+let nextTabIndex = 0;
+let pageNext;
 const Board = () => {
-    const [tabBoard, setTabDevBoard] = useState(0);
+    const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
     useEffect(() => {
-        intervalID = setInterval(timer, 5000);
-    }, []);
+        autoSlideIntervalId = setInterval(autoSlide, 5000);
+        return () => clearInterval(autoSlideIntervalId);
+    }, [currentTabIndex]);
 
+    const autoSlide = () => {
+        nextTabIndex++;
+        if (nextTabIndex >= 3) nextTabIndex = 0;
+        setCurrentTabIndex(nextTabIndex);
+    };
 
-    var timer = () => {
-        n++;
-        if (n >= 3) n = 0;
-        setTabDevBoard(n);
-    }
-
-    var click = (index) => {
-        clearInterval(intervalID);
-        intervalID = setInterval(timer, 5000);
-        n = index;
-    }
+    const handleTabClick = (index) => {
+        nextTabIndex = index;
+        setCurrentTabIndex(nextTabIndex);
+    };
 
     const mytab = ['ALL', '程式', '美術', '企劃'];
     const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
@@ -47,7 +46,7 @@ const Board = () => {
 
 
     useEffect(() => {
-        PAGE_NEXT = document.getElementById('page_next');
+        pageNext = document.getElementById('page-next');
     }, []);
 
     const Dev = [{ contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }];
@@ -106,16 +105,16 @@ const Board = () => {
         const pageTotal = Math.ceil(dataTotal / perpage);
         // 當前頁數，對應現在當前頁數
         let currentPage = nowPage;
-        if (PAGE_NEXT != null) {
+        if (pageNext != null) {
             if (currentPage === pageTotal) {
-                PAGE_NEXT.classList.remove('showbox');
+                pageNext.classList.remove('showbox');
             }
             else if (currentPage > pageTotal) {
                 setpage(currentPage - 1);
                 currentPage = pageTotal;
             }
             else if (currentPage < pageTotal) {
-                PAGE_NEXT.classList.add('showbox');
+                pageNext.classList.add('showbox');
             }
         }
         //顯示數量
@@ -149,29 +148,29 @@ const Board = () => {
         <>
             <div className="board-container">
                 <div className="news">
-                    <div className="n_left">
-                        <Title Title_top="最新消息" Title_bottom="BREAKING NEWS" ls="9.5" lss="3" />
+                    <div className="n-left">
+                        <Title mainTitle="最新消息" subTitle="BREAKING NEWS" ls="9.5" lss="3" />
                         <div className="logo">
                             <div className="text">ACIES</div>
                             <div className="text">TWIN JOURNEY</div>
                             <img src={NEWS_BOTTOM} alt="NEWS_BOTTOM" />
                         </div>
                     </div>
-                    <div className="n_right">
+                    <div className="n-right">
                         {news.map((news, index) => (
-                            <div key={news.key} className={tabBoard === index ? "carousel_img showbox" : "carousel_img"} style={{ backgroundImage: "url(" + news.im + ")" }}>
+                            <div key={news.key} className={currentTabIndex === index ? "carousel-img showbox" : "carousel-img"} style={{ backgroundImage: "url(" + news.im + ")" }}>
                                 <div className="mask"></div>
                                 <div className="content">
-                                    <div className="content_title">{news.title}</div>
-                                    <div className="content_text" dangerouslySetInnerHTML={{ __html: news.content }}></div>
+                                    <div className="content-title">{news.title}</div>
+                                    <div className="content-text" dangerouslySetInnerHTML={{ __html: news.content }}></div>
                                 </div>
                             </div>
                         ))}
-                        <div className="dot_block">
+                        <div className="dot-block">
                             {news.map((news, index) => (
-                                <div key={news.key} className={tabBoard === index ? "carousel_dot choose" : "carousel_dot"}
+                                <div key={news.key} className={currentTabIndex === index ? "carousel-dot choose" : "carousel-dot"}
                                     onClick={() => {
-                                        setTabDevBoard(index); click(index);
+                                        setCurrentTabIndex(index); handleTabClick(index);
                                     }}>
                                 </div>
                             ))}
@@ -179,61 +178,61 @@ const Board = () => {
                     </div>
                 </div>
                 <div className="dev" id="dev">
-                    <Title Title_top="開發日誌" Title_bottom="DEV JOURNAL" ls="13" lss="5" />
-                    <div className="dev_tab">
+                    <Title mainTitle="開發日誌" subTitle="DEV JOURNAL" ls="13" lss="5" />
+                    <div className="dev-tab">
                         {mytab.map((dev, index) => (
                             <li key={index}>
-                                <div className={tabDev === index ? "tab_title choose" : "tab_title"} onClick={() => { setTabDev(index) }}>
+                                <div className={tabDev === index ? "tab-title choose" : "tab-title"} onClick={() => { setTabDev(index) }}>
                                     {dev}
                                 </div>
                             </li>
                         ))}
                     </div>
                     {Devtop.map((dev) => (
-                        <div key={dev.id} className="top_box">
+                        <div key={dev.id} className="top-box">
                             <img src={"/images/" + dev.img} alt={dev.img} />
-                            <div className="top_content">
-                                <div className="content_title">{dev.title}</div>
-                                <div className="content_text">{dev.content}</div>
-                                <Link to={`/article/${dev.title}`} className="top_link">READ MORE</Link>
+                            <div className="top-content">
+                                <div className="content-title">{dev.title}</div>
+                                <div className="content-text">{dev.content}</div>
+                                <Link to={`/article/${dev.title}`} className="top-link">READ MORE</Link>
                             </div>
                             <img src={DEV_RIGHT} alt="DEV_RIGHT" />
                         </div>
                     ))}
                     {Dev.map((dev, index) => (
-                        <div key={index} className={tabDev === index ? "dev_box showbox" : "dev_box"}>
+                        <div key={index} className={tabDev === index ? "dev-box showbox" : "dev-box"}>
                             {Devs_page.map(devs => (
-                                <Link to={`/article/${devs.title}`} key={devs.id} className="content_box" style={{ background: "url(/images/" + devs.img + ") no-repeat center top", borderRadius: "10px", backgroundSize: "contain" }}>
+                                <Link to={`/article/${devs.title}`} key={devs.id} className="content-box" style={{ background: "url(/images/" + devs.img + ") no-repeat center top", borderRadius: "10px", backgroundSize: "contain" }}>
                                     <div className="mask"></div>
                                     <div className="content">
-                                        <div className="content_title">{devs.title}</div>
-                                        <div className="content_text">{devs.content}</div>
+                                        <div className="content-title">{devs.title}</div>
+                                        <div className="content-text">{devs.content}</div>
                                     </div>
                                 </Link>
                             ))}
                         </div>
                     ))}
-                    <div className="page_btn">
-                        <div id="page_prev" className={page > 1 ? "page_prev showbox" : "page_prev"} onClick={pre}>
+                    <div className="page-btn">
+                        <div id="page-prev" className={page > 1 ? "page-prev showbox" : "page-prev"} onClick={pre}>
                             <img src={DEV_PREV} alt="DEV_PREV" />
                             <p>PREV</p>
                         </div>
-                        <div id="page_next" className="page_next showbox" onClick={next}>
+                        <div id="page-next" className="page-next showbox" onClick={next}>
                             <p>NEXT</p>
                             <img src={DEV_NEXT} alt="DEV_NEXT" />
                         </div>
                     </div>
                 </div>
                 <div className="data">
-                    <a href="https://drive.google.com/file/d/1NJdzM0ngJoukLee-YZKTkbeaHHzL1kX-/view" target="_blank" rel="noreferrer" className="data_link">
+                    <a href="https://drive.google.com/file/d/1NJdzM0ngJoukLee-YZKTkbeaHHzL1kX-/view" target="_blank" rel="noreferrer" className="data-link">
                         <img src={DATA_PLAN} alt="DATA_PLAN" />
-                        <div className="data_ch">企劃書</div>
-                        <div className="data_en">PLAN DOC</div>
+                        <div className="data-ch">企劃書</div>
+                        <div className="data-en">PLAN DOC</div>
                     </a>
-                    <a href="https://docs.google.com/presentation/d/1Lvh3ahMIZKbyEIfSaK5jPE4o7QqHQVQM/edit#slide=id.p1" target="_blank" rel="noreferrer" className="data_link">
+                    <a href="https://docs.google.com/presentation/d/1Lvh3ahMIZKbyEIfSaK5jPE4o7QqHQVQM/edit#slide=id.p1" target="_blank" rel="noreferrer" className="data-link">
                         <img src={DATA_INTRO} alt="DATA_INTRO" />
-                        <div className="data_ch">介紹簡報</div>
-                        <div className="data_en">INTRO DECK</div>
+                        <div className="data-ch">介紹簡報</div>
+                        <div className="data-en">INTRO DECK</div>
                     </a>
                 </div>
             </div>
