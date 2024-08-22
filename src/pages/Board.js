@@ -10,7 +10,6 @@ import DEV_RIGHT from "../assets/images/dev_right.svg";
 import NEWS_BOTTOM from "../assets/images/news_bottom.svg";
 import news from "../assets/jsons/news.json";
 
-import Nav from "../components/Nav";
 import Title from "../components/Title";
 
 var n = 0;
@@ -148,7 +147,6 @@ const Board = () => {
 
     return (
         <>
-            <Nav/>
             <div className="board-container">
                 <div className="news">
                     <div className="n_left">

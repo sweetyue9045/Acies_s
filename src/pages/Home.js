@@ -25,7 +25,6 @@ import STORY_STAFF from "../assets/images/story_staff.png";
 import TOBII_EYE from "../assets/images/tobii_eye.svg";
 import arrowData from "../assets/lotties/arrow.json";
 
-import Nav from "../components/Nav";
 
 var h_top = [];
 const Home = () => {
@@ -169,7 +168,6 @@ const Home = () => {
 
     return (
         <>
-            <Nav/>
             <div className="home-container">
                 <div className="enter">
                     <img src={GIF} className="img_gif" alt="GIF"

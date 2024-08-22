@@ -19,7 +19,6 @@ import VILLAGE_SCALE_BG from "../assets/images/village_scale_bg.png";
 import VILLAGE_TAMA from "../assets/images/village_tama.svg";
 import VILLAGE_TAMA_BG from "../assets/images/village_tama_bg.png";
 
-import Nav from "../components/Nav";
 import Title from "../components/Title";
 
 var g_top = [];
@@ -180,7 +179,6 @@ const Game = () => {
     }
     return (
         <>
-            <Nav/>
             <div className="game-container">
                 <div className="world" id="world">
                     <Title Title_top="神與信仰的起源" Title_bottom="WORLDVIEW" ls="39" lss="20" />

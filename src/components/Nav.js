@@ -9,15 +9,13 @@ import LOGO from '../assets/images/nav_logo.svg';
 
 export default function Nav({ posi }) {
     const phone = document.body.clientWidth > 430 ? 'noPhone' : 'yesPhone';
-
-    
     useEffect(() => {
         if (phone !=='yesPhone'){
             document.querySelectorAll('#nav a').forEach(a=>{
                 a.onClick={click_close};
             });
         };
-    }, [])
+    }, [phone])
 
     var click_open = (e) =>{
         var target_open = document.getElementById('ham_close');
