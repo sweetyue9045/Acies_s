@@ -1,39 +1,39 @@
-import { useEffect } from "react";
-import "../style/Game.css";
+import { useEffect } from 'react';
+import '../style/Game.css';
 
-import ARROW_L from "../assets/images/sister_arrow_l.svg";
-import ARROW_R from "../assets/images/sister_arrow_r.svg";
-import SISTER_CANCEL from "../assets/images/sister_cancel_btn.svg";
-import SISTER_ELDER from "../assets/images/sister_elder.png";
-import SISTER_ELDER2 from "../assets/images/sister_elder2.png";
-import SISTER_ELDER_TEXT_BG from "../assets/images/sister_elder_text_bg.png";
-import SISTER_YOUNGER from "../assets/images/sister_younger.png";
-import SISTER_YOUNGER2 from "../assets/images/sister_younger2.png";
-import SISTER_YOUNGER_TEXT_BG from "../assets/images/sister_younger_text_bg.png";
-import VILLAGE_AFEITE from "../assets/images/village_afeite.svg";
-import VILLAGE_AFEITE_BG from "../assets/images/village_afeite_bg.png";
-import VILLAGE_MOSSINA from "../assets/images/village_mossina.svg";
-import VILLAGE_MOSSINA_BG from "../assets/images/village_mossina_bg.png";
-import VILLAGE_SCALE from "../assets/images/village_scale.svg";
-import VILLAGE_SCALE_BG from "../assets/images/village_scale_bg.png";
-import VILLAGE_TAMA from "../assets/images/village_tama.svg";
-import VILLAGE_TAMA_BG from "../assets/images/village_tama_bg.png";
+import ARROW_L from '../assets/images/sister_arrow_l.svg';
+import ARROW_R from '../assets/images/sister_arrow_r.svg';
+import SISTER_CANCEL from '../assets/images/sister_cancel_btn.svg';
+import SISTER_ELDER from '../assets/images/sister_elder.png';
+import SISTER_ELDER2 from '../assets/images/sister_elder2.png';
+import SISTER_ELDER_TEXT_BG from '../assets/images/sister_elder_text_bg.png';
+import SISTER_YOUNGER from '../assets/images/sister_younger.png';
+import SISTER_YOUNGER2 from '../assets/images/sister_younger2.png';
+import SISTER_YOUNGER_TEXT_BG from '../assets/images/sister_younger_text_bg.png';
+import VILLAGE_AFEITE from '../assets/images/village_afeite.svg';
+import VILLAGE_AFEITE_BG from '../assets/images/village_afeite_bg.png';
+import VILLAGE_MOSSINA from '../assets/images/village_mossina.svg';
+import VILLAGE_MOSSINA_BG from '../assets/images/village_mossina_bg.png';
+import VILLAGE_SCALE from '../assets/images/village_scale.svg';
+import VILLAGE_SCALE_BG from '../assets/images/village_scale_bg.png';
+import VILLAGE_TAMA from '../assets/images/village_tama.svg';
+import VILLAGE_TAMA_BG from '../assets/images/village_tama_bg.png';
 
-import Title from "../components/Title";
+import Title from '../components/Title';
 
 var g_top = [];
 const Game = () => {
     const scrolltop = () => {
         const offsetY = document.documentElement.scrollTop + document.body.scrollTop;
         g_top = [
-            document.getElementById("world").offsetTop,
-            document.getElementById("village").offsetTop,
-            document.getElementById("sister").offsetTop
+            document.getElementById('world').offsetTop,
+            document.getElementById('village').offsetTop,
+            document.getElementById('sister').offsetTop
         ];
         if (offsetY >= 0 && offsetY <= g_top[0] + 10) {
-            document.getElementById("world").children[0].classList.add("fadein");
+            document.getElementById('world').children[0].classList.add('fadein');
             setTimeout(function () {
-                document.getElementById("world").children[1].classList.add("fadein");
+                document.getElementById('world').children[1].classList.add('fadein');
             }, 500);
         }
     }
@@ -43,7 +43,7 @@ const Game = () => {
         if (document.body.clientWidth > 834) {
             scrolltop();
         }
-        if (window.matchMedia("(orientation: portrait)").matches) {
+        if (window.matchMedia('(orientation: portrait)').matches) {
             document.getElementById('text_Younger').lastChild.classList.add('displaynone');
             document.getElementById('text_Elder').lastChild.classList.add('displaynone');
 
@@ -56,27 +56,27 @@ const Game = () => {
         if (document.body.clientWidth > 834) {
             if (offsetY >= g_top[2] - 100 && offsetY <= g_top[2] + 10) {
                 setTimeout(function () {
-                    document.getElementById("sister").children[1].children[0].classList.add("fadein");
+                    document.getElementById('sister').children[1].children[0].classList.add('fadein');
                 }, 100);
                 setTimeout(function () {
-                    document.getElementById("sister").children[1].children[1].classList.add("fadein");
+                    document.getElementById('sister').children[1].children[1].classList.add('fadein');
                 }, 600);
             }
             else if (offsetY >= g_top[1] - 300 && offsetY <= g_top[1] + 10) {
                 for (let i = 0; i < 3; i++) {
-                    document.getElementById("v_hr" + i).classList.add("fadein");
+                    document.getElementById('v_hr' + i).classList.add('fadein');
                 }
                 setTimeout(function () {
-                    document.getElementById("v_mossina").classList.add("fadein");
+                    document.getElementById('v_mossina').classList.add('fadein');
                 }, 500);
                 setTimeout(function () {
-                    document.getElementById("v_scale").classList.add("fadein");
+                    document.getElementById('v_scale').classList.add('fadein');
                 }, 1000);
                 setTimeout(function () {
-                    document.getElementById("v_afeite").classList.add("fadein");
+                    document.getElementById('v_afeite').classList.add('fadein');
                 }, 1500);
                 setTimeout(function () {
-                    document.getElementById("v_tama").classList.add("fadein");
+                    document.getElementById('v_tama').classList.add('fadein');
                 }, 2000);
             }
         }
@@ -92,89 +92,89 @@ const Game = () => {
 
     // 姊妹打開介紹
     var click_open = function (e) {
-        var spstr = e.target.id.replace("sister_","");
-        var open, close, my_src = "";
+        var spstr = e.target.id.replace('sister_','');
+        var open, close, my_src = '';
 
-        if (spstr === "Elder") { open = "Elder"; close = "Younger"; my_src = SISTER_ELDER2; }
-        else if (spstr === "Younger") { open = "Younger"; close = "Elder"; my_src = SISTER_YOUNGER2; }
+        if (spstr === 'Elder') { open = 'Elder'; close = 'Younger'; my_src = SISTER_ELDER2; }
+        else if (spstr === 'Younger') { open = 'Younger'; close = 'Elder'; my_src = SISTER_YOUNGER2; }
 
-        var target_open = document.getElementById("sister_" + open);  //點擊的圖翻面
-        var targettextbg_open = document.getElementById("text_bg_" + open);  //文字背景移入
-        var targettext_open = document.getElementById("text_" + open);  //文字移入
-        var target_close = document.getElementById("sister_" + close);  //另一張圖移出
-        var targetname_close = document.getElementById("name_" + close);  //另一張圖的名字移出
+        var target_open = document.getElementById('sister_' + open);  //點擊的圖翻面
+        var targettextbg_open = document.getElementById('text_bg_' + open);  //文字背景移入
+        var targettext_open = document.getElementById('text_' + open);  //文字移入
+        var target_close = document.getElementById('sister_' + close);  //另一張圖移出
+        var targetname_close = document.getElementById('name_' + close);  //另一張圖的名字移出
 
 
-        target_open.classList.add("flip");
-        target_open.classList.remove("click_point");
-        target_close.classList.add(close + "_fadeout");
-        targetname_close.classList.add("displaynone2");
+        target_open.classList.add('flip');
+        target_open.classList.remove('click_point');
+        target_close.classList.add(close + '_fadeout');
+        targetname_close.classList.add('displaynone2');
 
         var animEnd = function () {
             target_open.src = my_src;
-            target_open.classList.add("flip2");
+            target_open.classList.add('flip2');
 
-            target_close.classList.add("displaynone");
+            target_close.classList.add('displaynone');
 
-            targettextbg_open.classList.remove("displaynone");
-            targettextbg_open.classList.add(close + "_fadein");
+            targettextbg_open.classList.remove('displaynone');
+            targettextbg_open.classList.add(close + '_fadein');
 
-            targettext_open.classList.remove("displaynone");
-            targettext_open.classList.add(close + "_fadein");
+            targettext_open.classList.remove('displaynone');
+            targettext_open.classList.add(close + '_fadein');
             setTimeout(reset, 400)
         }
         setTimeout(animEnd, 400);
 
         var reset = function () {
-            target_close.classList.remove(close + "_fadeout");
-            target_close.classList.remove(close + "_fadein");
+            target_close.classList.remove(close + '_fadeout');
+            target_close.classList.remove(close + '_fadein');
         }
     }
 
     // 姊妹關閉介紹
     var click_close = function (e) {
-        var spstr = e.target.id.replace("cancel_","");
-        var open, close, my_src = "";
+        var spstr = e.target.id.replace('cancel_','');
+        var open, close, my_src = '';
 
-        if (spstr === "Elder") { open = "Younger"; close = "Elder"; my_src = SISTER_ELDER; }
-        else if (spstr === "Younger") { open = "Elder"; close = "Younger"; my_src = SISTER_YOUNGER; }
+        if (spstr === 'Elder') { open = 'Younger'; close = 'Elder'; my_src = SISTER_ELDER; }
+        else if (spstr === 'Younger') { open = 'Elder'; close = 'Younger'; my_src = SISTER_YOUNGER; }
 
-        var target_close = document.getElementById("sister_" + close);  //被點擊的圖翻回去
-        var targettextbg_close = document.getElementById("text_bg_" + close);  //背景移出
-        var targettext_close = document.getElementById("text_" + close);  //文字移出
-        var target_open = document.getElementById("sister_" + open);  //另一張圖挪回
-        var targetname_open = document.getElementById("name_" + open);  //另一張圖名字挪回
+        var target_close = document.getElementById('sister_' + close);  //被點擊的圖翻回去
+        var targettextbg_close = document.getElementById('text_bg_' + close);  //背景移出
+        var targettext_close = document.getElementById('text_' + close);  //文字移出
+        var target_open = document.getElementById('sister_' + open);  //另一張圖挪回
+        var targetname_open = document.getElementById('name_' + open);  //另一張圖名字挪回
 
 
-        target_close.classList.add("flip-reverse");
+        target_close.classList.add('flip-reverse');
 
-        targettextbg_close.classList.remove(open + "_fadein");
-        targettext_close.classList.remove(open + "_fadein");
-        targettextbg_close.classList.add(open + "_fadeout");
-        targettext_close.classList.add(open + "_fadeout");
+        targettextbg_close.classList.remove(open + '_fadein');
+        targettext_close.classList.remove(open + '_fadein');
+        targettextbg_close.classList.add(open + '_fadeout');
+        targettext_close.classList.add(open + '_fadeout');
 
         var animEnd = function () {
             target_close.src = my_src;
-            target_close.classList.add("flip2-reverse");
+            target_close.classList.add('flip2-reverse');
 
-            targettextbg_close.classList.add("displaynone");
-            targettext_close.classList.add("displaynone");
+            targettextbg_close.classList.add('displaynone');
+            targettext_close.classList.add('displaynone');
 
-            targetname_open.classList.remove("displaynone2");
-            target_open.classList.add(open + "_fadein");
-            target_open.classList.remove("displaynone");
-            target_close.classList.add("click_point");
+            targetname_open.classList.remove('displaynone2');
+            target_open.classList.add(open + '_fadein');
+            target_open.classList.remove('displaynone');
+            target_close.classList.add('click_point');
             setTimeout(reset, 400);
         }
         setTimeout(animEnd, 400);
 
         var reset = function () {
-            target_close.classList.remove("flip");
-            target_close.classList.remove("flip2");
-            target_close.classList.remove("flip-reverse");
-            target_close.classList.remove("flip2-reverse");
-            target_close.classList.remove(open + "_fadeout");
-            target_open.classList.remove(open + "_fadein");
+            target_close.classList.remove('flip');
+            target_close.classList.remove('flip2');
+            target_close.classList.remove('flip-reverse');
+            target_close.classList.remove('flip2-reverse');
+            target_close.classList.remove(open + '_fadeout');
+            target_open.classList.remove(open + '_fadein');
         }
     }
     return (

@@ -1,10 +1,10 @@
-import { useEffect,useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect,useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import article from "./assets/jsons/article.json";
+import article from './assets/jsons/article.json';
 import AdminLayout from './components/AdminLayout';
-import Layout from "./components/Layout";
-import ScrollToTop from "./components/ScrollToTop";
+import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 
 import Article from './pages/Article';
 import Board from './pages/Board';
@@ -17,25 +17,25 @@ import Edit from './pages/AdminEdit';
 import List from './pages/AdminList';
 import Login from './pages/AdminLogin';
 
-import Loading from "./components/Loading"; // 引入 Loading 组件
+import Loading from './components/Loading'; // 引入 Loading 组件
 
 const App = () => {
   const [loading, setLoading] = useState(true); // 添加 loading 状态
 
   const fetchMessages = async () => {
     
-      if (window.localStorage.getItem("ArticleAPI") == null) {
+      if (window.localStorage.getItem('ArticleAPI') == null) {
         const APIs = JSON.stringify(article.reverse());
-        window.localStorage.setItem("ArticleAPI", APIs);
+        window.localStorage.setItem('ArticleAPI', APIs);
       }
 
-      if (window.localStorage.getItem("UserInfo") == null) {
+      if (window.localStorage.getItem('UserInfo') == null) {
         const islogin = {
-          email: "",
-          username: "",
-          id: ""
+          email: '',
+          username: '',
+          id: ''
         }
-        window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
+        window.localStorage.setItem('UserInfo', JSON.stringify(islogin));
       }
     
   }

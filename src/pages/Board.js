@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "../style/Board.css";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../style/Board.css';
 
-import DATA_INTRO from "../assets/images/data_intro.svg";
-import DATA_PLAN from "../assets/images/data_plan.svg";
-import DEV_NEXT from "../assets/images/dev_next.svg";
-import DEV_PREV from "../assets/images/dev_prev.svg";
-import DEV_RIGHT from "../assets/images/dev_right.svg";
-import NEWS_BOTTOM from "../assets/images/news_bottom.svg";
-import news from "../assets/jsons/news.json";
+import DATA_INTRO from '../assets/images/data_intro.svg';
+import DATA_PLAN from '../assets/images/data_plan.svg';
+import DEV_NEXT from '../assets/images/dev_next.svg';
+import DEV_PREV from '../assets/images/dev_prev.svg';
+import DEV_RIGHT from '../assets/images/dev_right.svg';
+import NEWS_BOTTOM from '../assets/images/news_bottom.svg';
+import news from '../assets/jsons/news.json';
 
-import Title from "../components/Title";
+import Title from '../components/Title';
 
 var n = 0;
 var intervalID = 0;
@@ -35,19 +35,19 @@ const Board = () => {
         n = index;
     }
 
-    const mytab = ["ALL", "程式", "美術", "企劃"];
-    const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
+    const mytab = ['ALL', '程式', '美術', '企劃'];
+    const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
     const [tabDev, setTabDev] = useState(0);
     const [page, setpage] = useState(1);
     const Devs = [];
     const Devtop = [];
     const Devs_page = [];
-    var nowpage = "";
+    var nowpage = '';
     const scrollnum = document.body.clientWidth <= 834 ? 600 : 800;
 
 
     useEffect(() => {
-        PAGE_NEXT = document.getElementById("page_next");
+        PAGE_NEXT = document.getElementById('page_next');
     }, []);
 
     const Dev = [{ contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }];
@@ -71,7 +71,7 @@ const Board = () => {
             var len = 40;
             var mytext = Dev[i].contents[a].content;
             if (mytext.length > len) {
-                var text = mytext.substring(0, len - 1) + "...";
+                var text = mytext.substring(0, len - 1) + '...';
                 Dev[i].contents[a].content = text;
             }
         }
@@ -108,14 +108,14 @@ const Board = () => {
         let currentPage = nowPage;
         if (PAGE_NEXT != null) {
             if (currentPage === pageTotal) {
-                PAGE_NEXT.classList.remove("showbox");
+                PAGE_NEXT.classList.remove('showbox');
             }
             else if (currentPage > pageTotal) {
                 setpage(currentPage - 1);
                 currentPage = pageTotal;
             }
             else if (currentPage < pageTotal) {
-                PAGE_NEXT.classList.add("showbox");
+                PAGE_NEXT.classList.add('showbox');
             }
         }
         //顯示數量
@@ -131,7 +131,7 @@ const Board = () => {
         nowpage++;
         setpage(nowpage);
         if (document.body.clientWidth >= 430) {
-            window.scrollTo(0, document.getElementById("dev").offsetTop + scrollnum);
+            window.scrollTo(0, document.getElementById('dev').offsetTop + scrollnum);
         }
 
     }
@@ -141,7 +141,7 @@ const Board = () => {
         nowpage--;
         setpage(nowpage);
         if (document.body.clientWidth >= 430) {
-            window.scrollTo(0, document.getElementById("dev").offsetTop + scrollnum);
+            window.scrollTo(0, document.getElementById('dev').offsetTop + scrollnum);
         }
     }
 

@@ -1,10 +1,12 @@
-import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
+import { Outlet } from 'react-router-dom';
+import Nav from "./AdminNav";
+import Footer from './Footer';
 
 const AdminLayout = () => {
 
     return (
         <>
+            <Nav />
             <Outlet />
             <Footer />
         </>

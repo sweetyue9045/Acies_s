@@ -1,13 +1,13 @@
-import "../style/Team.css";
+import '../style/Team.css';
 
-import PHOTO_01 from "../assets/images/team_photo_01.png";
-import PHOTO_02 from "../assets/images/team_photo_02.png";
-import PHOTO_03 from "../assets/images/team_photo_03.png";
-import PHOTO_04 from "../assets/images/team_photo_04.png";
-import PHOTO_05 from "../assets/images/team_photo_05.png";
-import PHOTO_06 from "../assets/images/team_photo_06.svg";
+import PHOTO_01 from '../assets/images/team_photo_01.png';
+import PHOTO_02 from '../assets/images/team_photo_02.png';
+import PHOTO_03 from '../assets/images/team_photo_03.png';
+import PHOTO_04 from '../assets/images/team_photo_04.png';
+import PHOTO_05 from '../assets/images/team_photo_05.png';
+import PHOTO_06 from '../assets/images/team_photo_06.svg';
 
-import Title from "../components/Title";
+import Title from '../components/Title';
 
 const Team = () => {
 

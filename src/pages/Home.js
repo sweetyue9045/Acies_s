@@ -1,49 +1,49 @@
 import lottie from 'lottie-web';
-import { useEffect, useRef, useState } from "react";
-import "../style/Home.css";
+import { useEffect, useRef, useState } from 'react';
+import '../style/Home.css';
 
-import CRISIS_BOSS from "../assets/images/crisis_BOSS.mp4";
-import CRISIS_BEAR from "../assets/images/crisis_bear.png";
-import FEATURE_LOGO from "../assets/images/feature_logo.svg";
-import MAGIC_X from "../assets/images/magic_X_btn.mp4";
-import MAGIC_Y from "../assets/images/magic_Y_btn.mp4";
-import MAGIC_NEXT from "../assets/images/magic_next.svg";
-import MAGIC_PREV from "../assets/images/magic_prev.svg";
-import MAGIC_SIS from "../assets/images/magic_sis.png";
-import ORDEAL_GAME from "../assets/images/ordeal_game.mp4";
-import ORDEAL_STONE_L from "../assets/images/ordeal_stone_l.png";
-import ORDEAL_STONE_R from "../assets/images/ordeal_stone_r.png";
-import SALE_PS4 from "../assets/images/sale_PS4.svg";
-import SALE_BOTTOM from "../assets/images/sale_bottom.png";
-import SALE_STEAM from "../assets/images/sale_steam.svg";
-import SALE_SWITCH from "../assets/images/sale_switch.svg";
-import GIF from "../assets/images/start_gif.gif";
-import LOGO from "../assets/images/start_logo.svg";
-import LOGO_BG from "../assets/images/start_logo_bg.png";
-import PARALLAX from "../assets/images/start_parallax.png";
-import STORY_STAFF from "../assets/images/story_staff.png";
-import TOBII_EYE from "../assets/images/tobii_eye.svg";
-import arrowData from "../assets/lotties/arrow.json";
+import CRISIS_BOSS from '../assets/images/crisis_BOSS.mp4';
+import CRISIS_BEAR from '../assets/images/crisis_bear.png';
+import FEATURE_LOGO from '../assets/images/feature_logo.svg';
+import MAGIC_X from '../assets/images/magic_X_btn.mp4';
+import MAGIC_Y from '../assets/images/magic_Y_btn.mp4';
+import MAGIC_NEXT from '../assets/images/magic_next.svg';
+import MAGIC_PREV from '../assets/images/magic_prev.svg';
+import MAGIC_SIS from '../assets/images/magic_sis.png';
+import ORDEAL_GAME from '../assets/images/ordeal_game.mp4';
+import ORDEAL_STONE_L from '../assets/images/ordeal_stone_l.png';
+import ORDEAL_STONE_R from '../assets/images/ordeal_stone_r.png';
+import SALE_PS4 from '../assets/images/sale_PS4.svg';
+import SALE_BOTTOM from '../assets/images/sale_bottom.png';
+import SALE_STEAM from '../assets/images/sale_steam.svg';
+import SALE_SWITCH from '../assets/images/sale_switch.svg';
+import GIF from '../assets/images/start_gif.gif';
+import LOGO from '../assets/images/start_logo.svg';
+import LOGO_BG from '../assets/images/start_logo_bg.png';
+import PARALLAX from '../assets/images/start_parallax.png';
+import STORY_STAFF from '../assets/images/story_staff.png';
+import TOBII_EYE from '../assets/images/tobii_eye.svg';
+import arrowData from '../assets/lotties/arrow.json';
 
 
 var h_top = [];
 const Home = () => {
-    const phone = document.body.clientWidth > 430 ? "noPhone" : "yesPhone";
-    const [gifstyleTop, setGifstyleTop] = useState("")
-    const [arrowstyleTop, setAarrowstyleTop] = useState("")
-    const [arrowstyleDisplay, setArrowstyleDisplay] = useState("")
+    const phone = document.body.clientWidth > 430 ? 'noPhone' : 'yesPhone';
+    const [gifstyleTop, setGifstyleTop] = useState('')
+    const [arrowstyleTop, setAarrowstyleTop] = useState('')
+    const [arrowstyleDisplay, setArrowstyleDisplay] = useState('')
     const [num, setnum] = useState(0);
-    const [skill, setskill] = useState("凝聚之光");
+    const [skill, setskill] = useState('凝聚之光');
     const scrolltop = () => {
         h_top = [
-            document.getElementById("feature").offsetTop + 1305,
-            document.getElementById("story").offsetTop + 1305,
-            document.getElementById("tobii").offsetTop + 1305,
-            document.getElementById("magic").offsetTop + 1305,
-            document.getElementById("ordeal").offsetTop + 1305,
-            document.getElementById("crisis").offsetTop + 1305,
-            document.getElementById("awards").offsetTop + 1305,
-            document.getElementById("sale").offsetTop + 1305,
+            document.getElementById('feature').offsetTop + 1305,
+            document.getElementById('story').offsetTop + 1305,
+            document.getElementById('tobii').offsetTop + 1305,
+            document.getElementById('magic').offsetTop + 1305,
+            document.getElementById('ordeal').offsetTop + 1305,
+            document.getElementById('crisis').offsetTop + 1305,
+            document.getElementById('awards').offsetTop + 1305,
+            document.getElementById('sale').offsetTop + 1305,
         ];
     }
     //Lottie
@@ -74,85 +74,85 @@ const Home = () => {
         const offsetY = document.documentElement.scrollTop + document.body.scrollTop;
 
         //enter
-        setGifstyleTop(document.body.clientWidth <= 834 ? 0 : offsetY * 0.3 + "px");
-        setAarrowstyleTop(document.body.clientWidth <= 834 ? "40vw" : "calc(40vw + " + offsetY * 1.5 + "px)")
-        setArrowstyleDisplay(offsetY > 600 ? "none" : "flex")
+        setGifstyleTop(document.body.clientWidth <= 834 ? 0 : offsetY * 0.3 + 'px');
+        setAarrowstyleTop(document.body.clientWidth <= 834 ? '40vw' : 'calc(40vw + ' + offsetY * 1.5 + 'px)')
+        setArrowstyleDisplay(offsetY > 600 ? 'none' : 'flex')
 
         //視差滾動
         if (document.body.clientWidth > 834) {
             if (offsetY >= h_top[7] - 300 && offsetY <= h_top[7] + 10) {
                 for (let i = 0; i < 4; i++) {
                     setTimeout(function () {
-                        document.getElementById("sale").children[1].children[i].classList.add("fadein");
+                        document.getElementById('sale').children[1].children[i].classList.add('fadein');
                     }, 100 + i * 500);
                 }
             }
             else if (offsetY >= h_top[6] - 300 && offsetY <= h_top[6] + 10) {
                 for (let i = 0; i < 2; i++) {
                     setTimeout(function () {
-                        document.getElementById("awards").children[0].children[i].classList.add("fadein");
+                        document.getElementById('awards').children[0].children[i].classList.add('fadein');
                     }, 100 + i * 500);
                 }
             }
             else if (offsetY >= h_top[5] - 300 && offsetY <= h_top[5] + 10) {
                 setTimeout(function () {
                     for (let i = 0; i < 2; i++) {
-                        document.getElementById("crisis").children[0].children[0].children[i].classList.add("fadein");
+                        document.getElementById('crisis').children[0].children[0].children[i].classList.add('fadein');
                     }
                 }, 100);
                 setTimeout(function () {
-                    document.getElementById("crisis").children[0].children[1].classList.add("fadein");
+                    document.getElementById('crisis').children[0].children[1].classList.add('fadein');
                 }, 600);
             }
             else if (offsetY >= h_top[4] - 300 && offsetY <= h_top[4] + 10) {
                 setTimeout(function () {
-                    document.getElementById("ordeal").children[0].children[0].classList.add("fadein");
+                    document.getElementById('ordeal').children[0].children[0].classList.add('fadein');
                 }, 100);
                 setTimeout(function () {
                     for (let i = 0; i < 2; i++) {
-                        document.getElementById("ordeal").children[0].children[1].children[i].classList.add("fadein");
+                        document.getElementById('ordeal').children[0].children[1].children[i].classList.add('fadein');
                     }
                 }, 600);
             }
             else if (offsetY >= h_top[3] - 300 && offsetY <= h_top[3] + 10) {
                 setTimeout(function () {
                     for (let i = 0; i < 2; i++) {
-                        document.getElementById("magic").children[0].children[0].children[i].classList.add("fadein");
+                        document.getElementById('magic').children[0].children[0].children[i].classList.add('fadein');
                     }
                 }, 100);
                 setTimeout(function () {
-                    document.getElementById("magic").children[0].children[1].classList.add("fadein");
+                    document.getElementById('magic').children[0].children[1].classList.add('fadein');
                 }, 600);
             }
             else if (offsetY >= h_top[2] - 300 && offsetY <= h_top[2] + 10) {
                 setTimeout(function () {
                     for (let i = 0; i < 2; i++) {
-                        document.getElementById("tobii").children[i].classList.add("fadein");
+                        document.getElementById('tobii').children[i].classList.add('fadein');
                     }
                 }, 100);
                 for (let i = 2; i < 4; i++) {
                     setTimeout(function () {
-                        document.getElementById("tobii").children[i].classList.add("fadein");
+                        document.getElementById('tobii').children[i].classList.add('fadein');
                     }, 100 + (i - 1) * 500);
                 }
             }
             else if (offsetY >= h_top[1] - 300 && offsetY <= h_top[1] + 10) {
                 setTimeout(function () {
                     for (let i = 0; i < 2; i++) {
-                        document.getElementById("story").children[0].children[0].children[i].classList.add("fadein");
+                        document.getElementById('story').children[0].children[0].children[i].classList.add('fadein');
                     }
                 }, 100);
                 setTimeout(function () {
-                    document.getElementById("story").children[0].children[0].children[3].classList.add("fadein");
+                    document.getElementById('story').children[0].children[0].children[3].classList.add('fadein');
                 }, 500);
                 setTimeout(function () {
-                    document.getElementById("story").children[0].children[1].classList.add("fadein");
+                    document.getElementById('story').children[0].children[1].classList.add('fadein');
                 }, 1100);
             }
             else if (offsetY >= h_top[0] - 300 && offsetY <= h_top[0] + 10) {
                 for (let i = 0; i < 4; i++) {
                     setTimeout(function () {
-                        document.getElementById("feature").children[i].classList.add("fadein");
+                        document.getElementById('feature').children[i].classList.add('fadein');
                     }, 100 + i * 500);
                 }
             }

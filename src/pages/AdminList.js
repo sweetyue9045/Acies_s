@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { disableScroll, enableScroll } from '../components/ScrollUtils';
-import "../style/Admin.css";
-
-
-import Nav from "../components/AdminNav";
+import '../style/Admin.css';
 
 const List = () => {
-    const IsLogin = JSON.parse(window.localStorage.getItem("UserInfo"));
-    const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
+    const IsLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
+    const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
     const navigate = useNavigate();
 
     const [confirm_del, setConfirm_del] = useState(false);
@@ -18,8 +15,8 @@ const List = () => {
 
     useEffect(() => {
         const checkoutHandler = () => {
-            if (IsLogin.username === "") {
-                navigate("/admin")
+            if (IsLogin.username === '') {
+                navigate('/admin')
             }
         }
         checkoutHandler();
@@ -50,7 +47,7 @@ const List = () => {
         APIs.splice(APIs.indexOf(DEL), 1)
 
         setTimeout(() => {
-            window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
+            window.localStorage.setItem('ArticleAPI', JSON.stringify(APIs));
             setConfirm_del(false);
             setLoading(false)
             enableScroll()
@@ -66,7 +63,7 @@ const List = () => {
         });
 
         setTimeout(() => {
-            window.localStorage.setItem("ArticleAPI", JSON.stringify(APIs));
+            window.localStorage.setItem('ArticleAPI', JSON.stringify(APIs));
             setConfirm_publish(false);
             setLoading(false);
             enableScroll();
@@ -75,7 +72,6 @@ const List = () => {
 
     return (
         <>
-            <Nav />
             <div className="adminlist-container">
                 <Link to="/admin/add" className="add_link">
                     <div className="add_btn">

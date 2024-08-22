@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../style/Nav.css';
 import { disableScroll, enableScroll } from './ScrollUtils';
@@ -33,7 +33,7 @@ export default function Nav({ posi }) {
         nav.style.height = '100vh';
         nav.style.backgroundColor = '#000';
 
-        disableScroll()
+        disableScroll();
     }
 
     var click_close = (e)=>{
@@ -53,7 +53,7 @@ export default function Nav({ posi }) {
         nav.style.height = '10vw';
         nav.style.backgroundColor = 'transparent';
 
-        enableScroll()
+        enableScroll();
     }
 
     return (

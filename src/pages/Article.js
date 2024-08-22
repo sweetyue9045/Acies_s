@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import "../style/Article.css";
+import '../style/Article.css';
 
-import BACKNAV from "../assets/images/backnav.svg";
+import BACKNAV from '../assets/images/backnav.svg';
 
-import Title from "../components/Title";
+import Title from '../components/Title';
 
 // let arti_minHeight
 const Article = () => {
-    const APIs = JSON.parse(window.localStorage.getItem("ArticleAPI"));
+    const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
     const navigate= useNavigate();
 
     const { articleTitle } = useParams()
@@ -19,9 +19,9 @@ const Article = () => {
     const [arti_minHeight, setArti_minHeight] = useState()
     useEffect(() => {
         // document.body.scrollTo(0, 0);
-        const containerHeight = Number(getComputedStyle(document.getElementById("article")).marginTop.replace('px', ''))
-        const backnavHeight = Number(getComputedStyle(document.getElementById("backnav")).marginTop.replace('px', '')) + document.getElementById("backnav").offsetHeight + Number(getComputedStyle(document.getElementById("backnav")).marginBottom.replace('px', ''))
-        const footerHeight = document.getElementById("footer").offsetHeight
+        const containerHeight = Number(getComputedStyle(document.getElementById('article')).marginTop.replace('px', ''))
+        const backnavHeight = Number(getComputedStyle(document.getElementById('backnav')).marginTop.replace('px', '')) + document.getElementById('backnav').offsetHeight + Number(getComputedStyle(document.getElementById('backnav')).marginBottom.replace('px', ''))
+        const footerHeight = document.getElementById('footer').offsetHeight
 
         setArti_minHeight(document.body.clientHeight - containerHeight - backnavHeight - footerHeight)
     }, []);

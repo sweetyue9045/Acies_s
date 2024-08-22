@@ -1,19 +1,22 @@
-import { useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import "../style/AdminNav.css";
+import { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import '../style/AdminNav.css';
 
-import LOGO from "../assets/images/a_nav_logo.svg";
+import LOGO from '../assets/images/a_nav_logo.svg';
 
 export default function Nav({ bg, posi }) {
-    const IsLogin = JSON.parse(window.localStorage.getItem("UserInfo"));
+    const IsLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
     const navigate = useNavigate();
 
     useEffect(() => {
         const LogoutButton = () => {
-            if (IsLogin.username === "") {
-                document.getElementById("logout").style.display = "none";
+            if (IsLogin.username === '') {
+                document.getElementById('logout').style.display = 'none';
+                document.getElementById('nav').style.backgroundColor = 'transparent';
+                document.getElementById('nav').style.position ='absolute';
             } else {
-                document.getElementById("logout").style.display = "flex";
+                document.getElementById('logout').style.display = 'flex';
+                document.getElementById('nav').style= '';
             }
         }
         document.body.scrollTo(0, 0);
@@ -24,12 +27,12 @@ export default function Nav({ bg, posi }) {
     const Logout = async (e) => {
         e.preventDefault();
         const islogin = {
-            email: "",
-            username: "",
-            id: ""
+            email: '',
+            username: '',
+            id: ''
         }
-        window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
-        navigate("/admin");
+        window.localStorage.setItem('UserInfo', JSON.stringify(islogin));
+        navigate('/admin');
     };
 
     return (

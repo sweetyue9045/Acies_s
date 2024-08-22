@@ -489,7 +489,7 @@ input[type=file] {
     background-color: #BFBFBF;
 }
 
-.sub_btn_loading {
+.btn_loading {
     background-color: #9F9F9F;
     color: #000;
     cursor: default;
@@ -500,11 +500,11 @@ input[type=file] {
     align-items: center;
 }
 
-.sub_btn_loading .loader {
+.btn_loading .loader {
     margin-top: -12px;
 }
 
-.sub_btn_loading:hover {
+.btn_loading:hover {
     background-color: #9F9F9F;
 }
 
