@@ -23,7 +23,7 @@ const App = () => {
   const [loading, setLoading] = useState(true); // 添加 loading 状态
 
   const fetchMessages = async () => {
-    try {
+    
       if (window.localStorage.getItem("ArticleAPI") == null) {
         const APIs = JSON.stringify(article.reverse());
         window.localStorage.setItem("ArticleAPI", APIs);
@@ -37,15 +37,17 @@ const App = () => {
         }
         window.localStorage.setItem("UserInfo", JSON.stringify(islogin));
       }
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-    } finally {
-      setLoading(false);
-    }
+    
   }
 
   useEffect(() => {
-    fetchMessages();
+    const initialize = async () => {
+      await fetchMessages();
+      // 這裡可以加入其他的初始化邏輯，例如請求 API 等
+      setLoading(false); 
+    }
+
+    initialize();
   }, []);
 
   if (loading) {
