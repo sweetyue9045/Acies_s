@@ -59,7 +59,7 @@ const List = () => {
 
         APIs.forEach((x) => {
             if (x.id === ID) {
-                x.ispublish = true;
+                x.isPublish = true;
             }
         });
 
@@ -87,10 +87,10 @@ const List = () => {
                                 <div className="indi-left">
                                     <div className="indi-title">{data.title}</div>
                                     <div className="indi-category">#{data.category}</div>
-                                    <div className="indi-pin" style={{ backgroundColor: data.ispin ? "#000" : "#9E9E9E" }}></div>
+                                    <div className="indi-pin" style={{ backgroundColor: data.isPin ? "#000" : "#9E9E9E" }}></div>
                                     <div className="indi-del" onClick={(e) => { handleDeleteConfirm(e, true, data.id) }}></div>
                                 </div>
-                                {data.ispublish ?
+                                {data.isPublish ?
                                     <div className="indi-publish" style={{ backgroundColor: "#9E9E9E" }}>已發佈</div>
                                     :
                                     <div className="indi-publish" onClick={(e) => { handlePublishConfirm(e, true, data.id) }} style={{ backgroundColor: "#000" }}>發佈</div>

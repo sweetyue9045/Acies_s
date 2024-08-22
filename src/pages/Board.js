@@ -52,16 +52,16 @@ const Board = () => {
     const Dev = [{ contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }];
     APIs.forEach((dev) => {
         for (let i = 0; i < mytab.length; i++) {
-            if (dev.category === mytab[i] && dev.ispublish === true)
-                if (dev.ispin === false) Dev[i].contents.push(dev);
+            if (dev.category === mytab[i] && dev.isPublish === true)
+                if (dev.isPin === false) Dev[i].contents.push(dev);
                 else Dev[i].top.push(dev);
         }
 
     }
     )
     APIs.forEach((dev) => {
-        if (dev.ispublish === true)
-            if (dev.ispin === false) Dev[0].contents.push(dev);
+        if (dev.isPublish === true)
+            if (dev.isPin === false) Dev[0].contents.push(dev);
             else Dev[0].top.push(dev);
     }
     )
