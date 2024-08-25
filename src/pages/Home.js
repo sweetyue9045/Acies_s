@@ -105,7 +105,7 @@ const Home = () => {
 
             Object.keys(sectionOffsets.current).forEach(selector => {
                 const offset = sectionOffsets.current[selector];
-                if (scrollY >= offset - 300 && scrollY <= offset + 50) {
+                if (scrollY >= offset - 200 && scrollY <= offset + 50) {
                     addFadeIn(`${selector} .fadein-element`, 100);
                 }
             });

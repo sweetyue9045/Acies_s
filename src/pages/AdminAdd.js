@@ -36,7 +36,6 @@ const Add = () => {
             ...prevData,
             [name]: type === 'file' ? files[0] : value
         }));
-        console.log(formData)
     };
 
     const validateForm = () => {
