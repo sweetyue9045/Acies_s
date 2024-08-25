@@ -10,7 +10,7 @@ export default function Nav({ bg, posi }) {
 
     useEffect(() => {
         const LogoutButton = () => {
-            if (IsLogin.username === '') {
+            if (IsLogin.userName === '') {
                 document.getElementById('logout').style.display = 'none';
                 document.getElementById('nav').style.backgroundColor = 'transparent';
                 document.getElementById('nav').style.position ='absolute';
@@ -28,7 +28,7 @@ export default function Nav({ bg, posi }) {
         e.preventDefault();
         const islogin = {
             email: '',
-            username: '',
+            userName: '',
             id: ''
         }
         window.localStorage.setItem('UserInfo', JSON.stringify(islogin));
@@ -49,9 +49,9 @@ export default function Nav({ bg, posi }) {
             </div>
             <div className="nav-right">
                 <div className="user">
-                    {IsLogin.username === ""
+                    {IsLogin.userName === ""
                         ? ``
-                        : IsLogin.username
+                        : IsLogin.userName
                     }
                 </div>
                 <input id="logout" type="button" value="登出" onClick={Logout} className="login-btn" />

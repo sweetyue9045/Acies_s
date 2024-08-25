@@ -27,7 +27,7 @@
     },
     {
         "category": "程式",
-        "img": "dev_programTop.png",
+        "img": "dev_program_top.png",
         "title":  "眼動儀設置",
         "content": "從初期所有討論，主題、載體和分享製作畢專的心得，與老師討論的紀錄。",
         "writer": "欣",
@@ -92,7 +92,7 @@
     },
     {
         "category": "美術",
-        "img": "dev_artTop.png",
+        "img": "dev_art_top.png",
         "title":  "場景設計介紹",
         "content": "從初期所有討論，主題、載體和分享製作畢專的心得，與老師討論的紀錄。",
         "writer": "楨",
@@ -144,7 +144,7 @@
     },
     {
         "category": "企劃",
-        "img": "dev_levelTop.png",
+        "img": "dev_level_top.png",
         "title":  "世界觀介紹",
         "content": "從初期所有討論，主題、載體和分享製作畢專的心得，與老師討論的紀錄。",
         "writer": "欣",

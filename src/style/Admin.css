@@ -57,7 +57,7 @@
     padding: 50px 120px;
 }
 
-.login-container .title {
+.login-container .login-title {
     font-size: var(--fz28);
     letter-spacing: 8px;
     filter: drop-shadow(0 0 5px #FFFEF3);
@@ -378,12 +378,12 @@
     color: #9E9E9E !important;
 }
 
-#articlelist {
+.article-list {
     text-align: left;
     margin-top: 40px;
 }
 
-#title {
+.article-title {
     padding: 10px 30px 14px;
     font-size: var(--fz28);
     letter-spacing: 5px;
@@ -395,13 +395,15 @@
     width: 100%;
 }
 
-input[type=file] {
-    opacity: 0;
-    width: 0;
-    height: 0;
+#input-file{
+    position: absolute;
+    display: block;
+    width: 200px;
+    height: 45px;
+    z-index: -10;
 }
 
-#img {
+.article-img {
     margin-top: 40px;
     display: flex;
     align-items: center;
@@ -409,24 +411,24 @@ input[type=file] {
     cursor: pointer;
 }
 
-#img .imgsvg {
+.article-img .imgsvg {
     width: 30px;
     height: 30px;
     background-color: rgba(0, 0, 0, 1);
 }
 
-#img:hover .imgsvg {
+.article-img:hover .imgsvg {
     background-color: #BFBFBF;
 }
 
-#img .imgtext {
+.article-img .imgtext {
     font-weight: normal;
     font-size: var(--fz28);
     letter-spacing: 5px;
     margin: -4px -3px 0 15px;
 }
 
-#content {
+.article-content {
     margin-top: 40px;
     padding: 25px 30px;
     font-size: var(--fz18);
@@ -449,18 +451,20 @@ input[type=file] {
     margin-top: 40px;
 }
 
-#category {
+.article-category {
     color: #fff;
     text-align: left;
 }
 
-#category input {
-    display: none;
-    width: 0;
-    height: 0;
+.category-input{
+    position: absolute;
+    top: 20px;
+    left: 90px;
+    height: 20px;
+    z-index: -10;
 }
 
-.categorytext {
+.category-text {
     background-color: #BFBFBF;
     font-size: var(--fz18);
     letter-spacing: 3px;
@@ -471,7 +475,7 @@ input[type=file] {
     margin-right: 30px;
 }
 
-#category input:checked+.categorytext {
+.article-category input:checked+.category-text {
     background-color: #000;
 }
 
@@ -581,13 +585,13 @@ input[type=file] {
         align-items: flex-end;
     }
 
-    #category {
+    .article-category {
         width: 100%;
         display: flex;
         justify-content: space-between;
     }
 
-    .categorytext {
+    .category-text {
         padding: 4px 22px 6px 24px;
         margin-right: 0;
     }

@@ -43,25 +43,18 @@
     width: 2.36vw;
 }
 
-.game-container .fadein {
-    transform: translateY(0px) !important;
-    opacity: 1 !important;
-    transition: all .5s ease;
-}
-
 .game-container {
     overflow-x: hidden;
 }
 
 /* world */
 
-.world {
+.world-section {
     width: 100%;
     min-height: 40.76vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
     background-image: url("../assets/images/world_bg.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -70,13 +63,12 @@
 }
 
 
-.world .title {
-    opacity: 0;
+.world-section .title {
     margin-top: 100px;
 
 }
 
-.world .content {
+.world-section .world-content {
     width: 54.86vw;
     max-width: 790px;
     font-size: var(--fz28);
@@ -85,12 +77,11 @@
     line-height: 75px;
     margin-top: 70px;
     filter: drop-shadow(0 0 5px #FFFEF3);
-    opacity: 0;
 }
 
 /* village */
 
-.village {
+.village-section {
     width: 100%;
     height: 55.56vw;
     max-height: 800px;
@@ -100,7 +91,7 @@
     margin-top: 300px;
 }
 
-.village .content {
+.village-section .village-content {
     width: 100%;
     max-width: 1440px;
     height: 48.61vw;
@@ -111,60 +102,59 @@
     padding: 0 5%;
 }
 
-.village .logo {
+.village-section .village-item {
     width: 18.06vw;
     max-width: 260px;
     height: 18.06vw;
     max-height: 260px;
     transform: translateY(-100px);
-    opacity: 0;
 }
 
-.village .village-mossina {
+.village-section #village-mossina {
     filter: drop-shadow(0 0 5px #FFFEF3);
 }
 
-.village .village-scale {
+.village-section #village-scale {
     filter: drop-shadow(0 0 5px #64C7FF);
 }
 
-.village .village-afeite {
+.village-section #village-afeite {
     filter: drop-shadow(0 0 5px #FFCA42);
 }
 
-.village .village-tama {
+.village-section #village-tama {
     filter: drop-shadow(0 0 5px #FF645A);
 }
 
-.village .village-hr {
+.village-section .village-divider {
     left: 0;
     width: 2px;
     height: 10.07vw;
     max-height: 145px;
     background-image: none;
     border-left: solid 2px #fff;
-    opacity: 0;
     transition: all .5s ease;
+    opacity: 0;
 }
 
-.village .village-bg {
+.village-section .village-bg {
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    opacity: 0;
     transition: all .5s ease;
     width: 130%;
+    opacity: 0;
 }
 
-.village .village-logo {
+.village-section .village-logo {
     height: 8.47vw;
     max-height: 125px;
     transition: all .5s ease;
     margin-bottom: 50px;
 }
 
-.village .village-en {
+.village-section .village-english {
     font-size: var(--fz32);
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -173,7 +163,7 @@
     margin-right: -1px;
 }
 
-.village .village-in {
+.village-section .village-description {
     width: 15.63vw;
     max-width: 225px;
     height: 0;
@@ -187,7 +177,7 @@
     transition: all .2s ease;
 }
 
-.village .village-ch {
+.village-section .village-chinese {
     font-size: var(--fz14);
     margin-top: 0px;
     transition: all .3s .5s ease;
@@ -195,34 +185,34 @@
     margin-right: -1px;
 }
 
-.village .logo:hover .village-bg {
+.village-section .village-item:hover .village-bg {
     opacity: 1;
 }
 
-.village .logo:hover .village-logo {
+.village-section .village-item:hover .village-logo {
     height: 4.24vw;
     max-height: 61px;
     margin-bottom: 30px;
     margin-top: -20px;
 }
 
-.village .logo:hover .village-en {
+.village-section .village-item:hover .village-english {
     transition: all .3s .5s ease;
 }
 
-.village .logo:hover .village-in {
+.village-section .village-item:hover .village-description {
     opacity: 1;
     transition: all .5s .5s ease;
     margin-top: 20px;
     margin-bottom: 120px;
 }
 
-.village .logo:hover .village-ch {
+.village-section .village-item:hover .village-chinese {
     transition: all .3s .5s ease;
 }
 
 /* sister */
-.sister {
+.sister-section {
     margin: 200px 0;
     display: flex;
     justify-content: center;
@@ -249,7 +239,6 @@
     flex-direction: column;
     margin-top: 80px;
     transform: translateY(-100px);
-    opacity: 0;
     display: flex;
     align-items: center;
 }
@@ -459,10 +448,6 @@
     }
 }
 
-.hidden {
-    display: none !important;
-}
-
 .sister-name-hidden {
     opacity: 0 !important;
 }
@@ -490,12 +475,12 @@
         margin: -4px 10px 0 23px;
     }
 
-    .world {
+    .world-section {
         margin-top: 80px;
         min-height: 55vw;
     }
 
-    .world .content {
+    .world-section .world-content {
         width: 61.66vw;
         font-size: var(--fz20);
         letter-spacing: 5px;
@@ -503,50 +488,50 @@
         line-height: 40px;
     }
 
-    .village {
+    .village-section {
         margin-top: 150px;
     }
 
-    .village .village-logo {
+    .village-section .village-logo {
         margin-bottom: 30px;
     }
 
-    .village .village-en {
+    .village-section .village-english {
         font-size: var(--fz18);
         letter-spacing: 3px;
         margin-right: -1px;
     }
 
-    .village .village-ch {
+    .village-section .village-chinese {
         font-size: 12px;
     }
 
-    .village .village-in {
+    .village-section .village-description {
         font-size: 14px;
         line-height: 24px;
     }
 
-    .village .logo:hover .village-logo {
+    .village-section .village-item:hover .village-logo {
         height: 4.24vw;
         margin-bottom: 10px;
         margin-top: -40px;
     }
 
-    .village .logo:hover .village-in {
+    .village-section .village-item:hover .village-description {
         margin-top: 20px;
         margin-bottom: 120px;
     }
 
-    .world .title,
-    .world .content,
-    .village .logo,
-    .village .village-hr,
+    .world-section .title,
+    .world-section .world-content,
+    .village-section .village-item,
+    .village-section .village-divider,
     .sister-card {
         transform: translateY(0px);
         opacity: 1;
     }
 
-    .sister {
+    .sister-section {
         margin: 100px 0;
     }
 
@@ -578,33 +563,33 @@
 }
 
 @media only screen and (min-width: 0px) and (max-width: 430px) {
-    .world {
+    .world-section {
         height: 125vw;
         margin-top: 0;
     }
 
-    .world .content {
+    .world-section .world-content {
         width: 77.78vw;
     }
 
-    .village {
+    .village-section {
         margin-top: 50px;
         height: 250vw;
         max-height: 250vw;
     }
 
-    .village .content {
+    .village-section .village-content {
         height: 250vw;
         max-height: 250vw;
         flex-direction: column;
         margin-top: 50px;
     }
 
-    .village .village-hr {
+    .village-section .village-divider {
         display: none;
     }
 
-    .village .logo {
+    .village-section .village-item {
         width: 40vw;
         max-width: auto;
         height: 40vw;
@@ -612,25 +597,25 @@
         margin: 20px 0;
     }
 
-    .village .village-logo {
+    .village-section .village-logo {
         height: 25vw;
     }
 
-    .village .logo:hover .village-logo {
+    .village-section .village-item:hover .village-logo {
         height: 25vw;
         margin-top: -20px;
     }
 
-    .village .village-in {
+    .village-section .village-description {
         width: 80vw;
         max-width: auto;
     }
 
-    .village .logo:hover .village-in {
+    .village-section .village-item:hover .village-description {
         margin-bottom: 100px
     }
 
-    .sister {
+    .sister-section {
         margin: 120px 0 50px;
         overflow-x: hidden;
     }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { disableScroll, enableScroll } from '../components/ScrollUtils';
 import '../style/Admin.css';
@@ -11,18 +11,20 @@ const List = () => {
     const [showDeleteConfirm, setDeleteConfirm] = useState(false);
     const [showPublishConfirm, setPublishConfirm] = useState(false);
     const [ID, setID] = useState();
-    const [Loading, setLoading] = useState(false)
+    const [Loading, setLoading] = useState(false);
+
+    // 使用 useRef 來獲取對話框的 DOM 元素
+    const deleteConfirmRef = useRef(null);
+    const publishConfirmRef = useRef(null);
 
     useEffect(() => {
         const checkoutHandler = () => {
             if (IsLogin.username === '') {
-                navigate('/admin')
+                navigate('/admin');
             }
-        }
+        };
         checkoutHandler();
-    }, [IsLogin, navigate])
-
-
+    }, [IsLogin, navigate]);
 
     const handleDeleteConfirm = (e, open, id) => {
         e.stopPropagation();
@@ -81,62 +83,79 @@ const List = () => {
                     </div>
                 </Link>
                 <div className="article">
-                    {APIs.map((data, index) => (
+                    {APIs.map((data) => (
                         <Link to={`/admin/edit/${data.id}`} key={data.id}>
                             <div className="indi-arti">
                                 <div className="indi-left">
                                     <div className="indi-title">{data.title}</div>
                                     <div className="indi-category">#{data.category}</div>
                                     <div className="indi-pin" style={{ backgroundColor: data.isPin ? "#000" : "#9E9E9E" }}></div>
-                                    <div className="indi-del" onClick={(e) => { handleDeleteConfirm(e, true, data.id) }}></div>
+                                    <div className="indi-del" onClick={(e) => handleDeleteConfirm(e, true, data.id)}></div>
                                 </div>
                                 {data.isPublish ?
                                     <div className="indi-publish" style={{ backgroundColor: "#9E9E9E" }}>已發佈</div>
                                     :
-                                    <div className="indi-publish" onClick={(e) => { handlePublishConfirm(e, true, data.id) }} style={{ backgroundColor: "#000" }}>發佈</div>
+                                    <div className="indi-publish" onClick={(e) => handlePublishConfirm(e, true, data.id)} style={{ backgroundColor: "#000" }}>發佈</div>
                                 }
                             </div>
                         </Link>
                     ))}
                 </div>
             </div>
-            <div className="confirm" id="confirm-del" style={showDeleteConfirm ? { diplay: "flex" } : { display: "none" }}>
+            <div
+                className="confirm"
+                ref={deleteConfirmRef}
+                style={{ display: showDeleteConfirm ? 'flex' : 'none' }}
+            >
                 <div className="confirm-box">
                     <div className="confirm-title">確定刪除嗎</div>
                     <div className="btn-group">
-                        <div className="btn btn-no" onClick={() => {
-                            setDeleteConfirm(false);
-                            setLoading(false);
-                            enableScroll();
-                        }}>取消</div>
+                        <div
+                            className="btn btn-no"
+                            onClick={() => {
+                                setDeleteConfirm(false);
+                                setLoading(false);
+                                enableScroll();
+                            }}
+                        >
+                            取消
+                        </div>
                         {Loading ?
                             <div className="btn btn-loading"><div className="loader"></div></div>
                             :
-                            <div className="btn btn-yes" onClick={() => { confirmDelete() }}>確定</div>
+                            <div className="btn btn-yes" onClick={confirmDelete}>確定</div>
                         }
-
                     </div>
                 </div>
             </div>
-            <div className="confirm" id="confirm-publish" style={showPublishConfirm ? { diplay: "flex" } : { display: "none" }}>
+            <div
+                className="confirm"
+                ref={publishConfirmRef}
+                style={{ display: showPublishConfirm ? 'flex' : 'none' }}
+            >
                 <div className="confirm-box">
                     <div className="confirm-title">確定發佈嗎</div>
                     <div className="btn-group">
-                        <div className="btn btn-no" onClick={() => {
-                            setPublishConfirm(false);
-                            setLoading(false)
-                            enableScroll()
-                        }}>取消</div>
+                        <div
+                            className="btn btn-no"
+                            onClick={() => {
+                                setPublishConfirm(false);
+                                setLoading(false);
+                                enableScroll();
+                            }}
+                        >
+                            取消
+                        </div>
                         {Loading ?
                             <div className="btn btn-loading"><div className="loader"></div></div>
                             :
-                            <div className="btn btn-yes" onClick={() => { confirmPublish() }}>確定</div>
+                            <div className="btn btn-yes" onClick={confirmPublish}>確定</div>
                         }
                     </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default List;

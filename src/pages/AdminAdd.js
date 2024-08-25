@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/Admin.css';
 
@@ -6,124 +6,147 @@ import IMG_CROSS from '../assets/images/add_cross.svg';
 import IMG_PLUS from '../assets/images/add_plus.svg';
 
 const Add = () => {
-    const IsLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
+    const isLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
     const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
     const navigate = useNavigate();
 
-    const [title, settitle] = useState('');
-    const [img, setimg] = useState('新增封面圖片');
-    const [content, setcontent] = useState('');
-    const [category, setcategory] = useState('');
-    const [loading, setloading] = useState(false)
-    const style = {};
-    var Today = new Date();
+    const [formData, setFormData] = useState({
+        title: '',
+        img: '新增封面圖片',
+        content: '',
+        category: ''
+    });
+    const [loading, setLoading] = useState(false);
+
+    const imgInputRef = useRef(null);
+    const imgLabelRef = useRef(null);
+    const titleInputRef = useRef(null);
+    const contentTextareaRef = useRef(null);
 
     useEffect(() => {
-        const checkoutHandler = () => {
-            if (IsLogin.username === '') {
-                navigate('/admin')
-            }
+        if (isLogin.username === '') {
+            navigate('/admin');
         }
-        checkoutHandler();
-    }, [IsLogin, navigate])
+        imgInputRef.current.style.top = imgLabelRef.current.offsetTop - 5 + 'px';
+    }, [isLogin, navigate]);
 
+    const handleChange = (e) => {
+        const { name, value, type, files } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: type === 'file' ? files[0] : value
+        }));
+        console.log(formData)
+    };
 
+    const validateForm = () => {
+        const { title, img, content, category } = formData;
+        return title && img !== '新增封面圖片' && content && category;
+    };
 
-    if (img === '新增封面圖片') style.WebkitMaskImage = style.maskImage = `url(${IMG_PLUS})`;
-    else style.WebkitMaskImage = style.maskImage = `url(${IMG_CROSS})`;
-
-    const handlePostMessage = async () => {
-        if (title === '') {
-            window.scrollTo(0, document.getElementById('title').offsetTop + 200);
-            setTimeout(function () {
-                alert('請填入標題');
-            }, 100);
-        }
-        else if (img === '新增封面圖片') {
-            window.scrollTo(0, document.getElementById('img').offsetTop + 200);
-            setTimeout(function () {
-                alert('請選擇圖片');
-            }, 100);
-        }
-        else if (content === '') {
-            window.scrollTo(0, document.getElementById('content').offsetTop + 200);
-            setTimeout(function () {
-                alert('請填入內文');
-            }, 100);
-        }
-        else if (category === '') {
-            window.scrollTo(0, document.getElementById('form-bottom').offsetTop + 200);
-            setTimeout(function () {
-                alert('請選擇分類');
-            }, 100);
-        }
+    const handlePostMessage = async (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
 
         const articles = {
-            category: category,
-            img: img.name,
-            title: title,
+            category: formData.category,
+            img: formData.img.name,
+            title: formData.title,
             id: APIs.length + 1,
-            content: content,
-            writer: IsLogin.username,
-            writeTime: Today.getFullYear() + '.' + (Today.getMonth() + 1) + '.' + Today.getDate(),
+            content: formData.content,
+            writer: isLogin.username,
+            writeTime: new Date().toLocaleDateString(),
             editer: '',
             editTime: '',
             isPublish: false,
             isPin: false
         };
 
-        if (title !== '' && img !== '新增封面圖片' && content !== '' && category !== '') {
-            setloading(true)
+        setLoading(true);
+        const newAPI = [...APIs, articles];
+        window.localStorage.setItem('ArticleAPI', JSON.stringify(newAPI));
 
-            const newAPI = APIs.reverse()
-            newAPI.push(articles)
+        setTimeout(() => {
+            setLoading(false);
+            navigate('/admin/list');
+        }, 1000);
+    };
 
-            window.localStorage.setItem('ArticleAPI', JSON.stringify(newAPI));
-            setTimeout(() => {
-                navigate('/admin/list')
-            }, 1000);
-        }
-    }
+    const imgStyle = {
+        WebkitMaskImage: formData.img === '新增封面圖片' ? `url(${IMG_PLUS})` : `url(${IMG_CROSS})`,
+        maskImage: formData.img === '新增封面圖片' ? `url(${IMG_PLUS})` : `url(${IMG_CROSS})`
+    };
+
     return (
-        <>
-            <div className="add-container">
-                <div className="title">
-                    <div className="title-text">新增文章</div>
-                </div>
-                <form id="articlelist">
-                    <input id="title" placeholder="請輸入標題" onChange={(event) => settitle(event.target.value)} maxLength="10" required />
-                    <input className="input-file" id="input-file" type="file" accept="image/jpeg,image/png,image/gif"
-                        onChange={(event) => {
-                            setimg(event.target.files[0]);
-                        }} required />
-                    <label id="img" htmlFor="input-file" style={{ width: "fit-content" }}>
-                        <span className="imgsvg" style={style}></span>
-                        {img === "新增封面圖片" ?
-                            <span className="imgtext" id="imgtext">{img}</span>
-                            :
-                            <span className="imgtext" id="imgtext">{img.name}</span>
-                        }
-                    </label>
-                    <textarea id="content" placeholder="開始填寫內容" onChange={(event) => setcontent(event.target.value)} required />
-                    <div className="form-bottom" id="form-bottom">
-                        <div id="category">
-                            <input name="category-list" id="category-01" type="radio" value="程式" onChange={(event) => setcategory(event.target.value)} required />
-                            <label className="categorytext" htmlFor="category-01">#程式</label>
-                            <input name="category-list" id="category-02" type="radio" value="美術" onChange={(event) => setcategory(event.target.value)} />
-                            <label className="categorytext" htmlFor="category-02">#美術</label>
-                            <input name="category-list" id="category-03" type="radio" value="企劃" onChange={(event) => setcategory(event.target.value)} />
-                            <label className="categorytext" htmlFor="category-03">#企劃</label>
-                        </div>
-                        {loading ?
-                            <div className="sub-btn btn-loading"><div className="loader"></div></div>
-                            :
-                            <div className="sub-btn" onClick={() => { handlePostMessage(); }}>儲存</div>
-                        }
-                    </div>
-                </form>
+        <div className="add-container">
+            <div className="title">
+                <div className="title-text">新增文章</div>
             </div>
-        </>
-    )
-}
+            <form id="article-list" onSubmit={handlePostMessage}>
+                <input
+                    ref={titleInputRef}
+                    className="article-title"
+                    name="title"
+                    placeholder="請輸入標題"
+                    onChange={handleChange}
+                    maxLength="10"
+                    required
+                />
+                <input
+                    ref={imgInputRef}
+                    id="input-file"
+                    name="img"
+                    type="file"
+                    accept="image/jpeg,image/png,image/gif"
+                    onChange={handleChange}
+                    required
+                />
+                <label ref={imgLabelRef} className="article-img" htmlFor="input-file" style={{ width: "fit-content" }}>
+                    <span className="imgsvg" style={imgStyle}></span>
+                    <span className="imgtext" id="imgtext">
+                        {formData.img instanceof File ? formData.img.name : formData.img}
+                    </span>
+                </label>
+                <textarea
+                    ref={contentTextareaRef}
+                    className="article-content"
+                    name="content"
+                    placeholder="開始填寫內容"
+                    onChange={handleChange}
+                    required
+                />
+                <div className="form-bottom" id="form-bottom">
+                    <div className="article-category">
+                        {['程式', '美術', '企劃'].map((category) => (
+                            <>
+                                <input
+                                    name="category"
+                                    id={`category-${category}`}
+                                    className="category-input"
+                                    type="radio"
+                                    value={category}
+                                    checked={formData.category === category}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <label className="category-text" htmlFor={`category-${category}`}>
+                                    #{category}
+                                </label>
+                            </>
+                        ))}
+                    </div>
+                    {loading ? (
+                        <div className="sub-btn btn-loading">
+                            <div className="loader"></div>
+                        </div>
+                    ) : (
+
+                        <button type="submit" className="sub-btn">儲存</button>
+                    )}
+                </div>
+            </form>
+        </div>
+    );
+};
 
 export default Add;

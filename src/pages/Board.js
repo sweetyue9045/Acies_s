@@ -41,7 +41,7 @@ const Board = () => {
     const Devs = [];
     const Devtop = [];
     const Devs_page = [];
-    var nowpage = '';
+    var nowPage = '';
     const scrollnum = document.body.clientWidth <= 834 ? 600 : 800;
 
 
@@ -49,20 +49,24 @@ const Board = () => {
         pageNext = document.getElementById('page-next');
     }, []);
 
-    const Dev = [{ contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }, { contents: [], top: [] }];
+    const Dev = Array.from({ length: 4 }, () => ({ contents: [], top: [] }));
     APIs.forEach((dev) => {
-        for (let i = 0; i < mytab.length; i++) {
-            if (dev.category === mytab[i] && dev.isPublish === true)
-                if (dev.isPin === false) Dev[i].contents.push(dev);
-                else Dev[i].top.push(dev);
+        if (dev.isPublish) {
+            const categoryIndex = mytab.indexOf(dev.category);
+            if (categoryIndex !== -1) {
+                if (dev.isPin) {
+                    Dev[categoryIndex].top.push(dev);
+                } else {
+                    Dev[categoryIndex].contents.push(dev);
+                }
+            }
         }
-
-    }
-    )
+    })
     APIs.forEach((dev) => {
-        if (dev.isPublish === true)
-            if (dev.isPin === false) Dev[0].contents.push(dev);
-            else Dev[0].top.push(dev);
+        if (dev.isPublish) {
+            if (dev.isPin) { Dev[0].top.push(dev); }
+            else { Dev[0].contents.push(dev); }
+        }
     }
     )
     for (let i = 0; i < Dev.length; i++) {
@@ -75,74 +79,60 @@ const Board = () => {
             }
         }
     }
+    const maxLength = 40;
+    Dev.forEach(dev => {
+        if (dev.contents.length > maxLength) {
+            dev.contents = dev.contents.substring(0, maxLength - 1) + '...';
+        }
+    });
 
     if (tabDev === 0) {
-        //Top
-        Devtop.push(Dev[tabDev].top[0]);
-        //content
-        for (let indexs = 0; indexs < Dev.length; indexs++) {
-            Dev[indexs].contents.map(
-                (devs) => Devs.push(devs)
-            )
-        }
+        Devtop.push(...Dev[tabDev].top.slice(0, 1));
+        Devs.push(...Dev.flatMap(dev => dev.contents));
         pagination(Dev[0].contents, page);
     } else {
-        Dev[tabDev].top.map(
-            (devs) => Devtop.push(devs)
-        )
-        Dev[tabDev].contents.map(
-            (devs) => Devs.push(devs)
-        )
+        Devtop.push(...Dev[tabDev].top);
+        Devs.push(...Dev[tabDev].contents);
         pagination(Dev[tabDev].contents, page);
     }
 
     function pagination(jsonData, nowPage) {
-        // 資料長度
+        const perPage = 4;
         const dataTotal = jsonData.length;
-        // 數量
-        const perpage = 4;
-        // page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
-        const pageTotal = Math.ceil(dataTotal / perpage);
-        // 當前頁數，對應現在當前頁數
+        const pageTotal = Math.ceil(dataTotal / perPage);
         let currentPage = nowPage;
-        if (pageNext != null) {
-            if (currentPage === pageTotal) {
-                pageNext.classList.remove('showbox');
-            }
-            else if (currentPage > pageTotal) {
-                setpage(currentPage - 1);
-                currentPage = pageTotal;
-            }
-            else if (currentPage < pageTotal) {
-                pageNext.classList.add('showbox');
-            }
+    
+        // 確保當前頁碼在有效範圍內
+        if (currentPage > pageTotal) {
+            currentPage = pageTotal;
+            setpage(currentPage);
         }
-        //顯示數量
-        var minData = (currentPage * perpage) - perpage;
-        var maxData = (currentPage * perpage) - 1;
-        if (maxData >= dataTotal) maxData = dataTotal - 1;
-        for (let indexs = minData; indexs <= maxData; indexs++) {
-            Devs_page.push(Devs[indexs]);
+        
+        if (pageNext) {
+            pageNext.classList.toggle('showbox', currentPage < pageTotal);
         }
+    
+        // 計算顯示的數據範圍
+        const minData = (currentPage - 1) * perPage;
+        const maxData = Math.min(currentPage * perPage, dataTotal);
+        
+        // 更新 Devs_page
+        Devs_page.push(...jsonData.slice(minData, maxData));
     }
-    const next = () => {
-        nowpage = page;
-        nowpage++;
-        setpage(nowpage);
-        if (document.body.clientWidth >= 430) {
-            window.scrollTo(0, document.getElementById('dev').offsetTop + scrollnum);
-        }
-
-    }
-
-    const pre = () => {
-        nowpage = page;
-        nowpage--;
-        setpage(nowpage);
+    
+    function changePage (direction) {
+        nowPage = page + direction; // 根據方向增加或減少頁碼
+        setpage(nowPage); // 更新頁碼
+    
+        // 處理滾動
         if (document.body.clientWidth >= 430) {
             window.scrollTo(0, document.getElementById('dev').offsetTop + scrollnum);
         }
     }
+    
+    const next = () => changePage(1); // 頁碼加一
+    const pre = () => changePage(-1); // 頁碼減一
+
 
     return (
         <>
@@ -158,7 +148,7 @@ const Board = () => {
                     </div>
                     <div className="n-right">
                         {news.map((news, index) => (
-                            <div key={news.key} className={currentTabIndex === index ? "carousel-img showbox" : "carousel-img"} style={{ backgroundImage: "url(" + news.im + ")" }}>
+                            <div key={news.key} className="carousel-img" style={{ backgroundImage: "url(" + news.im + ")" }} hidden={!(currentTabIndex === index)}>
                                 <div className="mask"></div>
                                 <div className="content">
                                     <div className="content-title">{news.title}</div>

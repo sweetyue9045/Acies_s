@@ -2,50 +2,48 @@ import lottie from 'lottie-web';
 import { useEffect, useRef, useState } from 'react';
 import '../style/Home.css';
 
-import CRISIS_BOSS from '../assets/images/crisis_BOSS.mp4';
-import CRISIS_BEAR from '../assets/images/crisis_bear.png';
+// intro
+import INTRO_GIF from '../assets/images/intro_gif.gif';
+import INTRO_LOGO from '../assets/images/intro_logo.svg';
+import INTRO_LOGO_BG from '../assets/images/intro_logo_bg.png';
+import INTRO_PARALLAX from '../assets/images/intro_parallax.png';
+import arrowData from '../assets/lotties/arrow.json';
+// feature
 import FEATURE_LOGO from '../assets/images/feature_logo.svg';
-import MAGIC_X from '../assets/images/magic_X_btn.mp4';
-import MAGIC_Y from '../assets/images/magic_Y_btn.mp4';
-import MAGIC_NEXT from '../assets/images/magic_next.svg';
-import MAGIC_PREV from '../assets/images/magic_prev.svg';
-import MAGIC_SIS from '../assets/images/magic_sis.png';
-import ORDEAL_GAME from '../assets/images/ordeal_game.mp4';
-import ORDEAL_STONE_L from '../assets/images/ordeal_stone_l.png';
-import ORDEAL_STONE_R from '../assets/images/ordeal_stone_r.png';
+// story
+import STORY_STAFF from '../assets/images/story_staff.png';
+// tobii
+import TOBII_EYE from '../assets/images/tobii_eye.svg';
+// magic
+import MAGIC_VIDEO1 from '../assets/images/magic_X_btn_video.mp4';
+import MAGIC_VIDEO2 from '../assets/images/magic_Y_btn_video.mp4';
+import MAGIC_IMG from '../assets/images/magic_img.png';
+// ordeal
+import ORDEAL_IMG_BACK from '../assets/images/ordeal_img_back.png';
+import ORDEAL_IMG_FRONT from '../assets/images/ordeal_img_front.png';
+import ORDEAL_VIDEO from '../assets/images/ordeal_video.mp4';
+// crisis
+import CRISIS_IMG from '../assets/images/crisis_img.png';
+import CRISIS_VIDEO from '../assets/images/crisis_video.mp4';
+// sale
 import SALE_PS4 from '../assets/images/sale_PS4.svg';
 import SALE_BOTTOM from '../assets/images/sale_bottom.png';
 import SALE_STEAM from '../assets/images/sale_steam.svg';
 import SALE_SWITCH from '../assets/images/sale_switch.svg';
-import GIF from '../assets/images/start_gif.gif';
-import LOGO from '../assets/images/start_logo.svg';
-import LOGO_BG from '../assets/images/start_logo_bg.png';
-import PARALLAX from '../assets/images/start_parallax.png';
-import STORY_STAFF from '../assets/images/story_staff.png';
-import TOBII_EYE from '../assets/images/tobii_eye.svg';
-import arrowData from '../assets/lotties/arrow.json';
+// other
+import VIDEO_NEXT from '../assets/images/video_next.svg';
+import VIDEO_PREV from '../assets/images/video_prev.svg';
 
 
-var h_top = [];
+
 const Home = () => {
     const phone = document.body.clientWidth > 430 ? 'noPhone' : 'yesPhone';
-    const [gifstyleTop, setGifstyleTop] = useState('')
-    const [arrowstyleTop, setAarrowstyleTop] = useState('')
-    const [arrowstyleDisplay, setArrowstyleDisplay] = useState('')
-    const [num, setnum] = useState(0);
-    const [skill, setskill] = useState('凝聚之光');
-    const scrolltop = () => {
-        h_top = [
-            document.getElementById('feature').offsetTop + 1305,
-            document.getElementById('story').offsetTop + 1305,
-            document.getElementById('tobii').offsetTop + 1305,
-            document.getElementById('magic').offsetTop + 1305,
-            document.getElementById('ordeal').offsetTop + 1305,
-            document.getElementById('crisis').offsetTop + 1305,
-            document.getElementById('awards').offsetTop + 1305,
-            document.getElementById('sale').offsetTop + 1305,
-        ];
-    }
+    const [gifPosition, setGifPosition] = useState('')
+    const [arrowPosition, setArrowPosition] = useState('')
+    const [arrowVisibility, setArrowVisibility] = useState('')
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const [currentVideoSkill, setCurrentVideoSkill] = useState('凝聚之光');
+
     //Lottie
     const animationContainer = useRef(null);
     useEffect(() => {
@@ -63,103 +61,56 @@ const Home = () => {
         };
     }, []);
 
-    // 抓取加動畫位置
-    useEffect(() => {
-        if (document.body.clientWidth > 834) {
-            scrolltop();
-        }
-    }, []);
-    // 加動畫
-    const handleScroll = () => {
-        const offsetY = document.documentElement.scrollTop + document.body.scrollTop;
+    let sectionOffsets = useRef({});
 
-        //enter
-        setGifstyleTop(document.body.clientWidth <= 834 ? 0 : offsetY * 0.3 + 'px');
-        setAarrowstyleTop(document.body.clientWidth <= 834 ? '40vw' : 'calc(40vw + ' + offsetY * 1.5 + 'px)')
-        setArrowstyleDisplay(offsetY > 600 ? 'none' : 'flex')
-
-        //視差滾動
-        if (document.body.clientWidth > 834) {
-            if (offsetY >= h_top[7] - 300 && offsetY <= h_top[7] + 10) {
-                for (let i = 0; i < 4; i++) {
-                    setTimeout(function () {
-                        document.getElementById('sale').children[1].children[i].classList.add('fadein');
-                    }, 100 + i * 500);
-                }
-            }
-            else if (offsetY >= h_top[6] - 300 && offsetY <= h_top[6] + 10) {
-                for (let i = 0; i < 2; i++) {
-                    setTimeout(function () {
-                        document.getElementById('awards').children[0].children[i].classList.add('fadein');
-                    }, 100 + i * 500);
-                }
-            }
-            else if (offsetY >= h_top[5] - 300 && offsetY <= h_top[5] + 10) {
-                setTimeout(function () {
-                    for (let i = 0; i < 2; i++) {
-                        document.getElementById('crisis').children[0].children[0].children[i].classList.add('fadein');
-                    }
-                }, 100);
-                setTimeout(function () {
-                    document.getElementById('crisis').children[0].children[1].classList.add('fadein');
-                }, 600);
-            }
-            else if (offsetY >= h_top[4] - 300 && offsetY <= h_top[4] + 10) {
-                setTimeout(function () {
-                    document.getElementById('ordeal').children[0].children[0].classList.add('fadein');
-                }, 100);
-                setTimeout(function () {
-                    for (let i = 0; i < 2; i++) {
-                        document.getElementById('ordeal').children[0].children[1].children[i].classList.add('fadein');
-                    }
-                }, 600);
-            }
-            else if (offsetY >= h_top[3] - 300 && offsetY <= h_top[3] + 10) {
-                setTimeout(function () {
-                    for (let i = 0; i < 2; i++) {
-                        document.getElementById('magic').children[0].children[0].children[i].classList.add('fadein');
-                    }
-                }, 100);
-                setTimeout(function () {
-                    document.getElementById('magic').children[0].children[1].classList.add('fadein');
-                }, 600);
-            }
-            else if (offsetY >= h_top[2] - 300 && offsetY <= h_top[2] + 10) {
-                setTimeout(function () {
-                    for (let i = 0; i < 2; i++) {
-                        document.getElementById('tobii').children[i].classList.add('fadein');
-                    }
-                }, 100);
-                for (let i = 2; i < 4; i++) {
-                    setTimeout(function () {
-                        document.getElementById('tobii').children[i].classList.add('fadein');
-                    }, 100 + (i - 1) * 500);
-                }
-            }
-            else if (offsetY >= h_top[1] - 300 && offsetY <= h_top[1] + 10) {
-                setTimeout(function () {
-                    for (let i = 0; i < 2; i++) {
-                        document.getElementById('story').children[0].children[0].children[i].classList.add('fadein');
-                    }
-                }, 100);
-                setTimeout(function () {
-                    document.getElementById('story').children[0].children[0].children[3].classList.add('fadein');
-                }, 500);
-                setTimeout(function () {
-                    document.getElementById('story').children[0].children[1].classList.add('fadein');
-                }, 1100);
-            }
-            else if (offsetY >= h_top[0] - 300 && offsetY <= h_top[0] + 10) {
-                for (let i = 0; i < 4; i++) {
-                    setTimeout(function () {
-                        document.getElementById('feature').children[i].classList.add('fadein');
-                    }, 100 + i * 500);
-                }
-            }
-        }
-    }
+    const addFadeIn = (selector, delay) => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((el, index) => {
+            setTimeout(() => {
+                el.classList.add('fadein');
+            }, delay + index * 500);
+        });
+    };
 
     useEffect(() => {
+        const isComputerView = document.body.clientWidth > 834;
+
+        if (isComputerView) {
+            sectionOffsets.current = {
+                '.feature-section': document.getElementById('feature-section').offsetTop + 105,
+                '.story-section': document.getElementById('story-section').offsetTop + 105,
+                '.tobii-section': document.getElementById('tobii-section').offsetTop + 105,
+                '.magic-section': document.getElementById('magic-section').offsetTop + 105,
+                '.ordeal-section': document.getElementById('ordeal-section').offsetTop + 105,
+                '.crisis-section': document.getElementById('crisis-section').offsetTop + 105,
+                '.awards-section': document.getElementById('awards-section').offsetTop + 105,
+                '.sale-section': document.getElementById('sale-section').offsetTop + 105,
+            };
+        }
+
+        document.getElementById('story-img-pad').hidden = isComputerView;
+        document.getElementById('story-img-computer').hidden = !isComputerView;
+
+        const handleScroll = () => {
+            const scrollY = document.documentElement.scrollTop + document.body.scrollTop;
+
+            //intro
+            setGifPosition(document.body.clientWidth <= 834 ? 0 : scrollY * 0.3 + 'px');
+            setArrowPosition(document.body.clientWidth <= 834 ? '40vw' : 'calc(40vw + ' + scrollY * 1.5 + 'px)')
+            setArrowVisibility(scrollY > 600 ? 'none' : 'flex')
+
+            //視差滾動
+
+            if (document.body.clientWidth <= 834) return;
+
+            Object.keys(sectionOffsets.current).forEach(selector => {
+                const offset = sectionOffsets.current[selector];
+                if (scrollY >= offset - 300 && scrollY <= offset + 50) {
+                    addFadeIn(`${selector} .fadein-element`, 100);
+                }
+            });
+        }
+
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -169,145 +120,145 @@ const Home = () => {
     return (
         <>
             <div className="home-container">
-                <div className="enter">
-                    <img src={GIF} className="img_gif" alt="GIF"
-                        style={{ top: gifstyleTop }}
+                <div className="intro-section">
+                    <img src={INTRO_GIF} className="intro-gif" alt="INTRO_GIF"
+                        style={{ top: gifPosition }}
                     />
-                    <div className="home_arrow" style={{ top: arrowstyleTop, display: arrowstyleDisplay }}>
+                    <div className="intro-arrow" style={{ top: arrowPosition, display: arrowVisibility }}>
                         <div ref={animationContainer} style={{ width: "13vw" }}></div>
                     </div>
-                    <div className="enter_top" id="enter">
-                        <div className="logo" >
-                            <img src={LOGO_BG} alt="LOGO_BG" />
-                            <img src={LOGO} alt="LOGO" />
+                    <div className="intro-overlay">
+                        <div className="intro-logo" >
+                            <img src={INTRO_LOGO_BG} alt="INTRO_LOGO_BG" />
+                            <img src={INTRO_LOGO} alt="INTRO_LOGO" />
                         </div>
-                        <img src={PARALLAX} className="parallax" alt="PARALLAX" />
+                        <img src={INTRO_PARALLAX} className="intro-parallax" alt="INTRO_PARALLAX" />
                     </div>
                 </div>
-                <div className="feature" id="feature">
-                    <img src={FEATURE_LOGO} alt="FEATURE_LOGO" />
-                    <div className="content feature_content">眼動儀與手把結合</div>
-                    <div className="content feature_content">2D橫向卷軸動作解謎遊戲</div>
-                    <div className="content feature_content">
+                <div className="feature-section" id="feature-section">
+                    <img src={FEATURE_LOGO} className="fadein-element" alt="FEATURE_LOGO" />
+                    <div className="feature-description fadein-element">眼動儀與手把結合</div>
+                    <div className="feature-description fadein-element">2D橫向卷軸動作解謎遊戲</div>
+                    <div className="feature-description fadein-element">
                         突如其然的一場意外造成妹妹薇妲失去身體，為了尋回妹妹的身體，玩家將扮演一對雙胞胎姊妹，前往三個神秘部落，展開一場冒險旅程。
                     </div>
                 </div>
-                <div className="story" id="story">
-                    <div className="content">
-                        <div className="text">
+                <div className="story-section" id="story-section">
+                    <div className="story-content">
+                        <div className="story-text">
                             <Title Title="隨著法鈴封印解除" />
                             <Title Title="古老的魔法再次出現" />
-                            <img src={STORY_STAFF} alt="STORY_STAFF" className="story_img1" />
-                            <div className="t_content">
+                            <img src={STORY_STAFF} className="story-img-pad" alt="STORY_STAFF" id="story-img-pad" />
+                            <div className="story-description fadein-element">
                                 在家中意外獲得的法鈴，與變成靈體的妹妹突然能使用古老的魔法！使用<p>眼動儀</p>來驅動的法鈴，利用自身的專注力，探索部落與解決難題的旅程就此展開！
                             </div>
                         </div>
-                        <img src={STORY_STAFF} alt="STORY_STAFF" className="story_img2" />
+                        <img src={STORY_STAFF} alt="STORY_STAFF" className="fadein-element" id="story-img-computer" />
                     </div>
                 </div>
-                <div className="tobii" id="tobii">
-                    <div className="content">
+                <div className="tobii-section" id="tobii-section">
+                    <div className="tobii-description fadein-element">
                         遊戲開始前，需要完成眼動儀的校正
                     </div>
-                    <div className="content">
+                    <div className="tobii-description fadein-element">
                         利用Tobii眼動儀，一起探索部落的秘密
                     </div>
-                    <img src={TOBII_EYE} alt="STORY_STAFF" />
-                    <div className="tobii_link">
+                    <img src={TOBII_EYE} className="fadein-element" alt="STORY_STAFF" />
+                    <div className="tobii-link fadein-element">
                         <a href="https://gaming.tobii.com/zh/home/" target="_blank" rel="noreferrer">Tobii 官網</a>
                     </div>
                 </div>
-                <div className="magic" id="magic">
-                    <div className="content">
+                <div className="magic-section" id="magic-section">
+                    <div className="magic-content">
                         <div className="introduce">
                             <Title Title="姐妹一起，透過專注力" />
                             <Title Title="來施展魔法" />
-                            <div className="block">
-                                <video controls style={{ width: `100%`, display: num ? "none" : "block" }}>
-                                    <source src={MAGIC_X} type="video/mp4" />
+                            <div className="video-block">
+                                <video controls style={{ width: `100%`, display: currentVideoIndex ? "none" : "block" }}>
+                                    <source src={MAGIC_VIDEO1} type="video/mp4" />
                                     您的瀏覽器不支援此 HTML5 影片標籤
                                 </video>
-                                <video controls style={{ width: `100%`, display: num ? "block" : "none" }}>
-                                    <source src={MAGIC_Y} type="video/mp4" />
+                                <video controls style={{ width: `100%`, display: currentVideoIndex ? "block" : "none" }}>
+                                    <source src={MAGIC_VIDEO2} type="video/mp4" />
                                     您的瀏覽器不支援此 HTML5 影片標籤
                                 </video>
                             </div>
 
-                            <div className="block_title">
-                                <div className="left">
-                                    <div className="num">0{num + 1}</div>
-                                    <div className="text">{skill}</div>
+                            <div className="video-controls">
+                                <div className="video-control-left">
+                                    <div className="video-number">0{currentVideoIndex + 1}</div>
+                                    <div className="video-text">{currentVideoSkill}</div>
                                 </div>
-                                <div className="right">
-                                    <div className="r_prev" onClick={() => { setnum(0); setskill("凝聚之光"); }} style={{ cursor: num ? "pointer" : "" }}>
-                                        <img src={MAGIC_PREV} alt="MAGIC_PREV" style={{ filter: num ? "" : "drop-shadow(rgba(255, 255, 255, 0.35) 0 100px)", animation: num ? "clickme 2s linear infinite" : "" }} />
+                                <div className="video-control-right">
+                                    <div className="video-prev" onClick={() => { setCurrentVideoIndex(0); setCurrentVideoSkill("凝聚之光"); }} style={{ cursor: currentVideoIndex ? "pointer" : "" }}>
+                                        <img src={VIDEO_PREV} alt="VIDEO_PREV" style={{ filter: currentVideoIndex ? "" : "drop-shadow(rgba(255, 255, 255, 0.35) 0 100px)", animation: currentVideoIndex ? "clickme 2s linear infinite" : "" }} />
                                     </div>
-                                    <div className="r_next" onClick={() => { setnum(1); setskill("物體移動"); }} style={{ cursor: num ? "" : "pointer" }}>
-                                        <img src={MAGIC_NEXT} alt="MAGIC_NEXT" style={{ filter: num ? "drop-shadow(rgba(255, 255, 255, 0.35) 0 100px)" : "", animation: num ? "" : "clickme 2s linear infinite" }} />
+                                    <div className="video-next" onClick={() => { setCurrentVideoIndex(1); setCurrentVideoSkill("物體移動"); }} style={{ cursor: currentVideoIndex ? "" : "pointer" }}>
+                                        <img src={VIDEO_NEXT} alt="VIDEO_NEXT" style={{ filter: currentVideoIndex ? "drop-shadow(rgba(255, 255, 255, 0.35) 0 100px)" : "", animation: currentVideoIndex ? "" : "clickme 2s linear infinite" }} />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <img src={MAGIC_SIS} alt="MAGIC_SIS" className="magic_sis" style={{ display: phone === "yesPhone" ? "none" : "block" }} />
+                        <img src={MAGIC_IMG} className="magic-img fadein-element" alt="MAGIC_IMG" style={{ display: phone === "yesPhone" ? "none" : "block" }} />
                     </div>
                 </div>
-                <div className="ordeal" id="ordeal">
-                    <div className="content">
-                        <div className="left_img" style={{ display: phone === "yesPhone" ? "none" : "block" }}>
-                            <img src={ORDEAL_STONE_L} alt="ORDEAL_STONE_L" />
-                            <img src={ORDEAL_STONE_R} alt="ORDEAL_STONE_R" />
+                <div className="ordeal-section" id="ordeal-section">
+                    <div className="ordeal-content">
+                        <div className="ordeal-img fadein-element" style={{ display: phone === "yesPhone" ? "none" : "block" }}>
+                            <img src={ORDEAL_IMG_FRONT} alt="ORDEAL_IMG_FRONT" />
+                            <img src={ORDEAL_IMG_BACK} alt="ORDEAL_IMG_BACK" />
                         </div>
                         <div className="introduce">
                             <Title Title="部落的考驗來提升專注力" />
-                            <div className="i_content">旅途中有許多能夠輔助專注力的解謎，透過解謎讓姊妹更強大吧！</div>
-                            <div className="block">
+                            <div className="introduce-content fadein-element">旅途中有許多能夠輔助專注力的解謎，透過解謎讓姊妹更強大吧！</div>
+                            <div className="video-block">
                                 <video controls style={{ width: `100%` }}>
-                                    <source src={ORDEAL_GAME} type="video/mp4" />
+                                    <source src={ORDEAL_VIDEO} type="video/mp4" />
                                     您的瀏覽器不支援此 HTML5 影片標籤
                                 </video>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="crisis" id="crisis">
-                    <div className="content">
+                <div className="crisis-section" id="crisis-section">
+                    <div className="crisis-content">
                         <div className="introduce">
                             <Title Title="利用專注力解決危機吧！" />
-                            <div className="i_content">遇上各式各樣的神奇生物時，冷靜下來觀察周遭，利用技能解決難題吧！</div>
-                            <div className="block">
+                            <div className="introduce-content fadein-element">遇上各式各樣的神奇生物時，冷靜下來觀察周遭，利用技能解決難題吧！</div>
+                            <div className="video-block">
                                 <video controls style={{ width: `100%` }}>
-                                    <source src={CRISIS_BOSS} type="video/mp4" />
+                                    <source src={CRISIS_VIDEO} type="video/mp4" />
                                     您的瀏覽器不支援此 HTML5 影片標籤
                                 </video>
                             </div>
                         </div>
-                        <img src={CRISIS_BEAR} alt="ORDEAL_STONE_L" className="crisis_bear" style={{ display: phone === "yesPhone" ? "none" : "block" }} />
+                        <img src={CRISIS_IMG} className="crisis-img fadein-element" alt="ORDEAL_IMG_FRONT" style={{ display: phone === "yesPhone" ? "none" : "block" }} />
                     </div>
                 </div>
-                <div className="awards" id="awards">
-                    <div className="content">
-                        <div className="award">
+                <div className="awards-section" id="awards-section">
+                    <div className="awards-content">
+                        <div className="award fadein-element">
                             <p>2021金點新秀</p>
                             <p>數位互動設計類組</p>
                             <p>入圍</p>
                         </div>
-                        <div className="award">
+                        <div className="award fadein-element">
                             <p>2021</p>
                             <p>李國鼎 KT 科藝獎</p>
                             <p>特別獎</p>
                         </div>
                     </div>
                 </div>
-                <div className="sale" id="sale">
-                    <img src={SALE_BOTTOM} className="s_bottom" alt="SALE_BOTTOM" />
-                    <div className="content">
-                        <div className="year">2021</div>
-                        <div className="date">11.12</div>
-                        <div className="saleform">
-                            <div className="s_ch">正式發售</div>
-                            <div className="s_en">RELEASE</div>
+                <div className="sale-section" id="sale-section">
+                    <img src={SALE_BOTTOM} className="sale-bottom" alt="SALE_BOTTOM" />
+                    <div className="sale-content">
+                        <div className="sale-year fadein-element">2021</div>
+                        <div className="sale-date fadein-element">11.12</div>
+                        <div className="sale-release fadein-element">
+                            <div className="sale-release-chinese">正式發售</div>
+                            <div className="sale-release-english">RELEASE</div>
                         </div>
-                        <div className="platform">
+                        <div className="sale-platforms fadein-element">
                             <img src={SALE_STEAM} alt="SALE_STEAM" />
                             <img src={SALE_SWITCH} alt="SALE_SWITCH" />
                             <img src={SALE_PS4} alt="SALE_PS4" />
@@ -321,7 +272,7 @@ const Home = () => {
 
 const Title = ({ Title, Id }) => {
     return (
-        <div className="title" id={Id}>
+        <div className="title fadein-element" id={Id}>
             <div className="title_text">{Title}</div>
         </div>
     );

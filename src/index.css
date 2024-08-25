@@ -40,14 +40,15 @@
     --fz14: 14px;
 }
 
-html, body {
+html,
+body {
     width: 100vw;
     height: 100%;
     background-color: #000;
     color: #fff;
 }
 
-html{
+html {
     overflow-x: hidden;
     overflow-y: overlay;
 }
@@ -72,10 +73,24 @@ input {
     outline: none;
 }
 
+.fadein-element {
+    opacity: 0;
+}
+
+.fadein {
+    transform: translateY(0px) !important;
+    opacity: 1 !important;
+    transition: all .5s ease;
+}
+
 @media only screen and (min-width: 0px) and (max-width: 834px) {
     :root {
         --fz30: 20px;
         --fz28: 16px;
         --fz24: 14px;
+    }
+
+    .fadein-element {
+        opacity: 1;
     }
 }

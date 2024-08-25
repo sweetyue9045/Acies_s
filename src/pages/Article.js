@@ -1,45 +1,47 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../style/Article.css';
-
 import BACKNAV from '../assets/images/backnav.svg';
-
 import Title from '../components/Title';
 
 const Article = () => {
     const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
-    const navigate= useNavigate();
-
+    const navigate = useNavigate();
     const { articleTitle } = useParams();
     const Content = APIs.find((x) => x.title === articleTitle);
 
-    const [articleMinHeight, setArticleMinHeight] = useState()
-    useEffect(() => {
-        const containerHeight = Number(getComputedStyle(document.getElementById('article')).marginTop.replace('px', ''));
-        const backNavHeight = Number(getComputedStyle(document.getElementById('backnav')).marginTop.replace('px', '')) + document.getElementById('backnav').offsetHeight + Number(getComputedStyle(document.getElementById('backnav')).marginBottom.replace('px', ''));
-        const footerHeight = document.getElementById('footer').offsetHeight;
+    const [articleMinHeight, setArticleMinHeight] = useState();
+    const articleRef = useRef(null);
+    const backNavRef = useRef(null);
+    const footerRef = useRef(null);
 
-        setArticleMinHeight(document.body.clientHeight - containerHeight - backNavHeight - footerHeight);
+    useEffect(() => {
+        if (articleRef.current && backNavRef.current && footerRef.current) {
+            const containerHeight = Number(getComputedStyle(articleRef.current).marginTop.replace('px', ''));
+            const backNavHeight = Number(getComputedStyle(backNavRef.current).marginTop.replace('px', '')) + backNavRef.current.offsetHeight + Number(getComputedStyle(backNavRef.current).marginBottom.replace('px', ''));
+            const footerHeight = footerRef.current.offsetHeight;
+
+            setArticleMinHeight(document.body.clientHeight - containerHeight - backNavHeight - footerHeight);
+        }
     }, []);
 
     return (
         <>
-            <div className="article-container" id="article" style={{ minHeight: articleMinHeight }}>
+            <div className="article-container" id="article" ref={articleRef} style={{ minHeight: articleMinHeight }}>
                 <div className="article-category">#{Content.category}</div>
                 <Title mainTitle={Content.title} />
                 <div className="article-time">{Content.writeTime}</div>
                 <div className="article-content" dangerouslySetInnerHTML={{ __html: Content.content }}></div>
             </div>
-            <div className="BackNav" id="backnav">
+            <div className="BackNav" id="backnav" ref={backNavRef}>
                 <div onClick={() => navigate(-1)} className="backnav">
                     <img src={BACKNAV} alt="BACKNAV" />
                     <p>返回</p>
                 </div>
-            </div >
+            </div>
+            <div id="footer" ref={footerRef} />
         </>
     );
 }
 
-
 export default Article;
-

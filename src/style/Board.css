@@ -115,7 +115,6 @@
 .n-right .carousel-img {
     height: 33.19vw;
     max-height: 478px;
-    display: none;
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -133,11 +132,6 @@
     border: #fff 2px solid;
     border-radius: 50%;
     margin: 0 12.5px;
-}
-
-.news .showbox {
-    display: block;
-    transition: all .4s ease-in-out;
 }
 
 .n-right .choose {
@@ -271,7 +265,6 @@
 .dev .showbox {
     display: grid;
     transition: all .4s ease-in-out;
-
 }
 
 .page-btn {
