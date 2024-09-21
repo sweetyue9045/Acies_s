@@ -12,7 +12,7 @@ export default function Nav({ posi }) {
     useEffect(() => {
         if (phone == 'yesPhone') {
             document.querySelectorAll('#nav a').forEach(a => {
-                a.onClick = clickClose;
+                a.onclick = clickClose;
             });
         };
     }, [phone])
@@ -81,8 +81,8 @@ export default function Nav({ posi }) {
                 </ul>
             </div>
             <div className="hambtn" style={{ display: phone === "yesPhone" ? "block" : "none" }}>
-                <img id="ham-open" className="block" src={HAM_OPEN} alt="ham-open.png" onClick={clickOpen.bind(this)} />
-                <img id="ham-close" className="none" src={HAM_CLOSE} alt="ham-close.png" onClick={clickClose.bind(this)} />
+                <img id="ham-open" className="block" src={HAM_OPEN} alt="ham-open.png" onClick={clickOpen} />
+                <img id="ham-close" className="none" src={HAM_CLOSE} alt="ham-close.png" onClick={clickClose} />
             </div>
         </nav>
     );
