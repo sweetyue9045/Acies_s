@@ -10,14 +10,14 @@ import LOGO from '../assets/images/nav_logo.svg';
 export default function Nav({ posi }) {
     const phone = document.body.clientWidth > 430 ? 'noPhone' : 'yesPhone';
     useEffect(() => {
-        if (phone !=='yesPhone'){
-            document.querySelectorAll('#nav a').forEach(a=>{
-                a.onClick={clickClose};
+        if (phone == 'yesPhone') {
+            document.querySelectorAll('#nav a').forEach(a => {
+                a.onClick = { clickClose };
             });
         };
     }, [phone])
 
-    var clickOpen = (e) =>{
+    var clickOpen = (e) => {
         var targetOpen = document.getElementById('ham-close');
         var targetClose = document.getElementById('ham-open');
         var hamNav = document.getElementById('nav-container');
@@ -36,7 +36,7 @@ export default function Nav({ posi }) {
         disableScroll();
     }
 
-    var clickClose = (e)=>{
+    var clickClose = (e) => {
         var targetOpen = document.getElementById('ham-open');
         var targetClose = document.getElementById('ham-close');
         var hamNav = document.getElementById('nav-container');
