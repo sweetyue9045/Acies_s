@@ -12,7 +12,7 @@ export default function Nav({ posi }) {
     useEffect(() => {
         if (phone == 'yesPhone') {
             document.querySelectorAll('#nav a').forEach(a => {
-                a.onClick = { clickClose };
+                a.onClick = clickClose;
             });
         };
     }, [phone])
