@@ -37,6 +37,7 @@ export default function Nav({ posi }) {
     }
 
     var clickClose = (e) => {
+        alert("hi");
         var targetOpen = document.getElementById('ham-open');
         var targetClose = document.getElementById('ham-close');
         var hamNav = document.getElementById('nav-container');
