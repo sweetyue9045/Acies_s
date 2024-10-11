@@ -14,7 +14,7 @@ const AdminLayout = () => {
         // 根據當前路由設定背景顏色
         if (isDisabledLink) {
             setNavBgColor('transparent');
-            setNavPosition('fixed')
+            setNavPosition('absolute')
         } else {
             setNavBgColor('white');
             setNavPosition('relative')
