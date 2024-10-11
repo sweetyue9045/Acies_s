@@ -18,9 +18,13 @@ const List = () => {
     const publishConfirmRef = useRef(null);
 
     useEffect(() => {
-        if (!isLogin.username) {
-            navigate('/admin');
-        }
+        const handleCheckout = () => {
+            if (!isLogin.userName) {
+                navigate('/admin');
+            }
+        };
+
+        handleCheckout();
     }, [isLogin, navigate]);
 
     const handleDeleteConfirm = (e, open, id) => {

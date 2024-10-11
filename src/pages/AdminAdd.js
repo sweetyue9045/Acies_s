@@ -24,9 +24,13 @@ const Add = () => {
     const contentTextareaRef = useRef(null);
 
     useEffect(() => {
-        if (!isLogin.username) {
-            navigate('/admin');
-        }
+        const handleCheckout = () => {
+            if (!isLogin.userName) {
+                navigate('/admin');
+            }
+        };
+
+        handleCheckout();
         imgInputRef.current.style.top = imgLabelRef.current.offsetTop - 5 + 'px';
     }, [isLogin, navigate]);
 

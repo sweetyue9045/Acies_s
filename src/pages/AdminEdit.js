@@ -25,9 +25,13 @@ const Edit = () => {
     const contentTextareaRef = useRef(null);
 
     useEffect(() => {
-        if (!isLogin.username) {
-            navigate('/admin');
-        }
+        const handleCheckout = () => {
+            if (!isLogin.userName) {
+                navigate('/admin');
+            }
+        };
+
+        handleCheckout();
     }, [isLogin, navigate]);
 
     useEffect(() => {
