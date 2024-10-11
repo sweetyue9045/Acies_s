@@ -128,7 +128,6 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            {/* 確保 footer 在 DOM 中以便使用 ref */}
             <footer id="footer" ref={footerRef}></footer>
         </>
     );
