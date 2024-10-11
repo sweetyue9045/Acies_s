@@ -4,25 +4,22 @@ import '../style/AdminNav.css';
 
 import LOGO from '../assets/images/a_nav_logo.svg';
 
-export default function Nav({ bg, posi }) {
+export default function Nav({ bg, posi, isDisabledLink }) {
     const IsLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
     const navigate = useNavigate();
 
     useEffect(() => {
         const LogoutButton = () => {
-            if (IsLogin.userName === '') {
+            if (isDisabledLink) {
                 document.getElementById('logout').style.display = 'none';
-                document.getElementById('nav').style.backgroundColor = 'transparent';
-                document.getElementById('nav').style.position ='absolute';
             } else {
                 document.getElementById('logout').style.display = 'flex';
-                document.getElementById('nav').style= '';
             }
         }
         document.body.scrollTo(0, 0);
         LogoutButton();
     }, [IsLogin])
-    
+
 
     const Logout = async (e) => {
         e.preventDefault();
@@ -38,11 +35,17 @@ export default function Nav({ bg, posi }) {
     return (
         <div className="a-nav" id="nav" style={{ backgroundColor: bg, position: posi }}>
             <div className="nav-left">
-                <NavLink to="/admin/list">
+                {isDisabledLink ? (
                     <div className="logo">
                         <img src={LOGO} alt="LOGO" />
                     </div>
-                </NavLink>
+                ) : (
+                    <NavLink to="/admin/list">
+                        <div className="logo">
+                            <img src={LOGO} alt="LOGO" />
+                        </div>
+                    </NavLink>
+                )}
                 <div className="symbol">
                     管理模式
                 </div>

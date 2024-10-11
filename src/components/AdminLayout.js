@@ -5,26 +5,26 @@ import { useEffect, useState } from 'react';
 
 const AdminLayout = () => {
     const location = useLocation();
+    const isDisabledLink = location.pathname === '/admin';
     const [navBgColor, setNavBgColor] = useState('white');
     const [navPosition, setNavPosition] = useState('relative');
 
 
     useEffect(() => {
         // 根據當前路由設定背景顏色
-        switch (location.pathname) {
-            case '/admin':
-                setNavBgColor('transparent');
-                setNavPosition('fixed')
-                break;
-            default:
-                setNavBgColor('white');
-                setNavPosition('relative')
+        if (isDisabledLink) {
+            setNavBgColor('transparent');
+            setNavPosition('fixed')
+        } else {
+            setNavBgColor('white');
+            setNavPosition('relative')
         }
+
     }, [location]);
 
     return (
         <>
-            <Nav bg={navBgColor} posi={navPosition} />
+            <Nav bg={navBgColor} posi={navPosition} isDisabledLink={isDisabledLink} />
             <Outlet />
             <Footer />
         </>
