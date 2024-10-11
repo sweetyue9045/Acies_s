@@ -39,7 +39,6 @@ const Article = () => {
                     <p>返回</p>
                 </div>
             </div>
-            <div id="footer" ref={footerRef} />
         </>
     );
 }

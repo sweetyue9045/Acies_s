@@ -128,7 +128,6 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            <footer id="footer" ref={footerRef}></footer>
         </>
     );
 };
