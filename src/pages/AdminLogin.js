@@ -19,7 +19,6 @@ const Login = () => {
     // 使用 refs 來直接訪問 DOM 元素
     const passwordRef = useRef(null);
     const loginRef = useRef(null);
-    const footerRef = useRef(null);
 
     useEffect(() => {
         const handleCheckout = () => {
@@ -128,7 +127,6 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-            <footer id="footer" ref={footerRef}></footer>
         </>
     );
 };

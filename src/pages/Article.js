@@ -13,7 +13,6 @@ const Article = () => {
     const [articleMinHeight, setArticleMinHeight] = useState();
     const articleRef = useRef(null);
     const backNavRef = useRef(null);
-    const footerRef = useRef(null);
 
     useEffect(() => {
         if (articleRef.current && backNavRef.current && footerRef.current) {
@@ -39,7 +38,6 @@ const Article = () => {
                     <p>返回</p>
                 </div>
             </div>
-            <div id="footer" ref={footerRef} />
         </>
     );
 }
