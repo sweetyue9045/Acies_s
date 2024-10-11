@@ -25,6 +25,12 @@ const Edit = () => {
     const contentTextareaRef = useRef(null);
 
     useEffect(() => {
+        if (!isLogin.username) {
+            navigate('/admin');
+        }
+    }, [isLogin, navigate]);
+
+    useEffect(() => {
         const editMessages = () => {
             titleInputRef.current.value = Content.title;
             contentTextareaRef.current.value = Content.content;

@@ -4,7 +4,7 @@ import { disableScroll, enableScroll } from '../components/ScrollUtils';
 import '../style/Admin.css';
 
 const List = () => {
-    const IsLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
+    const isLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
     const APIs = JSON.parse(window.localStorage.getItem('ArticleAPI'));
     const navigate = useNavigate();
 
@@ -18,13 +18,10 @@ const List = () => {
     const publishConfirmRef = useRef(null);
 
     useEffect(() => {
-        const checkoutHandler = () => {
-            if (IsLogin.username === '') {
-                navigate('/admin');
-            }
-        };
-        checkoutHandler();
-    }, [IsLogin, navigate]);
+        if (!isLogin.username) {
+            navigate('/admin');
+        }
+    }, [isLogin, navigate]);
 
     const handleDeleteConfirm = (e, open, id) => {
         e.stopPropagation();

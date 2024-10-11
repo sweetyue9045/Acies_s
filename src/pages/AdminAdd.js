@@ -24,7 +24,7 @@ const Add = () => {
     const contentTextareaRef = useRef(null);
 
     useEffect(() => {
-        if (isLogin.username === '') {
+        if (!isLogin.username) {
             navigate('/admin');
         }
         imgInputRef.current.style.top = imgLabelRef.current.offsetTop - 5 + 'px';

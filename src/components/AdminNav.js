@@ -5,7 +5,7 @@ import '../style/AdminNav.css';
 import LOGO from '../assets/images/a_nav_logo.svg';
 
 export default function Nav({ bg, posi, isDisabledLink }) {
-    const IsLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
+    const isLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,17 +18,17 @@ export default function Nav({ bg, posi, isDisabledLink }) {
         }
         document.body.scrollTo(0, 0);
         LogoutButton();
-    }, [IsLogin])
+    }, [isLogin])
 
 
     const Logout = async (e) => {
         e.preventDefault();
-        const islogin = {
+        const Islogin = {
             email: '',
             userName: '',
             id: ''
         }
-        window.localStorage.setItem('UserInfo', JSON.stringify(islogin));
+        window.localStorage.setItem('UserInfo', JSON.stringify(Islogin));
         navigate('/admin');
     };
 
@@ -52,9 +52,9 @@ export default function Nav({ bg, posi, isDisabledLink }) {
             </div>
             <div className="nav-right">
                 <div className="user">
-                    {IsLogin.userName === ""
+                    {!isLogin.userName
                         ? ``
-                        : IsLogin.userName
+                        : isLogin.userName
                     }
                 </div>
                 <input id="logout" type="button" value="登出" onClick={Logout} className="login-btn" />

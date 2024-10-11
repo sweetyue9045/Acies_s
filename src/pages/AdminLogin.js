@@ -7,7 +7,7 @@ import EYES_OPEN from '../assets/images/login_eyes_open.svg';
 import adminInfo from '../assets/jsons/admin.json';
 
 const Login = () => {
-    const IsLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
+    const isLogin = JSON.parse(window.localStorage.getItem('UserInfo'));
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -23,7 +23,7 @@ const Login = () => {
 
     useEffect(() => {
         const handleCheckout = () => {
-            if (IsLogin.userName) {
+            if (isLogin.userName) {
                 navigate('/admin/list');
             }
         };
@@ -35,7 +35,7 @@ const Login = () => {
             const footerHeight = footerRef.current.offsetHeight;
             setLoginMinHeight(document.body.clientHeight - containerHeight - footerHeight);
         }
-    }, [IsLogin, navigate]);
+    }, [isLogin, navigate]);
 
     const userLogin = {
         email: email,
