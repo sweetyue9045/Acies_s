@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../style/Nav.css';
 import { disableScroll, enableScroll } from './ScrollUtils';
@@ -8,11 +8,30 @@ import HAM_OPEN from '../assets/images/ham_open.png';
 import LOGO from '../assets/images/nav_logo.svg';
 
 export default function Nav({ posi }) {
-    const phone = document.body.clientWidth > 430 ? 'noPhone' : 'yesPhone';
+    const [phone, setPhone] = useState(window.innerWidth <= 430 ? 'yesPhone' : 'noPhone');
+    // 更新 phone 狀態，根據視窗尺寸變化
+    useEffect(() => {
+        const handleResize = () => {
+            setPhone(window.innerWidth <= 430 ? 'yesPhone' : 'noPhone');
+        };
+
+        // 監聽 resize 事件
+        window.addEventListener('resize', handleResize);
+
+        // 清除事件監聽器
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     useEffect(() => {
         if (phone == 'yesPhone') {
             document.querySelectorAll('#nav a').forEach(a => {
                 a.onclick = clickClose;
+            });
+        };
+        return () => {
+            document.querySelectorAll('#nav a').forEach(a => {
+                a.onclick = null; // 移除舊的事件處理器
             });
         };
     }, [phone])
