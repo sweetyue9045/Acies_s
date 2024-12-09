@@ -273,7 +273,7 @@
     z-index: 2;
 }
 
-.magic-section .video-control-left ,
+.magic-section .video-control-left,
 .magic-section .video-control-right {
     display: flex;
 }
@@ -654,7 +654,7 @@
     }
 
     .magic-section .magic-content,
-    .ordeal-section .content,
+    .ordeal-section .ordeal-content,
     .crisis-section .crisis-content {
         grid-template-columns: 100%;
     }
