@@ -30,6 +30,8 @@ export default function Nav({ posi }) {
                 a.onclick = clickClose;
             });
         } else {
+            document.getElementById('ham-close').style = '';
+            document.getElementById('ham-open').style = '';
             document.getElementById('nav').style = '';
         };
         return () => {
