@@ -23,11 +23,14 @@ export default function Nav({ posi }) {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
     useEffect(() => {
         if (phone == 'yesPhone') {
             document.querySelectorAll('#nav a').forEach(a => {
                 a.onclick = clickClose;
             });
+        } else {
+            document.getElementById('nav').style = '';
         };
         return () => {
             document.querySelectorAll('#nav a').forEach(a => {
