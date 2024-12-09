@@ -77,7 +77,6 @@ export default function Nav({ posi }) {
         targetOpen.classList.remove('none');
         targetClose.classList.remove('block');
 
-
         targetOpen.classList.add('block');
         targetClose.classList.add('none');
 
