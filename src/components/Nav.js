@@ -30,8 +30,17 @@ export default function Nav({ posi }) {
                 a.onclick = clickClose;
             });
         } else {
-            clickClose();
-            document.getElementById('nav').style = '';
+            var targetOpen = document.getElementById('ham-close');
+            var targetClose = document.getElementById('ham-open');
+            var nav = document.getElementById('nav');
+
+            targetOpen.classList.remove('none');
+            targetClose.classList.remove('block');
+
+            targetOpen.classList.add('block');
+            targetClose.classList.add('none');
+
+            nav.style = '';
         };
         return () => {
             document.querySelectorAll('#nav a').forEach(a => {
