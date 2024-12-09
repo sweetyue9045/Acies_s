@@ -30,8 +30,8 @@ export default function Nav({ posi }) {
                 a.onclick = clickClose;
             });
         } else {
-            var targetOpen = document.getElementById('ham-close');
-            var targetClose = document.getElementById('ham-open');
+            var targetOpen = document.getElementById('ham-open');
+            var targetClose = document.getElementById('ham-close');
             var nav = document.getElementById('nav');
 
             targetOpen.classList.remove('none');
