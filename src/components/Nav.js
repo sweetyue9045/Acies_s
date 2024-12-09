@@ -30,7 +30,7 @@ export default function Nav({ posi }) {
                 a.onclick = clickClose;
             });
         } else {
-            clickOpen();
+            clickClose();
             document.getElementById('nav').style = '';
         };
         return () => {
